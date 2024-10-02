@@ -1,0 +1,1908 @@
+<!DOCTYPE html>
+<!-- saved from url=(0037)https://codepen.io/paulkim/pen/oZLavq -->
+<html lang="en" data-theme="dark" class="pc chrome109 js"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>React Shopping Cart Demo</title>
+<link rel="dns-prefetch" href="https://apc.codepen.io/">
+
+
+<style type="text/css">@font-face {font-family:Lato;font-style:normal;font-weight:400;src:url(/cf-fonts/s/lato/5.0.18/latin/400/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:Lato;font-style:normal;font-weight:400;src:url(/cf-fonts/s/lato/5.0.18/latin-ext/400/normal.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:Lato;font-style:normal;font-weight:700;src:url(/cf-fonts/s/lato/5.0.18/latin-ext/700/normal.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:Lato;font-style:normal;font-weight:700;src:url(/cf-fonts/s/lato/5.0.18/latin/700/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:Lato;font-style:normal;font-weight:900;src:url(/cf-fonts/s/lato/5.0.18/latin-ext/900/normal.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:Lato;font-style:normal;font-weight:900;src:url(/cf-fonts/s/lato/5.0.18/latin/900/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:Lato;font-style:italic;font-weight:400;src:url(/cf-fonts/s/lato/5.0.18/latin/400/italic.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:Lato;font-style:italic;font-weight:400;src:url(/cf-fonts/s/lato/5.0.18/latin-ext/400/italic.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:Lato;font-style:italic;font-weight:700;src:url(/cf-fonts/s/lato/5.0.18/latin-ext/700/italic.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:Lato;font-style:italic;font-weight:700;src:url(/cf-fonts/s/lato/5.0.18/latin/700/italic.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:Lato;font-style:italic;font-weight:900;src:url(/cf-fonts/s/lato/5.0.18/latin/900/italic.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:Lato;font-style:italic;font-weight:900;src:url(/cf-fonts/s/lato/5.0.18/latin-ext/900/italic.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}</style>
+<meta name="twitter:title" content="React Shopping Cart Demo">
+<meta name="twitter:description" content="...">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://shots.codepen.io/username/pen/oZLavq-800.jpg?version=1488727576">
+<meta property="og:image" content="https://shots.codepen.io/username/pen/oZLavq-800.jpg?version=1488727576" itemprop="thumbnailUrl">
+<meta property="og:title" content="React Shopping Cart Demo">
+<meta property="og:url" content="https://codepen.io/paulkim/details/oZLavq">
+<meta property="og:description" content="...">
+<link rel="alternate" type="application/json+oembed" href="https://codepen.io/api/oembed?url=https%3A%2F%2Fcodepen.io%2Fpaulkim%2Fpen%2FoZLavq&amp;format=json" title="React Shopping Cart Demo">
+<link rel="stylesheet" media="all" href="./React Shopping Cart Demo_files/global-3bfa19ca5d663f420e5620b3d08afa1fe785934451ed4ff0b49c12b06413cff8.css">
+<link rel="stylesheet" media="screen" href="./React Shopping Cart Demo_files/everypage-419a7c66.css">
+<link rel="stylesheet" media="all" href="./React Shopping Cart Demo_files/editor-0444918a73eaf84cc10680f3b2b456e6ad183955f76f41f72c11ef1ce3f877af.css">
+<meta name="description" content="...">
+<link rel="stylesheet" media="screen" href="./React Shopping Cart Demo_files/twilight-8ea74c444cf457f9a50f818792c3de6bb5f118202377c4fb1b7b1cc973b4070c.css" id="cm-theme">
+<style id="cm-font-family" class="cm-font-family" nonce="">
+  
+  .CodeMirror,
+  .console-logs .console-line,
+  .console-command-line-input,
+  .console-message,
+  .CodeMirror-hint {
+    font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo,
+  monospace;
+  }
+</style>
+<style id="cm-font-size" nonce="">
+  .CodeMirror,
+  .console-logs .console-line,
+  .console-command-line-input,
+  .console-message,
+  .CodeMirror-hint {
+    font-size: 14px;
+  }
+</style>
+<link rel="apple-touch-icon" type="image/png" href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png">
+<meta name="apple-mobile-web-app-title" content="CodePen">
+<link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico">
+<link rel="mask-icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg" color="#111">
+<meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="/u+IGcXd0W1g7D3ugV9uSLfxavc2iJxonJRghpuHGTLhMn8JTMJ1VeSkDqjlUyxhi14nR7yeoYhcCZ2ROEPXRw==">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<style id="_goober"> @keyframes go2264125279{from{transform:scale(0) rotate(45deg);opacity:0;}to{transform:scale(1) rotate(45deg);opacity:1;}}@keyframes go3020080000{from{transform:scale(0);opacity:0;}to{transform:scale(1);opacity:1;}}@keyframes go463499852{from{transform:scale(0) rotate(90deg);opacity:0;}to{transform:scale(1) rotate(90deg);opacity:1;}}@keyframes go1268368563{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}@keyframes go1310225428{from{transform:scale(0) rotate(45deg);opacity:0;}to{transform:scale(1) rotate(45deg);opacity:1;}}@keyframes go651618207{0%{height:0;width:0;opacity:0;}40%{height:0;width:6px;opacity:1;}100%{opacity:1;height:10px;}}@keyframes go901347462{from{transform:scale(0.6);opacity:0.4;}to{transform:scale(1);opacity:1;}}.go4109123758{z-index:9999;}.go4109123758 > *{pointer-events:auto;}</style><script src="./React Shopping Cart Demo_files/CWYDP2QE.json"></script><script src="./React Shopping Cart Demo_files/KVHtLEVcgM.js.download" async=""></script></head>
+<body class="room-editor editor state-htmlOn-cssOn-jsOn twilight   layout-top  logged-out">
+<header class="main-header" id="main-header"></header>
+<div class="item-settings-modal tab-layout tab-layout-modal pen  item-settings-modal-half" id="item-settings-modal">
+<header class="item-settings-modal-header tab-layout-header">
+<h2 class="item-settings-modal-header-title tab-layout-header-title">Pen Settings</h2>
+<div class="save-and-close-wrap">
+<button type="button" class="button mini-button button-no-right-margin close" id="top-close-settings">
+<svg class="icon-x" viewBox="0 0 100 100">
+<path d="M96.8 83.7L63.1 50l33.7-33.7c3.6-3.6 3.6-9.4 0-13.1s-9.5-3.6-13.1 0L50 36.9 16.3 3.2C12.7-.4 6.9-.4 3.2 3.2s-3.6 9.5 0 13.1L36.9 50 3.2 83.7c-3.6 3.6-3.6 9.4 0 13.1s9.5 3.6 13.1 0L50 63.1l33.7 33.7c3.6 3.6 9.4 3.6 13.1 0s3.6-9.5 0-13.1z"></path>
+</svg>
+</button>
+</div>
+</header>
+<div class="tabs tab-layout-wrapper settings-tabs-wrapper">
+<nav id="settings-tabs" class="no-mobile-nav tab-layout-tabs item-settings-tabs  notranslate" translate="no">
+<div class="tab-layout-tab-group">
+<a id="settings-html-tab" href="https://codepen.io/paulkim/pen/oZLavq#settings-html" class="settings-tab-html active" data-type="html">
+HTML
+</a>
+<a id="settings-css-tab" href="https://codepen.io/paulkim/pen/oZLavq#settings-css" class="settings-tab-css" data-type="css">
+CSS
+</a>
+<a id="settings-js-tab" href="https://codepen.io/paulkim/pen/oZLavq#settings-js" class="settings-tab-js" data-type="js">
+JS
+</a>
+</div>
+<div class="tab-layout-tab-group">
+<a id="settings-behavior-tab" href="https://codepen.io/paulkim/pen/oZLavq#settings-behavior" class="settings-tab-behavior" data-type="behavior">
+Behavior
+</a>
+<a id="settings-editor-tab" href="https://codepen.io/paulkim/pen/oZLavq#settings-editor" class="settings-tab-editor" data-type="editor">
+Editor
+</a>
+</div>
+</nav>
+<div class="settings tab-page active" id="settings-html">
+<h3 aria-label="HTML">HTML</h3>
+<div class="settings-row top-label-form normal-labels">
+<h4>
+<label for="html-preprocessor">
+HTML Preprocessor
+</label>
+</h4>
+<div class="help-flyout-link">
+<svg class="icon-help" viewBox="0 0 100 100">
+<path d="M75,0H25C11.19,0,0,11.193,0,25v50c0,13.802,11.19,25,25,25h50c13.811,0,25-11.198,25-25V25C100,11.193,88.811,0,75,0z
+   M57.203,85.067H41.504V72.542h15.699V85.067L57.203,85.067z M73.357,42.041c-0.84,2.066-1.873,3.834-3.102,5.298
+  c-1.235,1.474-2.604,2.718-4.101,3.751c-1.498,1.035-2.922,2.066-4.249,3.101c-1.333,1.034-1.553,2.214-2.596,3.547
+  c-1.025,1.335-0.977,3.004-0.977,5.006v3.924H41.668v-4.623c0-2.864,1.366-5.265,2.27-7.202c0.896-1.935,2.255-3.581,3.459-4.947
+  c1.196-1.367,2.62-2.556,3.955-3.557c1.327-0.993,2.637-1.993,3.776-2.995c1.123-1.001,2.083-2.1,2.783-3.304
+  c0.7-1.197,1.043-2.694,0.977-4.5c0-3.06-0.74-5.33-2.245-6.795c-1.498-1.465-3.582-2.206-6.25-2.206c-1.8,0-3.337,0.351-4.639,1.05
+  c-1.303,0.7-2.369,1.635-3.199,2.808c-0.837,1.163-1.448,3.593-1.847,5.156c-0.407,1.57-0.602,6.115-0.602,6.115H25.399
+  c0.073-8.333,0.684-7.963,1.855-10.965c1.164-2.995,2.8-6.132,4.899-8.33c2.099-2.197,4.63-4.179,7.601-5.417
+  c2.962-1.228,6.283-1.977,9.945-1.977c4.736,0,8.683,0.581,11.856,1.876c3.167,1.302,5.713,2.889,7.65,4.817
+  c1.929,1.937,3.312,4.004,4.149,6.234c0.831,2.237,1.245,4.313,1.245,6.242C74.601,37.354,74.187,39.975,73.357,42.041z"></path>
+</svg>
+<div class="help-flyout help-flyout-reverse">
+<h5>About HTML Preprocessors</h5>
+<svg class="icon-x" viewBox="0 0 100 100">
+<path d="M96.8 83.7L63.1 50l33.7-33.7c3.6-3.6 3.6-9.4 0-13.1s-9.5-3.6-13.1 0L50 36.9 16.3 3.2C12.7-.4 6.9-.4 3.2 3.2s-3.6 9.5 0 13.1L36.9 50 3.2 83.7c-3.6 3.6-3.6 9.4 0 13.1s9.5 3.6 13.1 0L50 63.1l33.7 33.7c3.6 3.6 9.4 3.6 13.1 0s3.6-9.5 0-13.1z"></path>
+</svg>
+<p>HTML preprocessors can make writing HTML more powerful or convenient. For instance, Markdown is designed to be easier to write and read for text documents and you could write a loop in Pug.</p>
+<p><a href="https://blog.codepen.io/documentation/editor/using-html-preprocessors/" target="_blank" rel="noopener">Learn more</a> · <a href="https://codepen.io/versions/" target="_blank" rel="noopener">Versions</a></p>
+</div>
+</div>
+<div class="custom-select-wrap">
+<select name="html-preprocessor" id="html-preprocessor" class="fullwidth">
+<option value="none">None</option>
+<option value="haml">Haml</option>
+<option value="markdown">Markdown</option>
+<option value="slim">Slim</option>
+<option value="pug">Pug</option>
+</select>
+<div class="select-icon">
+<svg viewBox="-122.9 121.1 105.9 61.9" class="icon-arrow-down-mini">
+<path d="M-63.2,180.3l43.5-43.5c1.7-1.7,2.7-4,2.7-6.5s-1-4.8-2.7-6.5c-1.7-1.7-4-2.7-6.5-2.7s-4.8,1-6.5,2.7l-37.2,37.2l-37.2-37.2
+        c-1.7-1.7-4-2.7-6.5-2.7s-4.8,1-6.5,2.6c-1.9,1.8-2.8,4.2-2.8,6.6c0,2.3,0.9,4.6,2.6,6.5l0,0c11.4,11.5,41,41.2,43,43.3l0.2,0.2
+        C-73.5,183.9-66.8,183.9-63.2,180.3z"></path>
+</svg>
+<svg viewBox="-122.9 121.1 105.9 61.9" class="icon-arrow-down-mini">
+<path d="M-63.2,180.3l43.5-43.5c1.7-1.7,2.7-4,2.7-6.5s-1-4.8-2.7-6.5c-1.7-1.7-4-2.7-6.5-2.7s-4.8,1-6.5,2.7l-37.2,37.2l-37.2-37.2
+        c-1.7-1.7-4-2.7-6.5-2.7s-4.8,1-6.5,2.6c-1.9,1.8-2.8,4.2-2.8,6.6c0,2.3,0.9,4.6,2.6,6.5l0,0c11.4,11.5,41,41.2,43,43.3l0.2,0.2
+        C-73.5,183.9-66.8,183.9-63.2,180.3z"></path>
+</svg>
+</div>
+</div>
+</div>
+<div class="settings-row top-label-form normal-labels">
+<h4>
+<label for="html-classes">Add Class(es) to &lt;html&gt;</label>
+</h4>
+<div class="help-flyout-link">
+<svg class="icon-help" viewBox="0 0 100 100">
+<path d="M75,0H25C11.19,0,0,11.193,0,25v50c0,13.802,11.19,25,25,25h50c13.811,0,25-11.198,25-25V25C100,11.193,88.811,0,75,0z
+   M57.203,85.067H41.504V72.542h15.699V85.067L57.203,85.067z M73.357,42.041c-0.84,2.066-1.873,3.834-3.102,5.298
+  c-1.235,1.474-2.604,2.718-4.101,3.751c-1.498,1.035-2.922,2.066-4.249,3.101c-1.333,1.034-1.553,2.214-2.596,3.547
+  c-1.025,1.335-0.977,3.004-0.977,5.006v3.924H41.668v-4.623c0-2.864,1.366-5.265,2.27-7.202c0.896-1.935,2.255-3.581,3.459-4.947
+  c1.196-1.367,2.62-2.556,3.955-3.557c1.327-0.993,2.637-1.993,3.776-2.995c1.123-1.001,2.083-2.1,2.783-3.304
+  c0.7-1.197,1.043-2.694,0.977-4.5c0-3.06-0.74-5.33-2.245-6.795c-1.498-1.465-3.582-2.206-6.25-2.206c-1.8,0-3.337,0.351-4.639,1.05
+  c-1.303,0.7-2.369,1.635-3.199,2.808c-0.837,1.163-1.448,3.593-1.847,5.156c-0.407,1.57-0.602,6.115-0.602,6.115H25.399
+  c0.073-8.333,0.684-7.963,1.855-10.965c1.164-2.995,2.8-6.132,4.899-8.33c2.099-2.197,4.63-4.179,7.601-5.417
+  c2.962-1.228,6.283-1.977,9.945-1.977c4.736,0,8.683,0.581,11.856,1.876c3.167,1.302,5.713,2.889,7.65,4.817
+  c1.929,1.937,3.312,4.004,4.149,6.234c0.831,2.237,1.245,4.313,1.245,6.242C74.601,37.354,74.187,39.975,73.357,42.041z"></path>
+</svg>
+<div class="help-flyout help-flyout-reverse">
+<h5>Adding Classes</h5>
+<svg class="icon-x" viewBox="0 0 100 100">
+<path d="M96.8 83.7L63.1 50l33.7-33.7c3.6-3.6 3.6-9.4 0-13.1s-9.5-3.6-13.1 0L50 36.9 16.3 3.2C12.7-.4 6.9-.4 3.2 3.2s-3.6 9.5 0 13.1L36.9 50 3.2 83.7c-3.6 3.6-3.6 9.4 0 13.1s9.5 3.6 13.1 0L50 63.1l33.7 33.7c3.6 3.6 9.4 3.6 13.1 0s3.6-9.5 0-13.1z"></path>
+</svg>
+<p>In CodePen, whatever you write in the HTML editor is what goes within the <code>&lt;body&gt;</code> tags in <a target="_blank" rel="noopener" href="https://blog.codepen.io/documentation/features/preview-template/">a basic HTML5 template</a>. So you don't have access to higher-up elements like the <code>&lt;html&gt;</code> tag. If you want to add classes there that can affect the whole document, this is the place to do it.</p>
+</div>
+</div>
+<input type="text" id="html-classes" name="html-classes" class="fullwidth" placeholder="e.g. single post post-1234" maxlength="250">
+</div>
+<div class="settings-row top-label-form normal-labels">
+<h4>
+<label for="head-content">Stuff for &lt;head&gt;</label>
+</h4>
+<div class="help-flyout-link">
+<svg class="icon-help" viewBox="0 0 100 100">
+<path d="M75,0H25C11.19,0,0,11.193,0,25v50c0,13.802,11.19,25,25,25h50c13.811,0,25-11.198,25-25V25C100,11.193,88.811,0,75,0z
+   M57.203,85.067H41.504V72.542h15.699V85.067L57.203,85.067z M73.357,42.041c-0.84,2.066-1.873,3.834-3.102,5.298
+  c-1.235,1.474-2.604,2.718-4.101,3.751c-1.498,1.035-2.922,2.066-4.249,3.101c-1.333,1.034-1.553,2.214-2.596,3.547
+  c-1.025,1.335-0.977,3.004-0.977,5.006v3.924H41.668v-4.623c0-2.864,1.366-5.265,2.27-7.202c0.896-1.935,2.255-3.581,3.459-4.947
+  c1.196-1.367,2.62-2.556,3.955-3.557c1.327-0.993,2.637-1.993,3.776-2.995c1.123-1.001,2.083-2.1,2.783-3.304
+  c0.7-1.197,1.043-2.694,0.977-4.5c0-3.06-0.74-5.33-2.245-6.795c-1.498-1.465-3.582-2.206-6.25-2.206c-1.8,0-3.337,0.351-4.639,1.05
+  c-1.303,0.7-2.369,1.635-3.199,2.808c-0.837,1.163-1.448,3.593-1.847,5.156c-0.407,1.57-0.602,6.115-0.602,6.115H25.399
+  c0.073-8.333,0.684-7.963,1.855-10.965c1.164-2.995,2.8-6.132,4.899-8.33c2.099-2.197,4.63-4.179,7.601-5.417
+  c2.962-1.228,6.283-1.977,9.945-1.977c4.736,0,8.683,0.581,11.856,1.876c3.167,1.302,5.713,2.889,7.65,4.817
+  c1.929,1.937,3.312,4.004,4.149,6.234c0.831,2.237,1.245,4.313,1.245,6.242C74.601,37.354,74.187,39.975,73.357,42.041z"></path>
+</svg>
+<div class="help-flyout help-flyout-reverse">
+<h5>About the &lt;head&gt;</h5>
+<svg class="icon-x" viewBox="0 0 100 100">
+<path d="M96.8 83.7L63.1 50l33.7-33.7c3.6-3.6 3.6-9.4 0-13.1s-9.5-3.6-13.1 0L50 36.9 16.3 3.2C12.7-.4 6.9-.4 3.2 3.2s-3.6 9.5 0 13.1L36.9 50 3.2 83.7c-3.6 3.6-3.6 9.4 0 13.1s9.5 3.6 13.1 0L50 63.1l33.7 33.7c3.6 3.6 9.4 3.6 13.1 0s3.6-9.5 0-13.1z"></path>
+</svg>
+<p>In CodePen, whatever you write in the HTML editor is what goes within the <code>&lt;body&gt;</code> tags in <a target="_blank" rel="noopener" href="https://blog.codepen.io/documentation/features/preview-template/">a basic HTML5 template</a>. If you need things in the <code>&lt;head&gt;</code> of the document, put that code here.</p>
+</div>
+</div>
+<div class="head-content-wrapper">
+<textarea id="head-content" name="head-content" class="fullwidth is-code head-content notranslate" translate="no" placeholder="e.g. &lt;meta&gt;, &lt;link&gt;, &lt;script&gt;"></textarea>
+<span class="insecure-resource-tooltip resource-problem-tooltip">
+<div class="help-flyout-link">
+<span class="icon-help">!</span>
+<div class="help-flyout help-flyout-reverse">
+<svg class="icon-x" viewBox="0 0 100 100">
+<path d="M96.8 83.7L63.1 50l33.7-33.7c3.6-3.6 3.6-9.4 0-13.1s-9.5-3.6-13.1 0L50 36.9 16.3 3.2C12.7-.4 6.9-.4 3.2 3.2s-3.6 9.5 0 13.1L36.9 50 3.2 83.7c-3.6 3.6-3.6 9.4 0 13.1s9.5 3.6 13.1 0L50 63.1l33.7 33.7c3.6 3.6 9.4 3.6 13.1 0s3.6-9.5 0-13.1z"></path>
+</svg>
+<h5>Insecure Resource</h5>
+<p>The resource you are linking to is using the 'http' protocol, which may not work when the browser is using https.</p>
+</div>
+</div>
+</span>
+</div>
+<button class="button mini-button button-medium" id="meta-tag-insert">↑ Insert the most common viewport meta tag</button>
+</div>
+</div>
+<div class="settings tab-page" id="settings-css">
+<h3 aria-label="CSS">CSS</h3>
+<div class="settings-row top-label-form normal-labels">
+<h4>
+<label for="css-preprocessor">
+CSS Preprocessor
+</label>
+</h4>
+<div class="help-flyout-link">
+<svg class="icon-help" viewBox="0 0 100 100">
+<path d="M75,0H25C11.19,0,0,11.193,0,25v50c0,13.802,11.19,25,25,25h50c13.811,0,25-11.198,25-25V25C100,11.193,88.811,0,75,0z
+   M57.203,85.067H41.504V72.542h15.699V85.067L57.203,85.067z M73.357,42.041c-0.84,2.066-1.873,3.834-3.102,5.298
+  c-1.235,1.474-2.604,2.718-4.101,3.751c-1.498,1.035-2.922,2.066-4.249,3.101c-1.333,1.034-1.553,2.214-2.596,3.547
+  c-1.025,1.335-0.977,3.004-0.977,5.006v3.924H41.668v-4.623c0-2.864,1.366-5.265,2.27-7.202c0.896-1.935,2.255-3.581,3.459-4.947
+  c1.196-1.367,2.62-2.556,3.955-3.557c1.327-0.993,2.637-1.993,3.776-2.995c1.123-1.001,2.083-2.1,2.783-3.304
+  c0.7-1.197,1.043-2.694,0.977-4.5c0-3.06-0.74-5.33-2.245-6.795c-1.498-1.465-3.582-2.206-6.25-2.206c-1.8,0-3.337,0.351-4.639,1.05
+  c-1.303,0.7-2.369,1.635-3.199,2.808c-0.837,1.163-1.448,3.593-1.847,5.156c-0.407,1.57-0.602,6.115-0.602,6.115H25.399
+  c0.073-8.333,0.684-7.963,1.855-10.965c1.164-2.995,2.8-6.132,4.899-8.33c2.099-2.197,4.63-4.179,7.601-5.417
+  c2.962-1.228,6.283-1.977,9.945-1.977c4.736,0,8.683,0.581,11.856,1.876c3.167,1.302,5.713,2.889,7.65,4.817
+  c1.929,1.937,3.312,4.004,4.149,6.234c0.831,2.237,1.245,4.313,1.245,6.242C74.601,37.354,74.187,39.975,73.357,42.041z"></path>
+</svg>
+<div class="help-flyout help-flyout-reverse">
+<h5>About CSS Preprocessors</h5>
+<svg class="icon-x" viewBox="0 0 100 100">
+<path d="M96.8 83.7L63.1 50l33.7-33.7c3.6-3.6 3.6-9.4 0-13.1s-9.5-3.6-13.1 0L50 36.9 16.3 3.2C12.7-.4 6.9-.4 3.2 3.2s-3.6 9.5 0 13.1L36.9 50 3.2 83.7c-3.6 3.6-3.6 9.4 0 13.1s9.5 3.6 13.1 0L50 63.1l33.7 33.7c3.6 3.6 9.4 3.6 13.1 0s3.6-9.5 0-13.1z"></path>
+</svg>
+<p>CSS preprocessors help make authoring CSS easier. All of them offer things like variables and mixins to provide convenient abstractions.</p>
+<p><a href="https://blog.codepen.io/documentation/editor/using-css-preprocessors/" target="_blank">Learn more</a> · <a href="https://codepen.io/versions/" target="_blank">Versions</a></p>
+</div>
+</div>
+<div class="custom-select-wrap">
+<select name="css-preprocessor" id="css-preprocessor" class="fullwidth css-preprocessor">
+<option value="none">None</option>
+<option value="less">Less</option>
+<option value="scss">SCSS</option>
+<option value="sass">Sass</option>
+<option value="stylus">Stylus</option>
+<option value="postcss">PostCSS</option>
+</select>
+<div class="select-icon">
+<svg viewBox="-122.9 121.1 105.9 61.9" class="icon-arrow-down-mini">
+<path d="M-63.2,180.3l43.5-43.5c1.7-1.7,2.7-4,2.7-6.5s-1-4.8-2.7-6.5c-1.7-1.7-4-2.7-6.5-2.7s-4.8,1-6.5,2.7l-37.2,37.2l-37.2-37.2
+        c-1.7-1.7-4-2.7-6.5-2.7s-4.8,1-6.5,2.6c-1.9,1.8-2.8,4.2-2.8,6.6c0,2.3,0.9,4.6,2.6,6.5l0,0c11.4,11.5,41,41.2,43,43.3l0.2,0.2
+        C-73.5,183.9-66.8,183.9-63.2,180.3z"></path>
+</svg>
+<svg viewBox="-122.9 121.1 105.9 61.9" class="icon-arrow-down-mini">
+<path d="M-63.2,180.3l43.5-43.5c1.7-1.7,2.7-4,2.7-6.5s-1-4.8-2.7-6.5c-1.7-1.7-4-2.7-6.5-2.7s-4.8,1-6.5,2.7l-37.2,37.2l-37.2-37.2
+        c-1.7-1.7-4-2.7-6.5-2.7s-4.8,1-6.5,2.6c-1.9,1.8-2.8,4.2-2.8,6.6c0,2.3,0.9,4.6,2.6,6.5l0,0c11.4,11.5,41,41.2,43,43.3l0.2,0.2
+        C-73.5,183.9-66.8,183.9-63.2,180.3z"></path>
+</svg>
+</div>
+</div>
+<div id="need-an-addon" class="align-right">
+<a id="css-need-an-addon-button" href="https://codepen.io/paulkim/pen/oZLavq#0" class="button button-medium mini-button need-an-addon-button">
+Need an add-on?
+</a>
+</div>
+<div class="add-ons add-ons-scss hide" id="add-ons">
+  <h5>Add-ons for Sass (.scss)</h5>
+
+  <p>Just like a real project, use these lines at the top of your CSS to import them as a dependency.</p>
+
+  <div class="add-ons-container">
+    <input id="css-add-ons-filter" class="add-ons-filter" type="text" placeholder="Search add-ons">
+    <span id="css-clear-addon-filter" class="add-ons-clear-filter">
+      <svg class="icon-x" viewBox="0 0 100 100" width="14" height="14">
+        <path d="M96.8 83.7L63.1 50l33.7-33.7c3.6-3.6 3.6-9.4 0-13.1s-9.5-3.6-13.1 0L50 36.9 16.3 3.2C12.7-.4 6.9-.4 3.2 3.2s-3.6 9.5 0 13.1L36.9 50 3.2 83.7c-3.6 3.6-3.6 9.4 0 13.1s9.5 3.6 13.1 0L50 63.1l33.7 33.7c3.6 3.6 9.4 3.6 13.1 0s3.6-9.5 0-13.1z"></path>
+      </svg>
+    </span>
+    <div class="add-ons-scroll">
+      <ul id="css-add-ons-list" class="add-ons-list">
+            <li>
+              <span class="add-on-code">@import "susy";</span>
+              <a class="add-add-on green button" href="https://codepen.io/paulkim/pen/oZLavq#">Add</a>
+              <div class="help-flyout-link inline-flyout">
+                <svg class="icon-help" width="12" height="12" viewBox="0 0 100 100">
+                  <path d="M75,0H25C11.19,0,0,11.193,0,25v50c0,13.802,11.19,25,25,25h50c13.811,0,25-11.198,25-25V25C100,11.193,88.811,0,75,0z
+   M57.203,85.067H41.504V72.542h15.699V85.067L57.203,85.067z M73.357,42.041c-0.84,2.066-1.873,3.834-3.102,5.298
+  c-1.235,1.474-2.604,2.718-4.101,3.751c-1.498,1.035-2.922,2.066-4.249,3.101c-1.333,1.034-1.553,2.214-2.596,3.547
+  c-1.025,1.335-0.977,3.004-0.977,5.006v3.924H41.668v-4.623c0-2.864,1.366-5.265,2.27-7.202c0.896-1.935,2.255-3.581,3.459-4.947
+  c1.196-1.367,2.62-2.556,3.955-3.557c1.327-0.993,2.637-1.993,3.776-2.995c1.123-1.001,2.083-2.1,2.783-3.304
+  c0.7-1.197,1.043-2.694,0.977-4.5c0-3.06-0.74-5.33-2.245-6.795c-1.498-1.465-3.582-2.206-6.25-2.206c-1.8,0-3.337,0.351-4.639,1.05
+  c-1.303,0.7-2.369,1.635-3.199,2.808c-0.837,1.163-1.448,3.593-1.847,5.156c-0.407,1.57-0.602,6.115-0.602,6.115H25.399
+  c0.073-8.333,0.684-7.963,1.855-10.965c1.164-2.995,2.8-6.132,4.899-8.33c2.099-2.197,4.63-4.179,7.601-5.417
+  c2.962-1.228,6.283-1.977,9.945-1.977c4.736,0,8.683,0.581,11.856,1.876c3.167,1.302,5.713,2.889,7.65,4.817
+  c1.929,1.937,3.312,4.004,4.149,6.234c0.831,2.237,1.245,4.313,1.245,6.242C74.601,37.354,74.187,39.975,73.357,42.041z"></path>
+                </svg>
+                <div class="help-flyout help-flyout-reverse">
+                  <h5>About Susy</h5>
+                  <svg class="icon-x" viewBox="0 0 100 100" width="12" height="12">
+                    <path d="M96.8 83.7L63.1 50l33.7-33.7c3.6-3.6 3.6-9.4 0-13.1s-9.5-3.6-13.1 0L50 36.9 16.3 3.2C12.7-.4 6.9-.4 3.2 3.2s-3.6 9.5 0 13.1L36.9 50 3.2 83.7c-3.6 3.6-3.6 9.4 0 13.1s9.5 3.6 13.1 0L50 63.1l33.7 33.7c3.6 3.6 9.4 3.6 13.1 0s3.6-9.5 0-13.1z"></path>
+                  </svg>
+                  <p>Susy is a grid framework. But rather than a pre-defined set of grid options, you configure it yourself and build grids as-needed in your containers with your selectors.</p>
+        
+                  <p><a href="http://susy.oddbird.net/" target="_blank" rel="noopener">Learn more</a></p>
+                </div>
+              </div>
+            </li>
+            <li>
+              <span class="add-on-code">@import "breakpoint";</span>
+              <a class="add-add-on green button" href="https://codepen.io/paulkim/pen/oZLavq#">Add</a>
+              <div class="help-flyout-link inline-flyout">
+                <svg class="icon-help" width="12" height="12" viewBox="0 0 100 100">
+                  <path d="M75,0H25C11.19,0,0,11.193,0,25v50c0,13.802,11.19,25,25,25h50c13.811,0,25-11.198,25-25V25C100,11.193,88.811,0,75,0z
+   M57.203,85.067H41.504V72.542h15.699V85.067L57.203,85.067z M73.357,42.041c-0.84,2.066-1.873,3.834-3.102,5.298
+  c-1.235,1.474-2.604,2.718-4.101,3.751c-1.498,1.035-2.922,2.066-4.249,3.101c-1.333,1.034-1.553,2.214-2.596,3.547
+  c-1.025,1.335-0.977,3.004-0.977,5.006v3.924H41.668v-4.623c0-2.864,1.366-5.265,2.27-7.202c0.896-1.935,2.255-3.581,3.459-4.947
+  c1.196-1.367,2.62-2.556,3.955-3.557c1.327-0.993,2.637-1.993,3.776-2.995c1.123-1.001,2.083-2.1,2.783-3.304
+  c0.7-1.197,1.043-2.694,0.977-4.5c0-3.06-0.74-5.33-2.245-6.795c-1.498-1.465-3.582-2.206-6.25-2.206c-1.8,0-3.337,0.351-4.639,1.05
+  c-1.303,0.7-2.369,1.635-3.199,2.808c-0.837,1.163-1.448,3.593-1.847,5.156c-0.407,1.57-0.602,6.115-0.602,6.115H25.399
+  c0.073-8.333,0.684-7.963,1.855-10.965c1.164-2.995,2.8-6.132,4.899-8.33c2.099-2.197,4.63-4.179,7.601-5.417
+  c2.962-1.228,6.283-1.977,9.945-1.977c4.736,0,8.683,0.581,11.856,1.876c3.167,1.302,5.713,2.889,7.65,4.817
+  c1.929,1.937,3.312,4.004,4.149,6.234c0.831,2.237,1.245,4.313,1.245,6.242C74.601,37.354,74.187,39.975,73.357,42.041z"></path>
+                </svg>
+                <div class="help-flyout help-flyout-reverse">
+                  <h5>About Breakpoint</h5>
+                  <svg class="icon-x" viewBox="0 0 100 100" width="12" height="12">
+                    <path d="M96.8 83.7L63.1 50l33.7-33.7c3.6-3.6 3.6-9.4 0-13.1s-9.5-3.6-13.1 0L50 36.9 16.3 3.2C12.7-.4 6.9-.4 3.2 3.2s-3.6 9.5 0 13.1L36.9 50 3.2 83.7c-3.6 3.6-3.6 9.4 0 13.1s9.5 3.6 13.1 0L50 63.1l33.7 33.7c3.6 3.6 9.4 3.6 13.1 0s3.6-9.5 0-13.1z"></path>
+                  </svg>
+                  <p>While you can already do nested media queries in Sass, which is great, Breakpoint helps make them even easier with a single powerful @mixin.</p>
+        
+                  <p><a href="http://breakpoint-sass.com/" target="_blank" rel="noopener">Learn more</a></p>
+                </div>
+              </div>
+            </li>
+            <li class="depends-on">
+              <span class="add-on-code">@import "color-schemer";</span>
+              <a class="add-add-on green button" href="https://codepen.io/paulkim/pen/oZLavq#">Add</a>
+              <div class="help-flyout-link inline-flyout">
+                <svg class="icon-help" width="12" height="12" viewBox="0 0 100 100">
+                  <path d="M75,0H25C11.19,0,0,11.193,0,25v50c0,13.802,11.19,25,25,25h50c13.811,0,25-11.198,25-25V25C100,11.193,88.811,0,75,0z
+   M57.203,85.067H41.504V72.542h15.699V85.067L57.203,85.067z M73.357,42.041c-0.84,2.066-1.873,3.834-3.102,5.298
+  c-1.235,1.474-2.604,2.718-4.101,3.751c-1.498,1.035-2.922,2.066-4.249,3.101c-1.333,1.034-1.553,2.214-2.596,3.547
+  c-1.025,1.335-0.977,3.004-0.977,5.006v3.924H41.668v-4.623c0-2.864,1.366-5.265,2.27-7.202c0.896-1.935,2.255-3.581,3.459-4.947
+  c1.196-1.367,2.62-2.556,3.955-3.557c1.327-0.993,2.637-1.993,3.776-2.995c1.123-1.001,2.083-2.1,2.783-3.304
+  c0.7-1.197,1.043-2.694,0.977-4.5c0-3.06-0.74-5.33-2.245-6.795c-1.498-1.465-3.582-2.206-6.25-2.206c-1.8,0-3.337,0.351-4.639,1.05
+  c-1.303,0.7-2.369,1.635-3.199,2.808c-0.837,1.163-1.448,3.593-1.847,5.156c-0.407,1.57-0.602,6.115-0.602,6.115H25.399
+  c0.073-8.333,0.684-7.963,1.855-10.965c1.164-2.995,2.8-6.132,4.899-8.33c2.099-2.197,4.63-4.179,7.601-5.417
+  c2.962-1.228,6.283-1.977,9.945-1.977c4.736,0,8.683,0.581,11.856,1.876c3.167,1.302,5.713,2.889,7.65,4.817
+  c1.929,1.937,3.312,4.004,4.149,6.234c0.831,2.237,1.245,4.313,1.245,6.242C74.601,37.354,74.187,39.975,73.357,42.041z"></path>
+                </svg>
+                <div class="help-flyout help-flyout-reverse">
+                  <h5>About Color Schemer</h5>
+                  <svg class="icon-x" viewBox="0 0 100 100" width="12" height="12">
+                    <path d="M96.8 83.7L63.1 50l33.7-33.7c3.6-3.6 3.6-9.4 0-13.1s-9.5-3.6-13.1 0L50 36.9 16.3 3.2C12.7-.4 6.9-.4 3.2 3.2s-3.6 9.5 0 13.1L36.9 50 3.2 83.7c-3.6 3.6-3.6 9.4 0 13.1s9.5 3.6 13.1 0L50 63.1l33.7 33.7c3.6 3.6 9.4 3.6 13.1 0s3.6-9.5 0-13.1z"></path>
+                  </svg>
+                  <p>Color Schemer adds to the default Sass color functions, allowing for more powerful manipulation of colors.</p>
+        
+                  <p><a href="https://github.com/at-import/color-schemer" target="_blank" rel="noopener">Learn more</a></p>
+                </div>
+              </div>
+            </li>
+            <li>
+              <span class="add-on-code">@import "bourbon@5.*";</span>
+              <a class="add-add-on green button" href="https://codepen.io/paulkim/pen/oZLavq#">Add</a>
+              <div class="help-flyout-link inline-flyout">
+                <svg class="icon-help" width="12" height="12" viewBox="0 0 100 100">
+                  <path d="M75,0H25C11.19,0,0,11.193,0,25v50c0,13.802,11.19,25,25,25h50c13.811,0,25-11.198,25-25V25C100,11.193,88.811,0,75,0z
+   M57.203,85.067H41.504V72.542h15.699V85.067L57.203,85.067z M73.357,42.041c-0.84,2.066-1.873,3.834-3.102,5.298
+  c-1.235,1.474-2.604,2.718-4.101,3.751c-1.498,1.035-2.922,2.066-4.249,3.101c-1.333,1.034-1.553,2.214-2.596,3.547
+  c-1.025,1.335-0.977,3.004-0.977,5.006v3.924H41.668v-4.623c0-2.864,1.366-5.265,2.27-7.202c0.896-1.935,2.255-3.581,3.459-4.947
+  c1.196-1.367,2.62-2.556,3.955-3.557c1.327-0.993,2.637-1.993,3.776-2.995c1.123-1.001,2.083-2.1,2.783-3.304
+  c0.7-1.197,1.043-2.694,0.977-4.5c0-3.06-0.74-5.33-2.245-6.795c-1.498-1.465-3.582-2.206-6.25-2.206c-1.8,0-3.337,0.351-4.639,1.05
+  c-1.303,0.7-2.369,1.635-3.199,2.808c-0.837,1.163-1.448,3.593-1.847,5.156c-0.407,1.57-0.602,6.115-0.602,6.115H25.399
+  c0.073-8.333,0.684-7.963,1.855-10.965c1.164-2.995,2.8-6.132,4.899-8.33c2.099-2.197,4.63-4.179,7.601-5.417
+  c2.962-1.228,6.283-1.977,9.945-1.977c4.736,0,8.683,0.581,11.856,1.876c3.167,1.302,5.713,2.889,7.65,4.817
+  c1.929,1.937,3.312,4.004,4.149,6.234c0.831,2.237,1.245,4.313,1.245,6.242C74.601,37.354,74.187,39.975,73.357,42.041z"></path>
+                </svg>
+                <div class="help-flyout help-flyout-reverse">
+                  <h5>About Bourbon</h5>
+                  <svg class="icon-x" viewBox="0 0 100 100" width="12" height="12">
+                    <path d="M96.8 83.7L63.1 50l33.7-33.7c3.6-3.6 3.6-9.4 0-13.1s-9.5-3.6-13.1 0L50 36.9 16.3 3.2C12.7-.4 6.9-.4 3.2 3.2s-3.6 9.5 0 13.1L36.9 50 3.2 83.7c-3.6 3.6-3.6 9.4 0 13.1s9.5 3.6 13.1 0L50 63.1l33.7 33.7c3.6 3.6 9.4 3.6 13.1 0s3.6-9.5 0-13.1z"></path>
+                  </svg>
+                  <p>Bourbon is "a simple and lightweight mixin library for Sass." It has a bunch of helper functions to make writing CSS a bit easier.</p>
+        
+                  <p><a href="http://compass-style.org/" target="_blank" rel="noopener">Learn more</a></p>
+                </div>
+              </div>
+            </li>
+            <li class="depends-on">
+              <span class="add-on-code">@import "neat@4.*";</span>
+              <a class="add-add-on green button" href="https://codepen.io/paulkim/pen/oZLavq#">Add</a>
+              <div class="help-flyout-link inline-flyout">
+                <svg class="icon-help" width="12" height="12" viewBox="0 0 100 100">
+                  <path d="M75,0H25C11.19,0,0,11.193,0,25v50c0,13.802,11.19,25,25,25h50c13.811,0,25-11.198,25-25V25C100,11.193,88.811,0,75,0z
+   M57.203,85.067H41.504V72.542h15.699V85.067L57.203,85.067z M73.357,42.041c-0.84,2.066-1.873,3.834-3.102,5.298
+  c-1.235,1.474-2.604,2.718-4.101,3.751c-1.498,1.035-2.922,2.066-4.249,3.101c-1.333,1.034-1.553,2.214-2.596,3.547
+  c-1.025,1.335-0.977,3.004-0.977,5.006v3.924H41.668v-4.623c0-2.864,1.366-5.265,2.27-7.202c0.896-1.935,2.255-3.581,3.459-4.947
+  c1.196-1.367,2.62-2.556,3.955-3.557c1.327-0.993,2.637-1.993,3.776-2.995c1.123-1.001,2.083-2.1,2.783-3.304
+  c0.7-1.197,1.043-2.694,0.977-4.5c0-3.06-0.74-5.33-2.245-6.795c-1.498-1.465-3.582-2.206-6.25-2.206c-1.8,0-3.337,0.351-4.639,1.05
+  c-1.303,0.7-2.369,1.635-3.199,2.808c-0.837,1.163-1.448,3.593-1.847,5.156c-0.407,1.57-0.602,6.115-0.602,6.115H25.399
+  c0.073-8.333,0.684-7.963,1.855-10.965c1.164-2.995,2.8-6.132,4.899-8.33c2.099-2.197,4.63-4.179,7.601-5.417
+  c2.962-1.228,6.283-1.977,9.945-1.977c4.736,0,8.683,0.581,11.856,1.876c3.167,1.302,5.713,2.889,7.65,4.817
+  c1.929,1.937,3.312,4.004,4.149,6.234c0.831,2.237,1.245,4.313,1.245,6.242C74.601,37.354,74.187,39.975,73.357,42.041z"></path>
+                </svg>
+                <div class="help-flyout help-flyout-reverse">
+                  <h5>About Neat</h5>
+                  <svg class="icon-x" viewBox="0 0 100 100" width="12" height="12">
+                    <path d="M96.8 83.7L63.1 50l33.7-33.7c3.6-3.6 3.6-9.4 0-13.1s-9.5-3.6-13.1 0L50 36.9 16.3 3.2C12.7-.4 6.9-.4 3.2 3.2s-3.6 9.5 0 13.1L36.9 50 3.2 83.7c-3.6 3.6-3.6 9.4 0 13.1s9.5 3.6 13.1 0L50 63.1l33.7 33.7c3.6 3.6 9.4 3.6 13.1 0s3.6-9.5 0-13.1z"></path>
+                  </svg>
+                  <p>Neat is "a lightweight semantic grid framework." You call special @mixins to build float-based grids as needed. It depends on Sass and Bourbon, so in addition to having either variety of Sass active, you'll need to import Bourbon too, like this:</p>
+          <pre>@import "bourbon";
+@import "neat";</pre>
+        
+                  <p><a href="http://neat.bourbon.io/" target="_blank" rel="noopener">Learn more</a></p>
+                </div>
+              </div>
+            </li>
+            <li>
+              <span class="add-on-code">@import "modularscale@3.*";</span>
+              <a class="add-add-on green button" href="https://codepen.io/paulkim/pen/oZLavq#">Add</a>
+              <div class="help-flyout-link inline-flyout">
+                <svg class="icon-help" width="12" height="12" viewBox="0 0 100 100">
+                  <path d="M75,0H25C11.19,0,0,11.193,0,25v50c0,13.802,11.19,25,25,25h50c13.811,0,25-11.198,25-25V25C100,11.193,88.811,0,75,0z
+   M57.203,85.067H41.504V72.542h15.699V85.067L57.203,85.067z M73.357,42.041c-0.84,2.066-1.873,3.834-3.102,5.298
+  c-1.235,1.474-2.604,2.718-4.101,3.751c-1.498,1.035-2.922,2.066-4.249,3.101c-1.333,1.034-1.553,2.214-2.596,3.547
+  c-1.025,1.335-0.977,3.004-0.977,5.006v3.924H41.668v-4.623c0-2.864,1.366-5.265,2.27-7.202c0.896-1.935,2.255-3.581,3.459-4.947
+  c1.196-1.367,2.62-2.556,3.955-3.557c1.327-0.993,2.637-1.993,3.776-2.995c1.123-1.001,2.083-2.1,2.783-3.304
+  c0.7-1.197,1.043-2.694,0.977-4.5c0-3.06-0.74-5.33-2.245-6.795c-1.498-1.465-3.582-2.206-6.25-2.206c-1.8,0-3.337,0.351-4.639,1.05
+  c-1.303,0.7-2.369,1.635-3.199,2.808c-0.837,1.163-1.448,3.593-1.847,5.156c-0.407,1.57-0.602,6.115-0.602,6.115H25.399
+  c0.073-8.333,0.684-7.963,1.855-10.965c1.164-2.995,2.8-6.132,4.899-8.33c2.099-2.197,4.63-4.179,7.601-5.417
+  c2.962-1.228,6.283-1.977,9.945-1.977c4.736,0,8.683,0.581,11.856,1.876c3.167,1.302,5.713,2.889,7.65,4.817
+  c1.929,1.937,3.312,4.004,4.149,6.234c0.831,2.237,1.245,4.313,1.245,6.242C74.601,37.354,74.187,39.975,73.357,42.041z"></path>
+                </svg>
+                <div class="help-flyout help-flyout-reverse">
+                  <h5>About Modular Scale</h5>
+                  <svg class="icon-x" viewBox="0 0 100 100" width="12" height="12">
+                    <path d="M96.8 83.7L63.1 50l33.7-33.7c3.6-3.6 3.6-9.4 0-13.1s-9.5-3.6-13.1 0L50 36.9 16.3 3.2C12.7-.4 6.9-.4 3.2 3.2s-3.6 9.5 0 13.1L36.9 50 3.2 83.7c-3.6 3.6-3.6 9.4 0 13.1s9.5 3.6 13.1 0L50 63.1l33.7 33.7c3.6 3.6 9.4 3.6 13.1 0s3.6-9.5 0-13.1z"></path>
+                  </svg>
+                  <p>Modular Scale helps build a list of values based on a consistent relationship (think of things like the golden ratio or musical increments). These values can be used for things like sizing type to "create a sense of harmony in a design."</p>
+        
+                  <p><a href="https://github.com/modularscale/modularscale-sass" target="_blank" rel="noopener">Learn more</a></p>
+                </div>
+              </div>
+            </li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+</div>
+<div id="startercss-options-form" class="settings-row top-label-form">
+<h4>
+CSS Base
+</h4>
+<div class="help-flyout-link">
+<svg class="icon-help" viewBox="0 0 100 100">
+<path d="M75,0H25C11.19,0,0,11.193,0,25v50c0,13.802,11.19,25,25,25h50c13.811,0,25-11.198,25-25V25C100,11.193,88.811,0,75,0z
+   M57.203,85.067H41.504V72.542h15.699V85.067L57.203,85.067z M73.357,42.041c-0.84,2.066-1.873,3.834-3.102,5.298
+  c-1.235,1.474-2.604,2.718-4.101,3.751c-1.498,1.035-2.922,2.066-4.249,3.101c-1.333,1.034-1.553,2.214-2.596,3.547
+  c-1.025,1.335-0.977,3.004-0.977,5.006v3.924H41.668v-4.623c0-2.864,1.366-5.265,2.27-7.202c0.896-1.935,2.255-3.581,3.459-4.947
+  c1.196-1.367,2.62-2.556,3.955-3.557c1.327-0.993,2.637-1.993,3.776-2.995c1.123-1.001,2.083-2.1,2.783-3.304
+  c0.7-1.197,1.043-2.694,0.977-4.5c0-3.06-0.74-5.33-2.245-6.795c-1.498-1.465-3.582-2.206-6.25-2.206c-1.8,0-3.337,0.351-4.639,1.05
+  c-1.303,0.7-2.369,1.635-3.199,2.808c-0.837,1.163-1.448,3.593-1.847,5.156c-0.407,1.57-0.602,6.115-0.602,6.115H25.399
+  c0.073-8.333,0.684-7.963,1.855-10.965c1.164-2.995,2.8-6.132,4.899-8.33c2.099-2.197,4.63-4.179,7.601-5.417
+  c2.962-1.228,6.283-1.977,9.945-1.977c4.736,0,8.683,0.581,11.856,1.876c3.167,1.302,5.713,2.889,7.65,4.817
+  c1.929,1.937,3.312,4.004,4.149,6.234c0.831,2.237,1.245,4.313,1.245,6.242C74.601,37.354,74.187,39.975,73.357,42.041z"></path>
+</svg>
+<div class="help-flyout help-flyout-reverse">
+<h5>About CSS Base</h5>
+<svg class="icon-x" viewBox="0 0 100 100">
+<path d="M96.8 83.7L63.1 50l33.7-33.7c3.6-3.6 3.6-9.4 0-13.1s-9.5-3.6-13.1 0L50 36.9 16.3 3.2C12.7-.4 6.9-.4 3.2 3.2s-3.6 9.5 0 13.1L36.9 50 3.2 83.7c-3.6 3.6-3.6 9.4 0 13.1s9.5 3.6 13.1 0L50 63.1l33.7 33.7c3.6 3.6 9.4 3.6 13.1 0s3.6-9.5 0-13.1z"></path>
+</svg>
+<p>It's a common practice to apply CSS to a page that styles elements such that they are consistent across all browsers. We offer two of the most popular choices: <a href="http://necolas.github.io/normalize.css/" target="_blank" rel="noopener">normalize.css</a> and a <a href="http://meyerweb.com/eric/tools/css/reset/" target="_blank" rel="noopener">reset</a>. Or, choose <b>Neither</b> and nothing will be applied.</p>
+</div>
+</div>
+<ul class="radio-list">
+<li>
+<input type="radio" id="startercss-normalize" name="startercss" checked="" value="normalize">
+<label for="startercss-normalize" class="small-inline">Normalize</label>
+</li>
+<li>
+<input type="radio" id="startercss-reset" name="startercss" checked="" value="reset">
+<label for="startercss-reset" class="small-inline">Reset</label>
+</li>
+<li>
+<input type="radio" id="startercss-neither" name="startercss" checked="" value="neither">
+<label for="startercss-neither" class="small-inline">Neither</label>
+</li>
+</ul>
+</div>
+<div id="prefix-options-form" class="settings-row top-label-form">
+<h4>
+Vendor Prefixing
+</h4>
+<div class="help-flyout-link">
+<svg class="icon-help" viewBox="0 0 100 100">
+<path d="M75,0H25C11.19,0,0,11.193,0,25v50c0,13.802,11.19,25,25,25h50c13.811,0,25-11.198,25-25V25C100,11.193,88.811,0,75,0z
+   M57.203,85.067H41.504V72.542h15.699V85.067L57.203,85.067z M73.357,42.041c-0.84,2.066-1.873,3.834-3.102,5.298
+  c-1.235,1.474-2.604,2.718-4.101,3.751c-1.498,1.035-2.922,2.066-4.249,3.101c-1.333,1.034-1.553,2.214-2.596,3.547
+  c-1.025,1.335-0.977,3.004-0.977,5.006v3.924H41.668v-4.623c0-2.864,1.366-5.265,2.27-7.202c0.896-1.935,2.255-3.581,3.459-4.947
+  c1.196-1.367,2.62-2.556,3.955-3.557c1.327-0.993,2.637-1.993,3.776-2.995c1.123-1.001,2.083-2.1,2.783-3.304
+  c0.7-1.197,1.043-2.694,0.977-4.5c0-3.06-0.74-5.33-2.245-6.795c-1.498-1.465-3.582-2.206-6.25-2.206c-1.8,0-3.337,0.351-4.639,1.05
+  c-1.303,0.7-2.369,1.635-3.199,2.808c-0.837,1.163-1.448,3.593-1.847,5.156c-0.407,1.57-0.602,6.115-0.602,6.115H25.399
+  c0.073-8.333,0.684-7.963,1.855-10.965c1.164-2.995,2.8-6.132,4.899-8.33c2.099-2.197,4.63-4.179,7.601-5.417
+  c2.962-1.228,6.283-1.977,9.945-1.977c4.736,0,8.683,0.581,11.856,1.876c3.167,1.302,5.713,2.889,7.65,4.817
+  c1.929,1.937,3.312,4.004,4.149,6.234c0.831,2.237,1.245,4.313,1.245,6.242C74.601,37.354,74.187,39.975,73.357,42.041z"></path>
+</svg>
+<div class="help-flyout help-flyout-reverse">
+<h5>About Vendor Prefixing</h5>
+<svg class="icon-x" viewBox="0 0 100 100">
+<path d="M96.8 83.7L63.1 50l33.7-33.7c3.6-3.6 3.6-9.4 0-13.1s-9.5-3.6-13.1 0L50 36.9 16.3 3.2C12.7-.4 6.9-.4 3.2 3.2s-3.6 9.5 0 13.1L36.9 50 3.2 83.7c-3.6 3.6-3.6 9.4 0 13.1s9.5 3.6 13.1 0L50 63.1l33.7 33.7c3.6 3.6 9.4 3.6 13.1 0s3.6-9.5 0-13.1z"></path>
+</svg>
+<p>To get the best cross-browser support, it is a common practice to apply vendor prefixes to CSS properties and values that require them to work. For instance <code>-webkit-</code> or <code>-moz-</code>.</p>
+<p>We offer two popular choices: <a href="https://github.com/postcss/autoprefixer" target="blank" rel="noopener">Autoprefixer</a> (which processes your CSS server-side) and <a href="http://leaverou.github.io/prefixfree/" target="_blank" rel="noopener">-prefix-free</a> (which applies prefixes via a script, client-side).</p>
+</div>
+</div>
+<ul class="radio-list">
+<li>
+<input type="radio" id="prefix-autoprefixer" name="prefix" value="autoprefixer">
+<label for="prefix-autoprefixer" class="small-inline">Autoprefixer</label>
+</li>
+<li>
+<input type="radio" id="prefix-prefixfree" name="prefix" value="prefixfree">
+<label for="prefix-prefixfree" class="small-inline">Prefixfree</label>
+</li>
+<li>
+<input type="radio" id="prefix-neither" name="prefix" value="neither">
+<label for="prefix-neither" class="small-inline">Neither</label>
+</li>
+</ul>
+</div>
+<div id="external-css-resources" class="settings-row">
+<h4>
+Add External Stylesheets/Pens
+</h4>
+<p>Any URLs added here will be added as <code>&lt;link&gt;</code>s in order, and before the CSS in the editor. You can use the CSS from another Pen by using its URL and the proper <a href="https://blog.codepen.io/documentation/url-extensions/">URL extension</a>.</p>
+<div class="resource-search-bar">
+<svg class="icon icon-mag" viewBox="0 0 56.7 56.7">
+<path d="M42.8,7.3C33-2.4,17.1-2.4,7.3,7.3c-9.8,9.8-9.8,25.7,0,35.5c8.7,8.7,22.2,9.7,32,2.9l9.6,9.6c1.8,1.8,4.7,1.8,6.4,0
+	c1.8-1.8,1.8-4.7,0-6.4l-9.6-9.6C52.5,29.5,51.5,16,42.8,7.3z M36.6,36.6c-6.4,6.4-16.7,6.4-23.1,0s-6.4-16.7,0-23.1
+	c6.4-6.4,16.7-6.4,23.1,0C43,19.9,43,30.3,36.6,36.6z"></path>
+</svg>
+<span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input id="external-css-search" type="text" value="" placeholder="Search for resources (Bootstrap, Foundation, Animate.css...)" class="aa-input" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="both" aria-expanded="false" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Lato, &quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Tahoma, sans-serif; font-size: 15px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="aa-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none; right: auto;"><div class="aa-dataset-1"></div><div class="aa-dataset-2"></div></span></span>
+</div>
+<div class="algolia-shoutout">
+<a href="https://www.algolia.com/?utm_source=react-instantsearch&amp;utm_medium=website&amp;utm_content=codepen.io&amp;utm_campaign=poweredby" target="_blank">
+Powered by <img alt="Algolia" src="./React Shopping Cart Demo_files/algolia-9e1c0c887f4db420704b2a79926864019ef156bcecc9d5774a7e4eaa731fc5b5.svg">
+</a>
+</div>
+<div class="help-flyout-link">
+<svg class="icon-help" viewBox="0 0 100 100">
+<path d="M75,0H25C11.19,0,0,11.193,0,25v50c0,13.802,11.19,25,25,25h50c13.811,0,25-11.198,25-25V25C100,11.193,88.811,0,75,0z
+   M57.203,85.067H41.504V72.542h15.699V85.067L57.203,85.067z M73.357,42.041c-0.84,2.066-1.873,3.834-3.102,5.298
+  c-1.235,1.474-2.604,2.718-4.101,3.751c-1.498,1.035-2.922,2.066-4.249,3.101c-1.333,1.034-1.553,2.214-2.596,3.547
+  c-1.025,1.335-0.977,3.004-0.977,5.006v3.924H41.668v-4.623c0-2.864,1.366-5.265,2.27-7.202c0.896-1.935,2.255-3.581,3.459-4.947
+  c1.196-1.367,2.62-2.556,3.955-3.557c1.327-0.993,2.637-1.993,3.776-2.995c1.123-1.001,2.083-2.1,2.783-3.304
+  c0.7-1.197,1.043-2.694,0.977-4.5c0-3.06-0.74-5.33-2.245-6.795c-1.498-1.465-3.582-2.206-6.25-2.206c-1.8,0-3.337,0.351-4.639,1.05
+  c-1.303,0.7-2.369,1.635-3.199,2.808c-0.837,1.163-1.448,3.593-1.847,5.156c-0.407,1.57-0.602,6.115-0.602,6.115H25.399
+  c0.073-8.333,0.684-7.963,1.855-10.965c1.164-2.995,2.8-6.132,4.899-8.33c2.099-2.197,4.63-4.179,7.601-5.417
+  c2.962-1.228,6.283-1.977,9.945-1.977c4.736,0,8.683,0.581,11.856,1.876c3.167,1.302,5.713,2.889,7.65,4.817
+  c1.929,1.937,3.312,4.004,4.149,6.234c0.831,2.237,1.245,4.313,1.245,6.242C74.601,37.354,74.187,39.975,73.357,42.041z"></path>
+</svg>
+<div class="help-flyout help-flyout-reverse">
+<h5>About External Resources</h5>
+<svg class="icon-x" viewBox="0 0 100 100">
+<path d="M96.8 83.7L63.1 50l33.7-33.7c3.6-3.6 3.6-9.4 0-13.1s-9.5-3.6-13.1 0L50 36.9 16.3 3.2C12.7-.4 6.9-.4 3.2 3.2s-3.6 9.5 0 13.1L36.9 50 3.2 83.7c-3.6 3.6-3.6 9.4 0 13.1s9.5 3.6 13.1 0L50 63.1l33.7 33.7c3.6 3.6 9.4 3.6 13.1 0s3.6-9.5 0-13.1z"></path>
+</svg>
+<p>You can apply CSS to your Pen from any stylesheet on the web. Just put a URL to it here and we'll apply it, in the order you have them, before the CSS in the Pen itself.</p>
+<p>You can also link to another Pen here (use the <code>.css</code> <a href="https://blog.codepen.io/documentation/url-extensions/">URL Extension</a>) and we'll pull the CSS from that Pen and include it. If it's using a <em>matching</em> preprocessor, use the appropriate URL Extension and we'll combine the code before preprocessing, so you can use the linked Pen as a true dependency.</p>
+<p><a href="https://blog.codepen.io/documentation/editor/adding-external-resources/" target="_blank" rel="noopener">Learn more</a></p>
+</div>
+</div>
+<div id="css-external-resources" class="external-resource-wrapper ui-sortable">
+<div data-view-id="32142210" class="external-resource-url-row">
+
+    <span class="move-external-url">
+      <svg viewBox="0 0 17 20" class="icon-drag-handle" width="20" height="17">
+        <path d="m1.5 3a1.5 1.5 0 0 1 0-3h17a1.5 1.5 0 0 1 0 3zm0 7a1.5 1.5 0 0 1 0-3h17a1.5 1.5 0 0 1 0 3zm0 7a1.5 1.5 0 0 1 0-3h17a1.5 1.5 0 0 1 0 3z"></path>
+      </svg>
+    </span>
+
+    <input id="external-resource-input-32142210" class="fullwidth css-resource external-resource" type="text" pattern="^((ftp|http|https):)?\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&amp;%@!\-\/]))?$" name="external-css" placeholder="https://yourwebsite.com/style.css" value="" data-view-id="32142210">
+
+    <span class="insecure-resource-tooltip resource-problem-tooltip">
+      <div class="help-flyout-link">
+        <span class="icon-help">?</span>
+        <div class="help-flyout help-flyout-reverse">
+          <svg class="icon-x" viewBox="0 0 100 100">
+            <path d="M96.8 83.7L63.1 50l33.7-33.7c3.6-3.6 3.6-9.4 0-13.1s-9.5-3.6-13.1 0L50 36.9 16.3 3.2C12.7-.4 6.9-.4 3.2 3.2s-3.6 9.5 0 13.1L36.9 50 3.2 83.7c-3.6 3.6-3.6 9.4 0 13.1s9.5 3.6 13.1 0L50 63.1l33.7 33.7c3.6 3.6 9.4 3.6 13.1 0s3.6-9.5 0-13.1z"></path>
+          </svg>
+          <h5>Insecure Resource</h5>
+          <p>You are linking to a resource using the non-secure http:// protocol, which may not work when the browser is using https:// like CodePen enforces.</p>
+        </div>
+      </div>
+    </span>
+
+    <span class="not-using-url-extension-tooltip resource-problem-tooltip">
+      <div class="help-flyout-link">
+        <span class="icon-help">?</span>
+        <div class="help-flyout help-flyout-reverse">
+          <svg class="icon-x" viewBox="0 0 100 100">
+            <path d="M96.8 83.7L63.1 50l33.7-33.7c3.6-3.6 3.6-9.4 0-13.1s-9.5-3.6-13.1 0L50 36.9 16.3 3.2C12.7-.4 6.9-.4 3.2 3.2s-3.6 9.5 0 13.1L36.9 50 3.2 83.7c-3.6 3.6-3.6 9.4 0 13.1s9.5 3.6 13.1 0L50 63.1l33.7 33.7c3.6 3.6 9.4 3.6 13.1 0s3.6-9.5 0-13.1z"></path>
+          </svg>
+          <h5>URL Extension Required</h5>
+          <p>When linking another Pen as a resource, make sure you use a <a href="https://blog.codepen.io/documentation/url-extensions/">URL Extension</a> of the type of code you want to link to. Either <code>.css</code>, <code>.js</code>, or the extension of a matching code processor.</p>
+        </div>
+      </div>
+    </span>
+
+    <div class="resource-actions">
+      <span class="remove-external-url external-url-option" data-view-id="32142210">
+        <svg class="icon-x" viewBox="0 0 100 100" width="12" height="12">
+          <path d="M96.8 83.7L63.1 50l33.7-33.7c3.6-3.6 3.6-9.4 0-13.1s-9.5-3.6-13.1 0L50 36.9 16.3 3.2C12.7-.4 6.9-.4 3.2 3.2s-3.6 9.5 0 13.1L36.9 50 3.2 83.7c-3.6 3.6-3.6 9.4 0 13.1s9.5 3.6 13.1 0L50 63.1l33.7 33.7c3.6 3.6 9.4 3.6 13.1 0s3.6-9.5 0-13.1z"></path>
+        </svg>
+      </span>
+
+      <a id="external-resource-input-view-link-32142210" class="open-external-url external-url-option" target="_blank" rel="noopener" data-view-id="32142210" href="https://codepen.io/paulkim/pen/oZLavq">
+        <svg viewBox="0 0 30.5 16.5" id="icon-eye" width="14" height="14">
+          <path d="M15.3,0C8.9,0,3.3,3.3,0,8.3c3.3,5,8.9,8.3,15.3,8.3c6.4,0,12-3.3,15.3-8.3C27.3,3.3,21.7,0,15.3,0z M15.3,14.5 c-3.4,0-6.2-2.8-6.2-6.2C9,4.8,11.8,2,15.3,2c3.4,0,6.2,2.8,6.2,6.2C21.5,11.7,18.7,14.5,15.3,14.5z"></path>
+        </svg>
+      </a>
+    </div>
+
+  </div><div data-view-id="04112877" class="external-resource-url-row">
+
+    <span class="move-external-url">
+      <svg viewBox="0 0 17 20" class="icon-drag-handle" width="20" height="17">
+        <path d="m1.5 3a1.5 1.5 0 0 1 0-3h17a1.5 1.5 0 0 1 0 3zm0 7a1.5 1.5 0 0 1 0-3h17a1.5 1.5 0 0 1 0 3zm0 7a1.5 1.5 0 0 1 0-3h17a1.5 1.5 0 0 1 0 3z"></path>
+      </svg>
+    </span>
+
+    <input id="external-resource-input-04112877" class="fullwidth css-resource external-resource" type="text" pattern="^((ftp|http|https):)?\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&amp;%@!\-\/]))?$" name="external-css" placeholder="https://codepen.io/username/pen/aBcDef.css" value="" data-view-id="04112877">
+
+    <span class="insecure-resource-tooltip resource-problem-tooltip">
+      <div class="help-flyout-link">
+        <span class="icon-help">?</span>
+        <div class="help-flyout help-flyout-reverse">
+          <svg class="icon-x" viewBox="0 0 100 100">
+            <path d="M96.8 83.7L63.1 50l33.7-33.7c3.6-3.6 3.6-9.4 0-13.1s-9.5-3.6-13.1 0L50 36.9 16.3 3.2C12.7-.4 6.9-.4 3.2 3.2s-3.6 9.5 0 13.1L36.9 50 3.2 83.7c-3.6 3.6-3.6 9.4 0 13.1s9.5 3.6 13.1 0L50 63.1l33.7 33.7c3.6 3.6 9.4 3.6 13.1 0s3.6-9.5 0-13.1z"></path>
+          </svg>
+          <h5>Insecure Resource</h5>
+          <p>You are linking to a resource using the non-secure http:// protocol, which may not work when the browser is using https:// like CodePen enforces.</p>
+        </div>
+      </div>
+    </span>
+
+    <span class="not-using-url-extension-tooltip resource-problem-tooltip">
+      <div class="help-flyout-link">
+        <span class="icon-help">?</span>
+        <div class="help-flyout help-flyout-reverse">
+          <svg class="icon-x" viewBox="0 0 100 100">
+            <path d="M96.8 83.7L63.1 50l33.7-33.7c3.6-3.6 3.6-9.4 0-13.1s-9.5-3.6-13.1 0L50 36.9 16.3 3.2C12.7-.4 6.9-.4 3.2 3.2s-3.6 9.5 0 13.1L36.9 50 3.2 83.7c-3.6 3.6-3.6 9.4 0 13.1s9.5 3.6 13.1 0L50 63.1l33.7 33.7c3.6 3.6 9.4 3.6 13.1 0s3.6-9.5 0-13.1z"></path>
+          </svg>
+          <h5>URL Extension Required</h5>
+          <p>When linking another Pen as a resource, make sure you use a <a href="https://blog.codepen.io/documentation/url-extensions/">URL Extension</a> of the type of code you want to link to. Either <code>.css</code>, <code>.js</code>, or the extension of a matching code processor.</p>
+        </div>
+      </div>
+    </span>
+
+    <div class="resource-actions">
+      <span class="remove-external-url external-url-option" data-view-id="04112877">
+        <svg class="icon-x" viewBox="0 0 100 100" width="12" height="12">
+          <path d="M96.8 83.7L63.1 50l33.7-33.7c3.6-3.6 3.6-9.4 0-13.1s-9.5-3.6-13.1 0L50 36.9 16.3 3.2C12.7-.4 6.9-.4 3.2 3.2s-3.6 9.5 0 13.1L36.9 50 3.2 83.7c-3.6 3.6-3.6 9.4 0 13.1s9.5 3.6 13.1 0L50 63.1l33.7 33.7c3.6 3.6 9.4 3.6 13.1 0s3.6-9.5 0-13.1z"></path>
+        </svg>
+      </span>
+
+      <a id="external-resource-input-view-link-04112877" class="open-external-url external-url-option" target="_blank" rel="noopener" data-view-id="04112877" href="https://codepen.io/paulkim/pen/oZLavq">
+        <svg viewBox="0 0 30.5 16.5" id="icon-eye" width="14" height="14">
+          <path d="M15.3,0C8.9,0,3.3,3.3,0,8.3c3.3,5,8.9,8.3,15.3,8.3c6.4,0,12-3.3,15.3-8.3C27.3,3.3,21.7,0,15.3,0z M15.3,14.5 c-3.4,0-6.2-2.8-6.2-6.2C9,4.8,11.8,2,15.3,2c3.4,0,6.2,2.8,6.2,6.2C21.5,11.7,18.7,14.5,15.3,14.5z"></path>
+        </svg>
+      </a>
+    </div>
+
+  </div></div>
+<script id="css-external-resources-template" nonce="" type="text/template">
+  <div data-view-id="<%= view_id %>" class="external-resource-url-row <%= insecure_resource %>">
+
+    <span class="move-external-url">
+      <svg viewBox="0 0 17 20" class="icon-drag-handle" width="20" height="17">
+        <path d="m1.5 3a1.5 1.5 0 0 1 0-3h17a1.5 1.5 0 0 1 0 3zm0 7a1.5 1.5 0 0 1 0-3h17a1.5 1.5 0 0 1 0 3zm0 7a1.5 1.5 0 0 1 0-3h17a1.5 1.5 0 0 1 0 3z"/>
+      </svg>
+    </span>
+
+    <input
+      id="external-resource-input-<%= view_id %>"
+      class="fullwidth css-resource external-resource"
+      type="text"
+      pattern="^((ftp|http|https):)?\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?$"
+      name="external-css"
+      placeholder="<%= placeholder %>"
+      value="<%= url %>"
+      data-view-id="<%= view_id %>">
+
+    <span class="insecure-resource-tooltip resource-problem-tooltip">
+      <div class="help-flyout-link">
+        <span class="icon-help">?</span>
+        <div class="help-flyout help-flyout-reverse">
+          <svg class="icon-x" viewBox="0 0 100 100">
+            <path d="M96.8 83.7L63.1 50l33.7-33.7c3.6-3.6 3.6-9.4 0-13.1s-9.5-3.6-13.1 0L50 36.9 16.3 3.2C12.7-.4 6.9-.4 3.2 3.2s-3.6 9.5 0 13.1L36.9 50 3.2 83.7c-3.6 3.6-3.6 9.4 0 13.1s9.5 3.6 13.1 0L50 63.1l33.7 33.7c3.6 3.6 9.4 3.6 13.1 0s3.6-9.5 0-13.1z"/>
+          </svg>
+          <h5>Insecure Resource</h5>
+          <p>You are linking to a resource using the non-secure http:// protocol, which may not work when the browser is using https:// like CodePen enforces.</p>
+        </div>
+      </div>
+    </span>
+
+    <span class="not-using-url-extension-tooltip resource-problem-tooltip">
+      <div class="help-flyout-link">
+        <span class="icon-help">?</span>
+        <div class="help-flyout help-flyout-reverse">
+          <svg class="icon-x" viewBox="0 0 100 100">
+            <path d="M96.8 83.7L63.1 50l33.7-33.7c3.6-3.6 3.6-9.4 0-13.1s-9.5-3.6-13.1 0L50 36.9 16.3 3.2C12.7-.4 6.9-.4 3.2 3.2s-3.6 9.5 0 13.1L36.9 50 3.2 83.7c-3.6 3.6-3.6 9.4 0 13.1s9.5 3.6 13.1 0L50 63.1l33.7 33.7c3.6 3.6 9.4 3.6 13.1 0s3.6-9.5 0-13.1z"/>
+          </svg>
+          <h5>URL Extension Required</h5>
+          <p>When linking another Pen as a resource, make sure you use a <a href="https://blog.codepen.io/documentation/url-extensions/">URL Extension</a> of the type of code you want to link to. Either <code>.css</code>, <code>.js</code>, or the extension of a matching code processor.</p>
+        </div>
+      </div>
+    </span>
+
+    <div class="resource-actions">
+      <span class="remove-external-url external-url-option" data-view-id="<%= view_id %>">
+        <svg class="icon-x" viewBox="0 0 100 100" width="12" height="12">
+          <path d="M96.8 83.7L63.1 50l33.7-33.7c3.6-3.6 3.6-9.4 0-13.1s-9.5-3.6-13.1 0L50 36.9 16.3 3.2C12.7-.4 6.9-.4 3.2 3.2s-3.6 9.5 0 13.1L36.9 50 3.2 83.7c-3.6 3.6-3.6 9.4 0 13.1s9.5 3.6 13.1 0L50 63.1l33.7 33.7c3.6 3.6 9.4 3.6 13.1 0s3.6-9.5 0-13.1z"/>
+        </svg>
+      </span>
+
+      <a id="external-resource-input-view-link-<%= view_id %>" class="open-external-url external-url-option" target="_blank" rel="noopener" data-view-id="<%= view_id %>" href="<%= url %>">
+        <svg viewBox="0 0 30.5 16.5" id="icon-eye" width="14" height="14">
+          <path d="M15.3,0C8.9,0,3.3,3.3,0,8.3c3.3,5,8.9,8.3,15.3,8.3c6.4,0,12-3.3,15.3-8.3C27.3,3.3,21.7,0,15.3,0z M15.3,14.5 c-3.4,0-6.2-2.8-6.2-6.2C9,4.8,11.8,2,15.3,2c3.4,0,6.2,2.8,6.2,6.2C21.5,11.7,18.7,14.5,15.3,14.5z"/>
+        </svg>
+      </a>
+    </div>
+
+  </div>
+</script>
+<div class="external-resource-actions group">
+<span id="add-css-resource" class="button mini-button button-medium add-resource" data-type="css">
+<span data-type="css">+ add another resource</span>
+</span>
+</div>
+</div>
+</div>
+<div class="settings tab-page" id="settings-js">
+<div class="item-settings-javascript normal-labels">
+<h3>
+JavaScript
+</h3>
+<div class="item-settings-javascript-preprocessor settings-row">
+<h4>
+<label for="js-preprocessor">
+JavaScript Preprocessor
+</label>
+</h4>
+<div class="help-flyout-link">
+<svg class="icon-help" viewBox="0 0 100 100" width="14" height="14">
+<path d="M75,0H25C11.19,0,0,11.193,0,25v50c0,13.802,11.19,25,25,25h50c13.811,0,25-11.198,25-25V25C100,11.193,88.811,0,75,0z
+   M57.203,85.067H41.504V72.542h15.699V85.067L57.203,85.067z M73.357,42.041c-0.84,2.066-1.873,3.834-3.102,5.298
+  c-1.235,1.474-2.604,2.718-4.101,3.751c-1.498,1.035-2.922,2.066-4.249,3.101c-1.333,1.034-1.553,2.214-2.596,3.547
+  c-1.025,1.335-0.977,3.004-0.977,5.006v3.924H41.668v-4.623c0-2.864,1.366-5.265,2.27-7.202c0.896-1.935,2.255-3.581,3.459-4.947
+  c1.196-1.367,2.62-2.556,3.955-3.557c1.327-0.993,2.637-1.993,3.776-2.995c1.123-1.001,2.083-2.1,2.783-3.304
+  c0.7-1.197,1.043-2.694,0.977-4.5c0-3.06-0.74-5.33-2.245-6.795c-1.498-1.465-3.582-2.206-6.25-2.206c-1.8,0-3.337,0.351-4.639,1.05
+  c-1.303,0.7-2.369,1.635-3.199,2.808c-0.837,1.163-1.448,3.593-1.847,5.156c-0.407,1.57-0.602,6.115-0.602,6.115H25.399
+  c0.073-8.333,0.684-7.963,1.855-10.965c1.164-2.995,2.8-6.132,4.899-8.33c2.099-2.197,4.63-4.179,7.601-5.417
+  c2.962-1.228,6.283-1.977,9.945-1.977c4.736,0,8.683,0.581,11.856,1.876c3.167,1.302,5.713,2.889,7.65,4.817
+  c1.929,1.937,3.312,4.004,4.149,6.234c0.831,2.237,1.245,4.313,1.245,6.242C74.601,37.354,74.187,39.975,73.357,42.041z"></path>
+</svg>
+<div class="help-flyout help-flyout-reverse">
+<h5>About JavaScript Preprocessors</h5>
+<svg class="icon-x" viewBox="0 0 100 100" width="12" height="12">
+<path d="M96.8 83.7L63.1 50l33.7-33.7c3.6-3.6 3.6-9.4 0-13.1s-9.5-3.6-13.1 0L50 36.9 16.3 3.2C12.7-.4 6.9-.4 3.2 3.2s-3.6 9.5 0 13.1L36.9 50 3.2 83.7c-3.6 3.6-3.6 9.4 0 13.1s9.5 3.6 13.1 0L50 63.1l33.7 33.7c3.6 3.6 9.4 3.6 13.1 0s3.6-9.5 0-13.1z"></path>
+</svg>
+<p>JavaScript preprocessors can help make authoring JavaScript easier and more convenient.</p>
+<p><a href="https://blog.codepen.io/documentation/editor/using-js-preprocessors/" target="_blank" rel="noopener">Learn more</a> · <a href="https://codepen.io/versions/" target="_blank">Versions</a></p>
+</div>
+</div>
+<div class="custom-select-wrap">
+<select name="js-preprocessor" id="js-preprocessor" class="fullwidth">
+<option value="none">None</option>
+<option value="babel">Babel</option>
+<option value="typescript">TypeScript</option>
+<option value="coffeescript">CoffeeScript</option>
+<option value="livescript">LiveScript</option>
+</select>
+<div class="select-icon">
+<svg viewBox="-122.9 121.1 105.9 61.9" class="icon-arrow-down-mini">
+<path d="M-63.2,180.3l43.5-43.5c1.7-1.7,2.7-4,2.7-6.5s-1-4.8-2.7-6.5c-1.7-1.7-4-2.7-6.5-2.7s-4.8,1-6.5,2.7l-37.2,37.2l-37.2-37.2
+        c-1.7-1.7-4-2.7-6.5-2.7s-4.8,1-6.5,2.6c-1.9,1.8-2.8,4.2-2.8,6.6c0,2.3,0.9,4.6,2.6,6.5l0,0c11.4,11.5,41,41.2,43,43.3l0.2,0.2
+        C-73.5,183.9-66.8,183.9-63.2,180.3z"></path>
+</svg>
+<svg viewBox="-122.9 121.1 105.9 61.9" class="icon-arrow-down-mini">
+<path d="M-63.2,180.3l43.5-43.5c1.7-1.7,2.7-4,2.7-6.5s-1-4.8-2.7-6.5c-1.7-1.7-4-2.7-6.5-2.7s-4.8,1-6.5,2.7l-37.2,37.2l-37.2-37.2
+        c-1.7-1.7-4-2.7-6.5-2.7s-4.8,1-6.5,2.6c-1.9,1.8-2.8,4.2-2.8,6.6c0,2.3,0.9,4.6,2.6,6.5l0,0c11.4,11.5,41,41.2,43,43.3l0.2,0.2
+        C-73.5,183.9-66.8,183.9-63.2,180.3z"></path>
+</svg>
+</div>
+</div>
+<p><small>Babel includes JSX processing.</small></p>
+</div>
+<div id="external-js-resources" class="item-settings-javascript-external settings-row external-js-resources top-label-form">
+<h4>
+Add External Scripts/Pens
+</h4>
+<p>Any URL's added here will be added as <code>&lt;script&gt;</code>s in order, and run <em>before</em> the JavaScript in the editor. You can use the URL of any other Pen and it will include the JavaScript from that Pen.</p>
+<div class="resource-search-bar">
+<svg viewBox="0 0 56.7 56.7" class="icon icon-mag" width="18" height="18">
+<path d="M42.8,7.3C33-2.4,17.1-2.4,7.3,7.3c-9.8,9.8-9.8,25.7,0,35.5c8.7,8.7,22.2,9.7,32,2.9l9.6,9.6c1.8,1.8,4.7,1.8,6.4,0
+	c1.8-1.8,1.8-4.7,0-6.4l-9.6-9.6C52.5,29.5,51.5,16,42.8,7.3z M36.6,36.6c-6.4,6.4-16.7,6.4-23.1,0s-6.4-16.7,0-23.1
+	c6.4-6.4,16.7-6.4,23.1,0C43,19.9,43,30.3,36.6,36.6z"></path>
+</svg>
+<span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input id="external-js-search" type="text" value="" placeholder="Search CDNjs (jQuery, Lodash, React, Angular, Vue.js, Ember...)" class="aa-input" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="both" aria-expanded="false" aria-owns="algolia-autocomplete-listbox-3" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Lato, &quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Tahoma, sans-serif; font-size: 15px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="aa-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-3" style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none; right: auto;"><div class="aa-dataset-4"></div><div class="aa-dataset-5"></div></span></span>
+</div>
+<div class="algolia-shoutout">
+<a href="https://www.algolia.com/?utm_source=react-instantsearch&amp;utm_medium=website&amp;utm_content=codepen.io&amp;utm_campaign=poweredby" target="_blank">
+Powered by <img alt="Algolia" src="./React Shopping Cart Demo_files/algolia-9e1c0c887f4db420704b2a79926864019ef156bcecc9d5774a7e4eaa731fc5b5.svg">
+</a>
+</div>
+<div class="help-flyout-link">
+<svg class="icon-help" viewBox="0 0 100 100" width="14" height="14">
+<path d="M75,0H25C11.19,0,0,11.193,0,25v50c0,13.802,11.19,25,25,25h50c13.811,0,25-11.198,25-25V25C100,11.193,88.811,0,75,0z
+   M57.203,85.067H41.504V72.542h15.699V85.067L57.203,85.067z M73.357,42.041c-0.84,2.066-1.873,3.834-3.102,5.298
+  c-1.235,1.474-2.604,2.718-4.101,3.751c-1.498,1.035-2.922,2.066-4.249,3.101c-1.333,1.034-1.553,2.214-2.596,3.547
+  c-1.025,1.335-0.977,3.004-0.977,5.006v3.924H41.668v-4.623c0-2.864,1.366-5.265,2.27-7.202c0.896-1.935,2.255-3.581,3.459-4.947
+  c1.196-1.367,2.62-2.556,3.955-3.557c1.327-0.993,2.637-1.993,3.776-2.995c1.123-1.001,2.083-2.1,2.783-3.304
+  c0.7-1.197,1.043-2.694,0.977-4.5c0-3.06-0.74-5.33-2.245-6.795c-1.498-1.465-3.582-2.206-6.25-2.206c-1.8,0-3.337,0.351-4.639,1.05
+  c-1.303,0.7-2.369,1.635-3.199,2.808c-0.837,1.163-1.448,3.593-1.847,5.156c-0.407,1.57-0.602,6.115-0.602,6.115H25.399
+  c0.073-8.333,0.684-7.963,1.855-10.965c1.164-2.995,2.8-6.132,4.899-8.33c2.099-2.197,4.63-4.179,7.601-5.417
+  c2.962-1.228,6.283-1.977,9.945-1.977c4.736,0,8.683,0.581,11.856,1.876c3.167,1.302,5.713,2.889,7.65,4.817
+  c1.929,1.937,3.312,4.004,4.149,6.234c0.831,2.237,1.245,4.313,1.245,6.242C74.601,37.354,74.187,39.975,73.357,42.041z"></path>
+</svg>
+<div class="help-flyout help-flyout-reverse">
+<h5>About External Resources</h5>
+<svg class="icon-x" viewBox="0 0 100 100" height="12" width="12">
+<path d="M96.8 83.7L63.1 50l33.7-33.7c3.6-3.6 3.6-9.4 0-13.1s-9.5-3.6-13.1 0L50 36.9 16.3 3.2C12.7-.4 6.9-.4 3.2 3.2s-3.6 9.5 0 13.1L36.9 50 3.2 83.7c-3.6 3.6-3.6 9.4 0 13.1s9.5 3.6 13.1 0L50 63.1l33.7 33.7c3.6 3.6 9.4 3.6 13.1 0s3.6-9.5 0-13.1z"></path>
+</svg>
+<p>You can apply a script from anywhere on the web to your Pen. Just put a URL to it here and we'll add it, in the order you have them, before the JavaScript in the Pen itself.</p>
+<p>If the script you link to has the file extension of a preprocessor, we'll attempt to process it before applying.</p>
+<p>You can also link to another Pen here, and we'll pull the JavaScript from that Pen and include it. If it's using a matching preprocessor, we'll combine the code before preprocessing, so you can use the linked Pen as a true dependency.</p>
+<p><a href="https://blog.codepen.io/documentation/adding-external-resources/" rel="noopener" target="_blank">Learn more</a></p>
+</div>
+</div>
+<div id="js-external-resources" class="external-resource-wrapper ui-sortable">
+<div data-view-id="93424430" class="external-resource-url-row">
+
+    <span class="move-external-url">
+      <svg viewBox="0 0 17 20" class="icon-drag-handle" width="20" height="17">
+        <path d="m1.5 3a1.5 1.5 0 0 1 0-3h17a1.5 1.5 0 0 1 0 3zm0 7a1.5 1.5 0 0 1 0-3h17a1.5 1.5 0 0 1 0 3zm0 7a1.5 1.5 0 0 1 0-3h17a1.5 1.5 0 0 1 0 3z"></path>
+      </svg>
+    </span>
+
+    <input id="external-resource-input-93424430" class="fullwidth js-resource external-resource" type="text" pattern="^((ftp|http|https):)?\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&amp;%@!\-\/]))?$" name="external-js" placeholder="https://yourwebsite.com/script.js" value="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js" data-view-id="93424430">
+
+    <span class="insecure-resource-tooltip resource-problem-tooltip">
+      <div class="help-flyout-link">
+        <span class="icon-help">?</span>
+        <div class="help-flyout help-flyout-reverse">
+          <svg class="icon-x" viewBox="0 0 100 100">
+            <path d="M96.8 83.7L63.1 50l33.7-33.7c3.6-3.6 3.6-9.4 0-13.1s-9.5-3.6-13.1 0L50 36.9 16.3 3.2C12.7-.4 6.9-.4 3.2 3.2s-3.6 9.5 0 13.1L36.9 50 3.2 83.7c-3.6 3.6-3.6 9.4 0 13.1s9.5 3.6 13.1 0L50 63.1l33.7 33.7c3.6 3.6 9.4 3.6 13.1 0s3.6-9.5 0-13.1z"></path>
+          </svg>
+          <h5>Insecure Resource</h5>
+          <p>You are linking to a resource using the non-secure http:// protocol, which may not work when the browser is using https:// like CodePen enforces.</p>
+        </div>
+      </div>
+    </span>
+
+    <span class="not-using-url-extension-tooltip resource-problem-tooltip">
+      <div class="help-flyout-link">
+        <span class="icon-help">?</span>
+        <div class="help-flyout help-flyout-reverse">
+          <svg class="icon-x" viewBox="0 0 100 100">
+            <path d="M96.8 83.7L63.1 50l33.7-33.7c3.6-3.6 3.6-9.4 0-13.1s-9.5-3.6-13.1 0L50 36.9 16.3 3.2C12.7-.4 6.9-.4 3.2 3.2s-3.6 9.5 0 13.1L36.9 50 3.2 83.7c-3.6 3.6-3.6 9.4 0 13.1s9.5 3.6 13.1 0L50 63.1l33.7 33.7c3.6 3.6 9.4 3.6 13.1 0s3.6-9.5 0-13.1z"></path>
+          </svg>
+          <h5>URL Extension Required</h5>
+          <p>When linking another Pen as a resource, make sure you use a <a href="https://blog.codepen.io/documentation/url-extensions/">URL Extension</a> of the type of code you want to link to. Either <code>.css</code>, <code>.js</code>, or the extension of a matching code processor.</p>
+        </div>
+      </div>
+    </span>
+
+    <div class="resource-actions">
+      <span class="remove-external-url external-url-option" data-view-id="93424430">
+        <svg class="icon-x" viewBox="0 0 100 100" width="12" height="12">
+          <path d="M96.8 83.7L63.1 50l33.7-33.7c3.6-3.6 3.6-9.4 0-13.1s-9.5-3.6-13.1 0L50 36.9 16.3 3.2C12.7-.4 6.9-.4 3.2 3.2s-3.6 9.5 0 13.1L36.9 50 3.2 83.7c-3.6 3.6-3.6 9.4 0 13.1s9.5 3.6 13.1 0L50 63.1l33.7 33.7c3.6 3.6 9.4 3.6 13.1 0s3.6-9.5 0-13.1z"></path>
+        </svg>
+      </span>
+
+      <a id="external-resource-input-view-link-93424430" class="open-external-url external-url-option" target="_blank" rel="noopener" data-view-id="93424430" href="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js">
+        <svg viewBox="0 0 30.5 16.5" id="icon-eye" width="14" height="14">
+          <path d="M15.3,0C8.9,0,3.3,3.3,0,8.3c3.3,5,8.9,8.3,15.3,8.3c6.4,0,12-3.3,15.3-8.3C27.3,3.3,21.7,0,15.3,0z M15.3,14.5 c-3.4,0-6.2-2.8-6.2-6.2C9,4.8,11.8,2,15.3,2c3.4,0,6.2,2.8,6.2,6.2C21.5,11.7,18.7,14.5,15.3,14.5z"></path>
+        </svg>
+      </a>
+    </div>
+
+  </div><div data-view-id="32213724" class="external-resource-url-row">
+
+    <span class="move-external-url">
+      <svg viewBox="0 0 17 20" class="icon-drag-handle" width="20" height="17">
+        <path d="m1.5 3a1.5 1.5 0 0 1 0-3h17a1.5 1.5 0 0 1 0 3zm0 7a1.5 1.5 0 0 1 0-3h17a1.5 1.5 0 0 1 0 3zm0 7a1.5 1.5 0 0 1 0-3h17a1.5 1.5 0 0 1 0 3z"></path>
+      </svg>
+    </span>
+
+    <input id="external-resource-input-32213724" class="fullwidth js-resource external-resource" type="text" pattern="^((ftp|http|https):)?\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&amp;%@!\-\/]))?$" name="external-js" placeholder="https://codepen.io/username/pen/aBcDef.css" value="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js" data-view-id="32213724">
+
+    <span class="insecure-resource-tooltip resource-problem-tooltip">
+      <div class="help-flyout-link">
+        <span class="icon-help">?</span>
+        <div class="help-flyout help-flyout-reverse">
+          <svg class="icon-x" viewBox="0 0 100 100">
+            <path d="M96.8 83.7L63.1 50l33.7-33.7c3.6-3.6 3.6-9.4 0-13.1s-9.5-3.6-13.1 0L50 36.9 16.3 3.2C12.7-.4 6.9-.4 3.2 3.2s-3.6 9.5 0 13.1L36.9 50 3.2 83.7c-3.6 3.6-3.6 9.4 0 13.1s9.5 3.6 13.1 0L50 63.1l33.7 33.7c3.6 3.6 9.4 3.6 13.1 0s3.6-9.5 0-13.1z"></path>
+          </svg>
+          <h5>Insecure Resource</h5>
+          <p>You are linking to a resource using the non-secure http:// protocol, which may not work when the browser is using https:// like CodePen enforces.</p>
+        </div>
+      </div>
+    </span>
+
+    <span class="not-using-url-extension-tooltip resource-problem-tooltip">
+      <div class="help-flyout-link">
+        <span class="icon-help">?</span>
+        <div class="help-flyout help-flyout-reverse">
+          <svg class="icon-x" viewBox="0 0 100 100">
+            <path d="M96.8 83.7L63.1 50l33.7-33.7c3.6-3.6 3.6-9.4 0-13.1s-9.5-3.6-13.1 0L50 36.9 16.3 3.2C12.7-.4 6.9-.4 3.2 3.2s-3.6 9.5 0 13.1L36.9 50 3.2 83.7c-3.6 3.6-3.6 9.4 0 13.1s9.5 3.6 13.1 0L50 63.1l33.7 33.7c3.6 3.6 9.4 3.6 13.1 0s3.6-9.5 0-13.1z"></path>
+          </svg>
+          <h5>URL Extension Required</h5>
+          <p>When linking another Pen as a resource, make sure you use a <a href="https://blog.codepen.io/documentation/url-extensions/">URL Extension</a> of the type of code you want to link to. Either <code>.css</code>, <code>.js</code>, or the extension of a matching code processor.</p>
+        </div>
+      </div>
+    </span>
+
+    <div class="resource-actions">
+      <span class="remove-external-url external-url-option" data-view-id="32213724">
+        <svg class="icon-x" viewBox="0 0 100 100" width="12" height="12">
+          <path d="M96.8 83.7L63.1 50l33.7-33.7c3.6-3.6 3.6-9.4 0-13.1s-9.5-3.6-13.1 0L50 36.9 16.3 3.2C12.7-.4 6.9-.4 3.2 3.2s-3.6 9.5 0 13.1L36.9 50 3.2 83.7c-3.6 3.6-3.6 9.4 0 13.1s9.5 3.6 13.1 0L50 63.1l33.7 33.7c3.6 3.6 9.4 3.6 13.1 0s3.6-9.5 0-13.1z"></path>
+        </svg>
+      </span>
+
+      <a id="external-resource-input-view-link-32213724" class="open-external-url external-url-option" target="_blank" rel="noopener" data-view-id="32213724" href="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js">
+        <svg viewBox="0 0 30.5 16.5" id="icon-eye" width="14" height="14">
+          <path d="M15.3,0C8.9,0,3.3,3.3,0,8.3c3.3,5,8.9,8.3,15.3,8.3c6.4,0,12-3.3,15.3-8.3C27.3,3.3,21.7,0,15.3,0z M15.3,14.5 c-3.4,0-6.2-2.8-6.2-6.2C9,4.8,11.8,2,15.3,2c3.4,0,6.2,2.8,6.2,6.2C21.5,11.7,18.7,14.5,15.3,14.5z"></path>
+        </svg>
+      </a>
+    </div>
+
+  </div><div data-view-id="10107102" class="external-resource-url-row">
+
+    <span class="move-external-url">
+      <svg viewBox="0 0 17 20" class="icon-drag-handle" width="20" height="17">
+        <path d="m1.5 3a1.5 1.5 0 0 1 0-3h17a1.5 1.5 0 0 1 0 3zm0 7a1.5 1.5 0 0 1 0-3h17a1.5 1.5 0 0 1 0 3zm0 7a1.5 1.5 0 0 1 0-3h17a1.5 1.5 0 0 1 0 3z"></path>
+      </svg>
+    </span>
+
+    <input id="external-resource-input-10107102" class="fullwidth js-resource external-resource" type="text" pattern="^((ftp|http|https):)?\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&amp;%@!\-\/]))?$" name="external-js" placeholder="https://yourwebsite.com/script.js" value="https://cdnjs.cloudflare.com/ajax/libs/redux/3.6.0/redux.min.js" data-view-id="10107102">
+
+    <span class="insecure-resource-tooltip resource-problem-tooltip">
+      <div class="help-flyout-link">
+        <span class="icon-help">?</span>
+        <div class="help-flyout help-flyout-reverse">
+          <svg class="icon-x" viewBox="0 0 100 100">
+            <path d="M96.8 83.7L63.1 50l33.7-33.7c3.6-3.6 3.6-9.4 0-13.1s-9.5-3.6-13.1 0L50 36.9 16.3 3.2C12.7-.4 6.9-.4 3.2 3.2s-3.6 9.5 0 13.1L36.9 50 3.2 83.7c-3.6 3.6-3.6 9.4 0 13.1s9.5 3.6 13.1 0L50 63.1l33.7 33.7c3.6 3.6 9.4 3.6 13.1 0s3.6-9.5 0-13.1z"></path>
+          </svg>
+          <h5>Insecure Resource</h5>
+          <p>You are linking to a resource using the non-secure http:// protocol, which may not work when the browser is using https:// like CodePen enforces.</p>
+        </div>
+      </div>
+    </span>
+
+    <span class="not-using-url-extension-tooltip resource-problem-tooltip">
+      <div class="help-flyout-link">
+        <span class="icon-help">?</span>
+        <div class="help-flyout help-flyout-reverse">
+          <svg class="icon-x" viewBox="0 0 100 100">
+            <path d="M96.8 83.7L63.1 50l33.7-33.7c3.6-3.6 3.6-9.4 0-13.1s-9.5-3.6-13.1 0L50 36.9 16.3 3.2C12.7-.4 6.9-.4 3.2 3.2s-3.6 9.5 0 13.1L36.9 50 3.2 83.7c-3.6 3.6-3.6 9.4 0 13.1s9.5 3.6 13.1 0L50 63.1l33.7 33.7c3.6 3.6 9.4 3.6 13.1 0s3.6-9.5 0-13.1z"></path>
+          </svg>
+          <h5>URL Extension Required</h5>
+          <p>When linking another Pen as a resource, make sure you use a <a href="https://blog.codepen.io/documentation/url-extensions/">URL Extension</a> of the type of code you want to link to. Either <code>.css</code>, <code>.js</code>, or the extension of a matching code processor.</p>
+        </div>
+      </div>
+    </span>
+
+    <div class="resource-actions">
+      <span class="remove-external-url external-url-option" data-view-id="10107102">
+        <svg class="icon-x" viewBox="0 0 100 100" width="12" height="12">
+          <path d="M96.8 83.7L63.1 50l33.7-33.7c3.6-3.6 3.6-9.4 0-13.1s-9.5-3.6-13.1 0L50 36.9 16.3 3.2C12.7-.4 6.9-.4 3.2 3.2s-3.6 9.5 0 13.1L36.9 50 3.2 83.7c-3.6 3.6-3.6 9.4 0 13.1s9.5 3.6 13.1 0L50 63.1l33.7 33.7c3.6 3.6 9.4 3.6 13.1 0s3.6-9.5 0-13.1z"></path>
+        </svg>
+      </span>
+
+      <a id="external-resource-input-view-link-10107102" class="open-external-url external-url-option" target="_blank" rel="noopener" data-view-id="10107102" href="https://cdnjs.cloudflare.com/ajax/libs/redux/3.6.0/redux.min.js">
+        <svg viewBox="0 0 30.5 16.5" id="icon-eye" width="14" height="14">
+          <path d="M15.3,0C8.9,0,3.3,3.3,0,8.3c3.3,5,8.9,8.3,15.3,8.3c6.4,0,12-3.3,15.3-8.3C27.3,3.3,21.7,0,15.3,0z M15.3,14.5 c-3.4,0-6.2-2.8-6.2-6.2C9,4.8,11.8,2,15.3,2c3.4,0,6.2,2.8,6.2,6.2C21.5,11.7,18.7,14.5,15.3,14.5z"></path>
+        </svg>
+      </a>
+    </div>
+
+  </div><div data-view-id="00020702" class="external-resource-url-row">
+
+    <span class="move-external-url">
+      <svg viewBox="0 0 17 20" class="icon-drag-handle" width="20" height="17">
+        <path d="m1.5 3a1.5 1.5 0 0 1 0-3h17a1.5 1.5 0 0 1 0 3zm0 7a1.5 1.5 0 0 1 0-3h17a1.5 1.5 0 0 1 0 3zm0 7a1.5 1.5 0 0 1 0-3h17a1.5 1.5 0 0 1 0 3z"></path>
+      </svg>
+    </span>
+
+    <input id="external-resource-input-00020702" class="fullwidth js-resource external-resource" type="text" pattern="^((ftp|http|https):)?\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&amp;%@!\-\/]))?$" name="external-js" placeholder="https://codepen.io/username/pen/aBcDef.css" value="https://cdnjs.cloudflare.com/ajax/libs/react-redux/5.0.2/react-redux.min.js" data-view-id="00020702">
+
+    <span class="insecure-resource-tooltip resource-problem-tooltip">
+      <div class="help-flyout-link">
+        <span class="icon-help">?</span>
+        <div class="help-flyout help-flyout-reverse">
+          <svg class="icon-x" viewBox="0 0 100 100">
+            <path d="M96.8 83.7L63.1 50l33.7-33.7c3.6-3.6 3.6-9.4 0-13.1s-9.5-3.6-13.1 0L50 36.9 16.3 3.2C12.7-.4 6.9-.4 3.2 3.2s-3.6 9.5 0 13.1L36.9 50 3.2 83.7c-3.6 3.6-3.6 9.4 0 13.1s9.5 3.6 13.1 0L50 63.1l33.7 33.7c3.6 3.6 9.4 3.6 13.1 0s3.6-9.5 0-13.1z"></path>
+          </svg>
+          <h5>Insecure Resource</h5>
+          <p>You are linking to a resource using the non-secure http:// protocol, which may not work when the browser is using https:// like CodePen enforces.</p>
+        </div>
+      </div>
+    </span>
+
+    <span class="not-using-url-extension-tooltip resource-problem-tooltip">
+      <div class="help-flyout-link">
+        <span class="icon-help">?</span>
+        <div class="help-flyout help-flyout-reverse">
+          <svg class="icon-x" viewBox="0 0 100 100">
+            <path d="M96.8 83.7L63.1 50l33.7-33.7c3.6-3.6 3.6-9.4 0-13.1s-9.5-3.6-13.1 0L50 36.9 16.3 3.2C12.7-.4 6.9-.4 3.2 3.2s-3.6 9.5 0 13.1L36.9 50 3.2 83.7c-3.6 3.6-3.6 9.4 0 13.1s9.5 3.6 13.1 0L50 63.1l33.7 33.7c3.6 3.6 9.4 3.6 13.1 0s3.6-9.5 0-13.1z"></path>
+          </svg>
+          <h5>URL Extension Required</h5>
+          <p>When linking another Pen as a resource, make sure you use a <a href="https://blog.codepen.io/documentation/url-extensions/">URL Extension</a> of the type of code you want to link to. Either <code>.css</code>, <code>.js</code>, or the extension of a matching code processor.</p>
+        </div>
+      </div>
+    </span>
+
+    <div class="resource-actions">
+      <span class="remove-external-url external-url-option" data-view-id="00020702">
+        <svg class="icon-x" viewBox="0 0 100 100" width="12" height="12">
+          <path d="M96.8 83.7L63.1 50l33.7-33.7c3.6-3.6 3.6-9.4 0-13.1s-9.5-3.6-13.1 0L50 36.9 16.3 3.2C12.7-.4 6.9-.4 3.2 3.2s-3.6 9.5 0 13.1L36.9 50 3.2 83.7c-3.6 3.6-3.6 9.4 0 13.1s9.5 3.6 13.1 0L50 63.1l33.7 33.7c3.6 3.6 9.4 3.6 13.1 0s3.6-9.5 0-13.1z"></path>
+        </svg>
+      </span>
+
+      <a id="external-resource-input-view-link-00020702" class="open-external-url external-url-option" target="_blank" rel="noopener" data-view-id="00020702" href="https://cdnjs.cloudflare.com/ajax/libs/react-redux/5.0.2/react-redux.min.js">
+        <svg viewBox="0 0 30.5 16.5" id="icon-eye" width="14" height="14">
+          <path d="M15.3,0C8.9,0,3.3,3.3,0,8.3c3.3,5,8.9,8.3,15.3,8.3c6.4,0,12-3.3,15.3-8.3C27.3,3.3,21.7,0,15.3,0z M15.3,14.5 c-3.4,0-6.2-2.8-6.2-6.2C9,4.8,11.8,2,15.3,2c3.4,0,6.2,2.8,6.2,6.2C21.5,11.7,18.7,14.5,15.3,14.5z"></path>
+        </svg>
+      </a>
+    </div>
+
+  </div><div data-view-id="21044147" class="external-resource-url-row">
+
+    <span class="move-external-url">
+      <svg viewBox="0 0 17 20" class="icon-drag-handle" width="20" height="17">
+        <path d="m1.5 3a1.5 1.5 0 0 1 0-3h17a1.5 1.5 0 0 1 0 3zm0 7a1.5 1.5 0 0 1 0-3h17a1.5 1.5 0 0 1 0 3zm0 7a1.5 1.5 0 0 1 0-3h17a1.5 1.5 0 0 1 0 3z"></path>
+      </svg>
+    </span>
+
+    <input id="external-resource-input-21044147" class="fullwidth js-resource external-resource" type="text" pattern="^((ftp|http|https):)?\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&amp;%@!\-\/]))?$" name="external-js" placeholder="https://yourwebsite.com/script.js" value="https://cdnjs.cloudflare.com/ajax/libs/react-router/2.8.1/ReactRouter.min.js" data-view-id="21044147">
+
+    <span class="insecure-resource-tooltip resource-problem-tooltip">
+      <div class="help-flyout-link">
+        <span class="icon-help">?</span>
+        <div class="help-flyout help-flyout-reverse">
+          <svg class="icon-x" viewBox="0 0 100 100">
+            <path d="M96.8 83.7L63.1 50l33.7-33.7c3.6-3.6 3.6-9.4 0-13.1s-9.5-3.6-13.1 0L50 36.9 16.3 3.2C12.7-.4 6.9-.4 3.2 3.2s-3.6 9.5 0 13.1L36.9 50 3.2 83.7c-3.6 3.6-3.6 9.4 0 13.1s9.5 3.6 13.1 0L50 63.1l33.7 33.7c3.6 3.6 9.4 3.6 13.1 0s3.6-9.5 0-13.1z"></path>
+          </svg>
+          <h5>Insecure Resource</h5>
+          <p>You are linking to a resource using the non-secure http:// protocol, which may not work when the browser is using https:// like CodePen enforces.</p>
+        </div>
+      </div>
+    </span>
+
+    <span class="not-using-url-extension-tooltip resource-problem-tooltip">
+      <div class="help-flyout-link">
+        <span class="icon-help">?</span>
+        <div class="help-flyout help-flyout-reverse">
+          <svg class="icon-x" viewBox="0 0 100 100">
+            <path d="M96.8 83.7L63.1 50l33.7-33.7c3.6-3.6 3.6-9.4 0-13.1s-9.5-3.6-13.1 0L50 36.9 16.3 3.2C12.7-.4 6.9-.4 3.2 3.2s-3.6 9.5 0 13.1L36.9 50 3.2 83.7c-3.6 3.6-3.6 9.4 0 13.1s9.5 3.6 13.1 0L50 63.1l33.7 33.7c3.6 3.6 9.4 3.6 13.1 0s3.6-9.5 0-13.1z"></path>
+          </svg>
+          <h5>URL Extension Required</h5>
+          <p>When linking another Pen as a resource, make sure you use a <a href="https://blog.codepen.io/documentation/url-extensions/">URL Extension</a> of the type of code you want to link to. Either <code>.css</code>, <code>.js</code>, or the extension of a matching code processor.</p>
+        </div>
+      </div>
+    </span>
+
+    <div class="resource-actions">
+      <span class="remove-external-url external-url-option" data-view-id="21044147">
+        <svg class="icon-x" viewBox="0 0 100 100" width="12" height="12">
+          <path d="M96.8 83.7L63.1 50l33.7-33.7c3.6-3.6 3.6-9.4 0-13.1s-9.5-3.6-13.1 0L50 36.9 16.3 3.2C12.7-.4 6.9-.4 3.2 3.2s-3.6 9.5 0 13.1L36.9 50 3.2 83.7c-3.6 3.6-3.6 9.4 0 13.1s9.5 3.6 13.1 0L50 63.1l33.7 33.7c3.6 3.6 9.4 3.6 13.1 0s3.6-9.5 0-13.1z"></path>
+        </svg>
+      </span>
+
+      <a id="external-resource-input-view-link-21044147" class="open-external-url external-url-option" target="_blank" rel="noopener" data-view-id="21044147" href="https://cdnjs.cloudflare.com/ajax/libs/react-router/2.8.1/ReactRouter.min.js">
+        <svg viewBox="0 0 30.5 16.5" id="icon-eye" width="14" height="14">
+          <path d="M15.3,0C8.9,0,3.3,3.3,0,8.3c3.3,5,8.9,8.3,15.3,8.3c6.4,0,12-3.3,15.3-8.3C27.3,3.3,21.7,0,15.3,0z M15.3,14.5 c-3.4,0-6.2-2.8-6.2-6.2C9,4.8,11.8,2,15.3,2c3.4,0,6.2,2.8,6.2,6.2C21.5,11.7,18.7,14.5,15.3,14.5z"></path>
+        </svg>
+      </a>
+    </div>
+
+  </div></div>
+<script id="js-external-resources-template" nonce="" type="text/template">
+  <div data-view-id="<%= view_id %>" class="external-resource-url-row <%= insecure_resource %>">
+
+    <span class="move-external-url">
+      <svg viewBox="0 0 17 20" class="icon-drag-handle" width="20" height="17">
+        <path d="m1.5 3a1.5 1.5 0 0 1 0-3h17a1.5 1.5 0 0 1 0 3zm0 7a1.5 1.5 0 0 1 0-3h17a1.5 1.5 0 0 1 0 3zm0 7a1.5 1.5 0 0 1 0-3h17a1.5 1.5 0 0 1 0 3z"/>
+      </svg>
+    </span>
+
+    <input
+      id="external-resource-input-<%= view_id %>"
+      class="fullwidth js-resource external-resource"
+      type="text"
+      pattern="^((ftp|http|https):)?\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?$"
+      name="external-js"
+      placeholder="<%= placeholder %>"
+      value="<%= url %>"
+      data-view-id="<%= view_id %>">
+
+    <span class="insecure-resource-tooltip resource-problem-tooltip">
+      <div class="help-flyout-link">
+        <span class="icon-help">?</span>
+        <div class="help-flyout help-flyout-reverse">
+          <svg class="icon-x" viewBox="0 0 100 100">
+            <path d="M96.8 83.7L63.1 50l33.7-33.7c3.6-3.6 3.6-9.4 0-13.1s-9.5-3.6-13.1 0L50 36.9 16.3 3.2C12.7-.4 6.9-.4 3.2 3.2s-3.6 9.5 0 13.1L36.9 50 3.2 83.7c-3.6 3.6-3.6 9.4 0 13.1s9.5 3.6 13.1 0L50 63.1l33.7 33.7c3.6 3.6 9.4 3.6 13.1 0s3.6-9.5 0-13.1z"/>
+          </svg>
+          <h5>Insecure Resource</h5>
+          <p>You are linking to a resource using the non-secure http:// protocol, which may not work when the browser is using https:// like CodePen enforces.</p>
+        </div>
+      </div>
+    </span>
+
+    <span class="not-using-url-extension-tooltip resource-problem-tooltip">
+      <div class="help-flyout-link">
+        <span class="icon-help">?</span>
+        <div class="help-flyout help-flyout-reverse">
+          <svg class="icon-x" viewBox="0 0 100 100">
+            <path d="M96.8 83.7L63.1 50l33.7-33.7c3.6-3.6 3.6-9.4 0-13.1s-9.5-3.6-13.1 0L50 36.9 16.3 3.2C12.7-.4 6.9-.4 3.2 3.2s-3.6 9.5 0 13.1L36.9 50 3.2 83.7c-3.6 3.6-3.6 9.4 0 13.1s9.5 3.6 13.1 0L50 63.1l33.7 33.7c3.6 3.6 9.4 3.6 13.1 0s3.6-9.5 0-13.1z"/>
+          </svg>
+          <h5>URL Extension Required</h5>
+          <p>When linking another Pen as a resource, make sure you use a <a href="https://blog.codepen.io/documentation/url-extensions/">URL Extension</a> of the type of code you want to link to. Either <code>.css</code>, <code>.js</code>, or the extension of a matching code processor.</p>
+        </div>
+      </div>
+    </span>
+
+    <div class="resource-actions">
+      <span class="remove-external-url external-url-option" data-view-id="<%= view_id %>">
+        <svg class="icon-x" viewBox="0 0 100 100" width="12" height="12">
+          <path d="M96.8 83.7L63.1 50l33.7-33.7c3.6-3.6 3.6-9.4 0-13.1s-9.5-3.6-13.1 0L50 36.9 16.3 3.2C12.7-.4 6.9-.4 3.2 3.2s-3.6 9.5 0 13.1L36.9 50 3.2 83.7c-3.6 3.6-3.6 9.4 0 13.1s9.5 3.6 13.1 0L50 63.1l33.7 33.7c3.6 3.6 9.4 3.6 13.1 0s3.6-9.5 0-13.1z"/>
+        </svg>
+      </span>
+
+      <a id="external-resource-input-view-link-<%= view_id %>" class="open-external-url external-url-option" target="_blank" rel="noopener" data-view-id="<%= view_id %>" href="<%= url %>">
+        <svg viewBox="0 0 30.5 16.5" id="icon-eye" width="14" height="14">
+          <path d="M15.3,0C8.9,0,3.3,3.3,0,8.3c3.3,5,8.9,8.3,15.3,8.3c6.4,0,12-3.3,15.3-8.3C27.3,3.3,21.7,0,15.3,0z M15.3,14.5 c-3.4,0-6.2-2.8-6.2-6.2C9,4.8,11.8,2,15.3,2c3.4,0,6.2,2.8,6.2,6.2C21.5,11.7,18.7,14.5,15.3,14.5z"/>
+        </svg>
+      </a>
+    </div>
+
+  </div>
+</script>
+<div class="external-resource-actions group">
+<span id="add-js-resource" class="button button-medium mini-button add-resource" data-type="js">
+<span data-type="js">+ add another resource</span>
+</span>
+</div>
+</div>
+<h3 aria-label="Packages">Packages</h3>
+<div class="item-settings-packages settings-row" id="item-settings-packages">
+<h4>Add Packages</h4>
+<p>Search for and use JavaScript packages from <a href="https://www.npmjs.com/" target="blank" rel="noopener">npm</a> here. By selecting a package, an <code>import</code> statement will be added to the top of the JavaScript editor for this package.</p>
+<div class="resource-search-bar">
+<svg viewBox="0 0 56.7 56.7" class="icon icon-mag" width="18" height="18">
+<path d="M42.8,7.3C33-2.4,17.1-2.4,7.3,7.3c-9.8,9.8-9.8,25.7,0,35.5c8.7,8.7,22.2,9.7,32,2.9l9.6,9.6c1.8,1.8,4.7,1.8,6.4,0
+c1.8-1.8,1.8-4.7,0-6.4l-9.6-9.6C52.5,29.5,51.5,16,42.8,7.3z M36.6,36.6c-6.4,6.4-16.7,6.4-23.1,0s-6.4-16.7,0-23.1
+c6.4-6.4,16.7-6.4,23.1,0C43,19.9,43,30.3,36.6,36.6z"></path>
+</svg>
+<span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input id="packages-search" type="text" value="" placeholder="Search npm and add a package..." class="aa-input" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="both" aria-expanded="false" aria-owns="algolia-autocomplete-listbox-6" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Lato, &quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Tahoma, sans-serif; font-size: 15px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="aa-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-6" style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none; right: auto;"><div class="aa-dataset-7"></div></span></span>
+</div>
+<div class="algolia-shoutout">
+<a href="https://www.algolia.com/?utm_source=react-instantsearch&amp;utm_medium=website&amp;utm_content=codepen.io&amp;utm_campaign=poweredby" target="_blank">
+Powered by <img alt="Algolia" src="./React Shopping Cart Demo_files/algolia-9e1c0c887f4db420704b2a79926864019ef156bcecc9d5774a7e4eaa731fc5b5.svg">
+</a>
+</div>
+<div class="help-flyout-link">
+<svg class="icon-help" viewBox="0 0 100 100" width="14" height="14">
+<path d="M75,0H25C11.19,0,0,11.193,0,25v50c0,13.802,11.19,25,25,25h50c13.811,0,25-11.198,25-25V25C100,11.193,88.811,0,75,0z
+   M57.203,85.067H41.504V72.542h15.699V85.067L57.203,85.067z M73.357,42.041c-0.84,2.066-1.873,3.834-3.102,5.298
+  c-1.235,1.474-2.604,2.718-4.101,3.751c-1.498,1.035-2.922,2.066-4.249,3.101c-1.333,1.034-1.553,2.214-2.596,3.547
+  c-1.025,1.335-0.977,3.004-0.977,5.006v3.924H41.668v-4.623c0-2.864,1.366-5.265,2.27-7.202c0.896-1.935,2.255-3.581,3.459-4.947
+  c1.196-1.367,2.62-2.556,3.955-3.557c1.327-0.993,2.637-1.993,3.776-2.995c1.123-1.001,2.083-2.1,2.783-3.304
+  c0.7-1.197,1.043-2.694,0.977-4.5c0-3.06-0.74-5.33-2.245-6.795c-1.498-1.465-3.582-2.206-6.25-2.206c-1.8,0-3.337,0.351-4.639,1.05
+  c-1.303,0.7-2.369,1.635-3.199,2.808c-0.837,1.163-1.448,3.593-1.847,5.156c-0.407,1.57-0.602,6.115-0.602,6.115H25.399
+  c0.073-8.333,0.684-7.963,1.855-10.965c1.164-2.995,2.8-6.132,4.899-8.33c2.099-2.197,4.63-4.179,7.601-5.417
+  c2.962-1.228,6.283-1.977,9.945-1.977c4.736,0,8.683,0.581,11.856,1.876c3.167,1.302,5.713,2.889,7.65,4.817
+  c1.929,1.937,3.312,4.004,4.149,6.234c0.831,2.237,1.245,4.313,1.245,6.242C74.601,37.354,74.187,39.975,73.357,42.041z"></path>
+</svg>
+<div class="help-flyout help-flyout-reverse">
+<h5>About Packages</h5>
+<svg class="icon-x" viewBox="0 0 100 100" width="12" height="12">
+<path d="M96.8 83.7L63.1 50l33.7-33.7c3.6-3.6 3.6-9.4 0-13.1s-9.5-3.6-13.1 0L50 36.9 16.3 3.2C12.7-.4 6.9-.4 3.2 3.2s-3.6 9.5 0 13.1L36.9 50 3.2 83.7c-3.6 3.6-3.6 9.4 0 13.1s9.5 3.6 13.1 0L50 63.1l33.7 33.7c3.6 3.6 9.4 3.6 13.1 0s3.6-9.5 0-13.1z"></path>
+</svg>
+<p>Using packages here is powered by <a href="https://esm.sh/">esm.sh</a>, which makes packages from npm not only available on a CDN, but prepares them for native JavaScript ESM usage.</p>
+<p>All packages are different, so refer to their docs for how they work.</p>
+<p>If you're using React / ReactDOM, make sure to turn on Babel for the JSX processing.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="settings tab-page" id="settings-behavior">
+<h3 aria-label="Pen Behavior">Behavior</h3>
+<div class="settings-row">
+<h4>Auto Save</h4>
+<div>
+<p class="hint">If active, Pens will autosave every 30 seconds after being saved once.</p>
+<div class="ios-toggle-mega-label-wrap">
+<span class="ios-toggle ios-toggle-reverse">
+<input type="checkbox" id="auto-save" name="auto-save" checked="">
+<label for="auto-save"></label>
+<label for="auto-save" class="ios-toggle-mega-label"></label>
+</span>
+</div>
+</div>
+</div>
+<div class="settings-row">
+<h4>Auto-Updating Preview</h4>
+<p class="hint">If enabled, the preview panel updates automatically as you code. If disabled, use the "Run" button to update.</p>
+<div class="ios-toggle-mega-label-wrap">
+<span class="ios-toggle ios-toggle-reverse">
+<input type="checkbox" id="auto-run" name="auto-run" checked="">
+<label for="auto-run"></label>
+<label for="auto-run" class="ios-toggle-mega-label"></label>
+</span>
+</div>
+</div>
+<div class="settings-row">
+<h4>Format on Save</h4>
+<p class="hint">If enabled, your code will be formatted when you actively save your Pen. <strong><span class="inline-note">Note:</span> your code becomes un-folded during formatting.</strong></p>
+<div class="ios-toggle-mega-label-wrap">
+<span class="ios-toggle ios-toggle-reverse">
+<input type="checkbox" id="format_on_save" name="format_on_save">
+<label for="format_on_save"></label>
+<label for="format_on_save" class="ios-toggle-mega-label"></label>
+</span>
+</div>
+</div>
+</div>
+<div class="settings tab-page" id="settings-editor">
+<h3 aria-label="Editor Settings">Editor Settings</h3>
+<div id="editor-settings-form" class="settings-row top-label-form">
+<h4>
+Code Indentation
+</h4>
+<ul class="radio-list">
+<li>
+<input type="radio" id="indent-with-spaces" name="indent-with" value="spaces" checked="">
+<label for="indent-with-spaces" class="small-inline">Spaces</label>
+</li>
+<li>
+<input type="radio" id="indent-with-tabs" name="indent-with" value="tabs">
+<label for="indent-with-tabs" class="small-inline">Tabs</label>
+</li>
+</ul>
+</div>
+<div class="settings-row top-label-form normal-labels">
+<h4>
+<label for="tab-size">
+Code Indent width
+</label>
+</h4>
+<div class="custom-select-wrap">
+<select id="tab-size" class="fullwidth" name="tab-size">
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+</select>
+<div class="select-icon">
+<svg viewBox="-122.9 121.1 105.9 61.9" class="icon-arrow-down-mini">
+<path d="M-63.2,180.3l43.5-43.5c1.7-1.7,2.7-4,2.7-6.5s-1-4.8-2.7-6.5c-1.7-1.7-4-2.7-6.5-2.7s-4.8,1-6.5,2.7l-37.2,37.2l-37.2-37.2
+        c-1.7-1.7-4-2.7-6.5-2.7s-4.8,1-6.5,2.6c-1.9,1.8-2.8,4.2-2.8,6.6c0,2.3,0.9,4.6,2.6,6.5l0,0c11.4,11.5,41,41.2,43,43.3l0.2,0.2
+        C-73.5,183.9-66.8,183.9-63.2,180.3z"></path>
+</svg>
+<svg viewBox="-122.9 121.1 105.9 61.9" class="icon-arrow-down-mini">
+<path d="M-63.2,180.3l43.5-43.5c1.7-1.7,2.7-4,2.7-6.5s-1-4.8-2.7-6.5c-1.7-1.7-4-2.7-6.5-2.7s-4.8,1-6.5,2.7l-37.2,37.2l-37.2-37.2
+        c-1.7-1.7-4-2.7-6.5-2.7s-4.8,1-6.5,2.6c-1.9,1.8-2.8,4.2-2.8,6.6c0,2.3,0.9,4.6,2.6,6.5l0,0c11.4,11.5,41,41.2,43,43.3l0.2,0.2
+        C-73.5,183.9-66.8,183.9-63.2,180.3z"></path>
+</svg>
+</div>
+</div>
+</div>
+<div class="settings-row">
+<h4>Want to change your Syntax Highlighting theme, Fonts and more?</h4>
+<p>Visit <a href="https://codepen.io/settings/editor" target="_blank">your global Editor Settings</a>.</p>
+</div>
+</div>
+</div>
+<footer>
+<div class="save-and-close-wrap">
+<input type="button" class="button button-small green button-no-right-margin close" value="Close" id="close-settings">
+</div>
+</footer>
+</div>
+<div class="page-wrap">
+<div class="boxes">
+<div class="mobile-editor-nav">
+<button id="html-toggle" class="selected"><span>HTML</span></button>
+<button id="css-toggle"><span>CSS</span></button>
+<button id="js-toggle"><span>JS</span></button>
+<button id="result-toggle" class="selected"><span>Result</span></button>
+</div>
+<div class="top-boxes editor-parent" data-number-of-editors="3" elementtiming="pen-editors" style="height: 183.828px;">
+<div class="editor-resizer html-editor-resizer" title="Double-click to expand."><h2 class="box-title html-editor-title box-title--resizer" id="html-editor-title">
+<svg viewBox="0 0 15 15" class="file-type-icon" id="icon-file-html">
+<rect fill="#FF3C41" width="15" height="15" rx="4"></rect>
+<path d="M10.97 2.29a.563.563 0 0 0-.495-.29.572.572 0 0 0-.488.277l-5.905 9.86a.565.565 0 0 0-.007.574c.102.18.287.289.495.289a.572.572 0 0 0 .488-.277l5.905-9.86a.565.565 0 0 0 .007-.574" fill="#28282B"></path>
+</svg>
+<span class="box-title-name">
+HTML
+</span>
+<span class="box-title-preprocessor-name "></span>
+</h2></div>
+<div id="box-html" class="box box-html" data-type="html" style="width: 31.7611%;">
+<div class="powers">
+<div class="powers-drag-handle" title="Double-click to expand."></div>
+<div class="editor-actions-left">
+<h2 class="box-title html-editor-title" id="html-editor-title">
+<svg viewBox="0 0 15 15" class="file-type-icon" id="icon-file-html">
+<rect fill="#FF3C41" width="15" height="15" rx="4"></rect>
+<path d="M10.97 2.29a.563.563 0 0 0-.495-.29.572.572 0 0 0-.488.277l-5.905 9.86a.565.565 0 0 0-.007.574c.102.18.287.289.495.289a.572.572 0 0 0 .488-.277l5.905-9.86a.565.565 0 0 0 .007-.574" fill="#28282B"></path>
+</svg>
+<span class="box-title-name">
+HTML
+</span>
+<span class="box-title-preprocessor-name "></span>
+</h2>
+<div class="unsaved-editor-message"><b>0</b> unsaved changes <span class="dismiss"><svg class="icon-x" viewBox="0 0 100 100"><path d="M96.8 83.7L63.1 50l33.7-33.7c3.6-3.6 3.6-9.4 0-13.1s-9.5-3.6-13.1 0L50 36.9 16.3 3.2C12.7-.4 6.9-.4 3.2 3.2s-3.6 9.5 0 13.1L36.9 50 3.2 83.7c-3.6 3.6-3.6 9.4 0 13.1s9.5 3.6 13.1 0L50 63.1l33.7 33.7c3.6 3.6 9.4 3.6 13.1 0s3.6-9.5 0-13.1z"></path></svg></span></div></div>
+<div class="editor-actions-right">
+<div class="collaborators-indicators"></div>
+<button id="settings-pane-html" class="button button-medium mini-button settings-nub" data-type="html" title="Open HTML Settings">
+<svg viewBox="0 0 100 100" id="icon-gear" width="10" height="10">
+<path d="M87.687,45.077c-0.313-2.433-0.816-4.807-1.542-7.079l8.145-11.73l-5.827-7.515l-0.094-0.123l-5.824-7.514
+                    l-12.955,5.577c-2.041-1.265-4.192-2.362-6.459-3.219L59.42,0h-9.34h-0.153h-9.341l-3.709,13.474
+                    c-2.27,0.857-4.421,1.955-6.463,3.222l-12.957-5.577l-5.825,7.514l-0.097,0.124l-5.822,7.517l8.146,11.731
+                    c-0.726,2.271-1.233,4.645-1.544,7.079L0,52.032l2.08,9.375l0.033,0.15l2.08,9.375l14.001,0.761c1.295,2.028,2.771,3.926,4.4,5.668
+                    l-2.396,14.227l8.416,4.173l0.138,0.067L37.169,100l9.309-10.796c1.161,0.109,2.335,0.173,3.524,0.173s2.358-0.074,3.52-0.184
+                    l9.317,10.804l8.415-4.173l0.141-0.066l8.413-4.172l-2.396-14.228c1.628-1.741,3.104-3.64,4.4-5.672l14-0.759l2.078-9.375
+                    l0.035-0.154L100,52.025L87.687,45.077z M50.003,34.51c8.435,0,15.272,7.035,15.272,15.719c0,8.679-6.839,15.717-15.272,15.717
+                    c-8.436,0-15.272-7.038-15.272-15.717C34.731,41.545,41.569,34.51,50.003,34.51z"></path>
+</svg>
+</button>
+<button class="button mini-button button-medium editor-dropdown-button editor-dropdown-button-html" data-dropdown="#editor-dropdown-html" aria-haspopup="true" aria-expanded="false">
+<span class="visually-hidden">
+HTML Options
+</span>
+<svg viewBox="-122.9 121.1 105.9 61.9" class="icon-arrow-down-mini" width="10" height="10">
+<path d="M-63.2,180.3l43.5-43.5c1.7-1.7,2.7-4,2.7-6.5s-1-4.8-2.7-6.5c-1.7-1.7-4-2.7-6.5-2.7s-4.8,1-6.5,2.7l-37.2,37.2l-37.2-37.2
+    c-1.7-1.7-4-2.7-6.5-2.7s-4.8,1-6.5,2.6c-1.9,1.8-2.8,4.2-2.8,6.6c0,2.3,0.9,4.6,2.6,6.5l0,0c11.4,11.5,41,41.2,43,43.3l0.2,0.2
+    C-73.5,183.9-66.8,183.9-63.2,180.3z"></path>
+</svg>
+</button>
+<ul id="editor-dropdown-html" class="link-list is-dropdown editor-dropdown editor-dropdown-html" data-dropdown-position="css" data-dropdown-type="html">
+<li class="editor-dropdown-list-item">
+<button id="tidy-html" class="invisible-button tidy-code-button" data-editor-type="html">
+Format HTML
+</button>
+</li>
+<li class="editor-dropdown-list-item">
+<button id="view-compiled-html" class="invisible-button view-compiled-button hide" data-editor-type="html">
+View Compiled HTML
+</button>
+</li>
+<li class="editor-dropdown-list-item">
+<button id="analyze-html" class="invisible-button analyze-button" data-editor-type="html">
+Analyze HTML
+</button>
+</li>
+<li class="editor-dropdown-list-item">
+<button id="maximize-html-editor" class="invisible-button maximize-button" data-editor-type="html">
+Maximize HTML Editor
+</button>
+</li>
+<li class="editor-dropdown-list-item">
+<button id="minimize-html-editor" class="invisible-button minimize-button" data-editor-type="html">
+Minimize HTML Editor
+</button>
+</li>
+<li class="editor-dropdown-list-item">
+<button id="fold-all-html" class="invisible-button fold-all-button" data-editor-type="html">
+Fold All
+</button>
+</li>
+<li class="editor-dropdown-list-item">
+<button id="unfold-all-html" class="invisible-button unfold-all-button" data-editor-type="html">
+Unfold All
+</button>
+</li>
+</ul>
+</div>
+</div>
+<div class="code-wrap notranslate" translate="no">
+<div class="CodeMirror cm-s-default CodeMirror-wrap CodeMirror-simplescroll" translate="no"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 4px; left: 43px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" aria-label="HTML Code Editor" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; min-height: 1em; outline: none;"></textarea></div><div class="CodeMirror-simplescroll-horizontal" cm-not-content="true" style="display: none;"><div></div></div><div class="CodeMirror-simplescroll-vertical" cm-not-content="true" style="display: none;"><div></div></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 39px; margin-bottom: -17px; border-right-width: 33px; min-height: 29px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre class="CodeMirror-line-like"><span>xxxxxxxxxx</span></pre><div class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>1</div></div></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-cursors"><div class="CodeMirror-cursor" style="left: 4px; top: 0px; height: 21px;">&nbsp;</div></div><div class="CodeMirror-code" role="presentation"><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -39px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">id</span>=<span class="cm-string">'app'</span><span class="cm-tag cm-bracket">&gt;</span><span class="cm-tag cm-bracket CodeMirror-matchingtag">&lt;/</span><span class="cm-tag CodeMirror-matchingtag">div</span><span class="cm-tag cm-bracket CodeMirror-matchingtag">&gt;</span></span></pre></div></div></div></div></div></div><div style="position: absolute; height: 33px; width: 1px; border-bottom: 0px solid transparent; top: 29px;"></div><div class="CodeMirror-gutters" style="height: 62px; left: -1.90735e-06px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 29px;"></div><div class="CodeMirror-gutter CodeMirror-foldgutter"></div></div></div></div>
+<div class="error-bar" id="error-bar-html">
+<span class="error-icon" data-type="html">
+!
+</span>
+</div>
+<span class="code-editor-status"></span>
+</div>
+</div>
+<div class="editor-resizer css-editor-resizer" title="Double-click to expand."><h2 class="box-title css-editor-title box-title--resizer" id="css-editor-title">
+<svg viewBox="0 0 15 15" class="file-type-icon" id="icon-file-css">
+<rect fill="#0EBEFF" width="15" height="15" rx="4"></rect><path d="M8 8.366l1.845 1.065a.507.507 0 0 0 .686-.181.507.507 0 0 0-.186-.685L8.5 7.5l1.845-1.065a.507.507 0 0 0 .186-.685.507.507 0 0 0-.686-.181L8 6.634v-2.13A.507.507 0 0 0 7.5 4c-.268 0-.5.225-.5.503v2.131L5.155 5.569a.507.507 0 0 0-.686.181.507.507 0 0 0 .186.685L6.5 7.5 4.655 8.565a.507.507 0 0 0-.186.685c.134.232.445.32.686.181L7 8.366v2.13c0 .271.224.504.5.504.268 0 .5-.225.5-.503V8.366z" fill="#282828"></path>
+</svg>
+<span class="box-title-name">
+CSS
+</span>
+<span class="box-title-preprocessor-name ">(SCSS)</span>
+</h2></div>
+<div id="box-css" class="box box-css" data-type="css" style="width: 31.7611%;">
+<div class="powers">
+<div class="powers-drag-handle" title="Double-click to expand."></div>
+<div class="editor-actions-left">
+<h2 class="box-title css-editor-title" id="css-editor-title">
+<svg viewBox="0 0 15 15" class="file-type-icon" id="icon-file-css">
+<rect fill="#0EBEFF" width="15" height="15" rx="4"></rect><path d="M8 8.366l1.845 1.065a.507.507 0 0 0 .686-.181.507.507 0 0 0-.186-.685L8.5 7.5l1.845-1.065a.507.507 0 0 0 .186-.685.507.507 0 0 0-.686-.181L8 6.634v-2.13A.507.507 0 0 0 7.5 4c-.268 0-.5.225-.5.503v2.131L5.155 5.569a.507.507 0 0 0-.686.181.507.507 0 0 0 .186.685L6.5 7.5 4.655 8.565a.507.507 0 0 0-.186.685c.134.232.445.32.686.181L7 8.366v2.13c0 .271.224.504.5.504.268 0 .5-.225.5-.503V8.366z" fill="#282828"></path>
+</svg>
+<span class="box-title-name">
+CSS
+</span>
+<span class="box-title-preprocessor-name ">(SCSS)</span>
+</h2>
+</div>
+<div class="editor-actions-right">
+<div class="collaborators-indicators"></div>
+<button id="settings-pane-css" class="button button-medium mini-button settings-nub" data-type="css" title="Open CSS Settings">
+<svg viewBox="0 0 100 100" id="icon-gear" width="10" height="10">
+<path d="M87.687,45.077c-0.313-2.433-0.816-4.807-1.542-7.079l8.145-11.73l-5.827-7.515l-0.094-0.123l-5.824-7.514
+                    l-12.955,5.577c-2.041-1.265-4.192-2.362-6.459-3.219L59.42,0h-9.34h-0.153h-9.341l-3.709,13.474
+                    c-2.27,0.857-4.421,1.955-6.463,3.222l-12.957-5.577l-5.825,7.514l-0.097,0.124l-5.822,7.517l8.146,11.731
+                    c-0.726,2.271-1.233,4.645-1.544,7.079L0,52.032l2.08,9.375l0.033,0.15l2.08,9.375l14.001,0.761c1.295,2.028,2.771,3.926,4.4,5.668
+                    l-2.396,14.227l8.416,4.173l0.138,0.067L37.169,100l9.309-10.796c1.161,0.109,2.335,0.173,3.524,0.173s2.358-0.074,3.52-0.184
+                    l9.317,10.804l8.415-4.173l0.141-0.066l8.413-4.172l-2.396-14.228c1.628-1.741,3.104-3.64,4.4-5.672l14-0.759l2.078-9.375
+                    l0.035-0.154L100,52.025L87.687,45.077z M50.003,34.51c8.435,0,15.272,7.035,15.272,15.719c0,8.679-6.839,15.717-15.272,15.717
+                    c-8.436,0-15.272-7.038-15.272-15.717C34.731,41.545,41.569,34.51,50.003,34.51z"></path>
+</svg>
+</button>
+<button class="button mini-button button-medium editor-dropdown-button editor-dropdown-button-css" data-dropdown="#editor-dropdown-css" aria-haspopup="true" aria-expanded="false">
+<span class="visually-hidden">
+CSS Options
+</span>
+<svg viewBox="-122.9 121.1 105.9 61.9" class="icon-arrow-down-mini" width="10" height="10">
+<path d="M-63.2,180.3l43.5-43.5c1.7-1.7,2.7-4,2.7-6.5s-1-4.8-2.7-6.5c-1.7-1.7-4-2.7-6.5-2.7s-4.8,1-6.5,2.7l-37.2,37.2l-37.2-37.2
+    c-1.7-1.7-4-2.7-6.5-2.7s-4.8,1-6.5,2.6c-1.9,1.8-2.8,4.2-2.8,6.6c0,2.3,0.9,4.6,2.6,6.5l0,0c11.4,11.5,41,41.2,43,43.3l0.2,0.2
+    C-73.5,183.9-66.8,183.9-63.2,180.3z"></path>
+</svg>
+</button>
+<ul id="editor-dropdown-css" class="link-list is-dropdown editor-dropdown editor-dropdown-css" data-dropdown-position="css" data-dropdown-type="css">
+<li class="editor-dropdown-list-item">
+<button id="tidy-css" class="invisible-button tidy-code-button" data-editor-type="css">
+Format CSS
+</button>
+</li>
+<li class="editor-dropdown-list-item">
+<button id="view-compiled-css" class="invisible-button view-compiled-button" data-editor-type="css">
+View Compiled CSS
+</button>
+</li>
+<li class="editor-dropdown-list-item">
+<button id="analyze-css" class="invisible-button analyze-button" data-editor-type="css">
+Analyze CSS
+</button>
+</li>
+<li class="editor-dropdown-list-item">
+<button id="maximize-css-editor" class="invisible-button maximize-button" data-editor-type="css">
+Maximize CSS Editor
+</button>
+</li>
+<li class="editor-dropdown-list-item">
+<button id="minimize-css-editor" class="invisible-button minimize-button" data-editor-type="css">
+Minimize CSS Editor
+</button>
+</li>
+<li class="editor-dropdown-list-item">
+<button id="fold-all-css" class="invisible-button fold-all-button" data-editor-type="css">
+Fold All
+</button>
+</li>
+<li class="editor-dropdown-list-item">
+<button id="unfold-all-css" class="invisible-button unfold-all-button" data-editor-type="css">
+Unfold All
+</button>
+</li>
+</ul>
+</div>
+</div>
+<div class="code-wrap notranslate" translate="no">
+<div class="CodeMirror cm-s-default CodeMirror-wrap CodeMirror-simplescroll" translate="no"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 4px; left: 46px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" aria-label="CSS Code Editor" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; min-height: 1em; outline: none;"></textarea></div><div class="CodeMirror-simplescroll-horizontal" cm-not-content="true" style="display: none;"><div></div></div><div class="CodeMirror-simplescroll-vertical" cm-not-content="true" style="display: block; bottom: 0px;"><div style="height: 10px; top: 0px;"></div></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 42px; margin-bottom: -17px; border-right-width: 33px; min-height: 9161px; padding-right: 10px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation" style="padding-bottom: 106px;"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre class="CodeMirror-line-like"><span>xxxxxxxxxx</span></pre><div class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>415</div></div></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-cursors"><div class="CodeMirror-cursor" style="left: 4px; top: 0px; height: 21px;">&nbsp;</div></div><div class="CodeMirror-code" role="presentation" style=""><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -42px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// VARIABLES</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -42px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">2</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// --&gt; colors</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -42px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">3</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// --&gt; grids</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -42px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">4</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// --&gt; typography</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -42px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">5</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// </span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -42px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">6</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// BASE</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -42px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">7</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// --&gt; lists</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -42px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">8</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// --&gt; media</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -42px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">9</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// --&gt; page</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -42px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">10</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// --&gt; typography</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -42px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">11</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// </span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -42px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">12</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// COMPONENTS</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -42px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">13</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// --&gt; button</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -42px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">14</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// --&gt; cart</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -42px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">15</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// --&gt; header</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -42px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">16</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// --&gt; item</span></span></pre></div></div></div></div></div></div><div style="position: absolute; height: 33px; width: 1px; border-bottom: 0px solid transparent; top: 9161px;"></div><div class="CodeMirror-gutters" style="height: 9194px; left: 0px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 32px;"></div><div class="CodeMirror-gutter CodeMirror-foldgutter"></div></div></div></div>
+<div class="error-bar" id="error-bar-css">
+<span class="error-icon" data-type="css">
+!
+</span>
+</div>
+<span class="code-editor-status"></span>
+</div>
+</div>
+<div class="editor-resizer js-editor-resizer" title="Double-click to expand."><h2 class="box-title js-editor-title box-title--resizer" id="js-editor-title">
+<svg viewBox="0 0 15 15" class="file-type-icon" id="icon-file-js">
+<rect fill="#FCD000" width="15" height="15" rx="4"></rect>
+<path d="M6.554 3.705c0 .267-.19.496-.452.543-1.2.217-2.12 1.61-2.12 3.275 0 1.665.92 3.057 2.12 3.274a.554.554 0 0 1-.205 1.087c-1.733-.322-3.022-2.175-3.022-4.361 0-2.187 1.289-4.04 3.022-4.362a.554.554 0 0 1 .657.544zm1.892 0c0-.347.316-.607.657-.544 1.733.322 3.022 2.175 3.022 4.362 0 2.186-1.289 4.04-3.022 4.361a.554.554 0 0 1-.205-1.087c1.2-.217 2.12-1.61 2.12-3.274 0-1.665-.92-3.058-2.12-3.275a.551.551 0 0 1-.452-.543z" fill="#282828"></path>
+</svg>
+<span class="box-title-name">
+JS
+</span>
+<span class="box-title-preprocessor-name ">(Babel)</span>
+</h2></div>
+<div id="box-js" class="box box-js" data-type="js" style="width: 31.7611%;">
+<div class="powers">
+<div class="powers-drag-handle" title="Double-click to expand."></div>
+<div class="editor-actions-left">
+<h2 class="box-title js-editor-title" id="js-editor-title">
+<svg viewBox="0 0 15 15" class="file-type-icon" id="icon-file-js">
+<rect fill="#FCD000" width="15" height="15" rx="4"></rect>
+<path d="M6.554 3.705c0 .267-.19.496-.452.543-1.2.217-2.12 1.61-2.12 3.275 0 1.665.92 3.057 2.12 3.274a.554.554 0 0 1-.205 1.087c-1.733-.322-3.022-2.175-3.022-4.361 0-2.187 1.289-4.04 3.022-4.362a.554.554 0 0 1 .657.544zm1.892 0c0-.347.316-.607.657-.544 1.733.322 3.022 2.175 3.022 4.362 0 2.186-1.289 4.04-3.022 4.361a.554.554 0 0 1-.205-1.087c1.2-.217 2.12-1.61 2.12-3.274 0-1.665-.92-3.058-2.12-3.275a.551.551 0 0 1-.452-.543z" fill="#282828"></path>
+</svg>
+<span class="box-title-name">
+JS
+</span>
+<span class="box-title-preprocessor-name ">(Babel)</span>
+</h2>
+</div>
+<div class="editor-actions-right">
+<div class="collaborators-indicators"></div>
+<button id="settings-pane-js" class="button button-medium mini-button settings-nub" data-type="js" title="Open JS Settings">
+<svg viewBox="0 0 100 100" id="icon-gear" width="10" height="10">
+<path d="M87.687,45.077c-0.313-2.433-0.816-4.807-1.542-7.079l8.145-11.73l-5.827-7.515l-0.094-0.123l-5.824-7.514
+                    l-12.955,5.577c-2.041-1.265-4.192-2.362-6.459-3.219L59.42,0h-9.34h-0.153h-9.341l-3.709,13.474
+                    c-2.27,0.857-4.421,1.955-6.463,3.222l-12.957-5.577l-5.825,7.514l-0.097,0.124l-5.822,7.517l8.146,11.731
+                    c-0.726,2.271-1.233,4.645-1.544,7.079L0,52.032l2.08,9.375l0.033,0.15l2.08,9.375l14.001,0.761c1.295,2.028,2.771,3.926,4.4,5.668
+                    l-2.396,14.227l8.416,4.173l0.138,0.067L37.169,100l9.309-10.796c1.161,0.109,2.335,0.173,3.524,0.173s2.358-0.074,3.52-0.184
+                    l9.317,10.804l8.415-4.173l0.141-0.066l8.413-4.172l-2.396-14.228c1.628-1.741,3.104-3.64,4.4-5.672l14-0.759l2.078-9.375
+                    l0.035-0.154L100,52.025L87.687,45.077z M50.003,34.51c8.435,0,15.272,7.035,15.272,15.719c0,8.679-6.839,15.717-15.272,15.717
+                    c-8.436,0-15.272-7.038-15.272-15.717C34.731,41.545,41.569,34.51,50.003,34.51z"></path>
+</svg>
+</button>
+<button class="button mini-button button-medium editor-dropdown-button editor-dropdown-button-js" data-dropdown="#editor-dropdown-js" aria-haspopup="true" aria-expanded="false">
+<span class="visually-hidden">
+JS Options
+</span>
+<svg viewBox="-122.9 121.1 105.9 61.9" class="icon-arrow-down-mini" width="10" height="10">
+<path d="M-63.2,180.3l43.5-43.5c1.7-1.7,2.7-4,2.7-6.5s-1-4.8-2.7-6.5c-1.7-1.7-4-2.7-6.5-2.7s-4.8,1-6.5,2.7l-37.2,37.2l-37.2-37.2
+    c-1.7-1.7-4-2.7-6.5-2.7s-4.8,1-6.5,2.6c-1.9,1.8-2.8,4.2-2.8,6.6c0,2.3,0.9,4.6,2.6,6.5l0,0c11.4,11.5,41,41.2,43,43.3l0.2,0.2
+    C-73.5,183.9-66.8,183.9-63.2,180.3z"></path>
+</svg>
+</button>
+<ul id="editor-dropdown-js" class="link-list is-dropdown editor-dropdown editor-dropdown-js" data-dropdown-position="css" data-dropdown-type="js">
+<li class="editor-dropdown-list-item">
+<button id="tidy-js" class="invisible-button tidy-code-button" data-editor-type="js">
+Format JavaScript
+</button>
+</li>
+<li class="editor-dropdown-list-item">
+<button id="view-compiled-js" class="invisible-button view-compiled-button" data-editor-type="js">
+View Compiled JavaScript
+</button>
+</li>
+<li class="editor-dropdown-list-item">
+<button id="analyze-js" class="invisible-button analyze-button" data-editor-type="js">
+Analyze JavaScript
+</button>
+</li>
+<li class="editor-dropdown-list-item">
+<button id="maximize-js-editor" class="invisible-button maximize-button" data-editor-type="js">
+Maximize JavaScript Editor
+</button>
+</li>
+<li class="editor-dropdown-list-item">
+<button id="minimize-js-editor" class="invisible-button minimize-button" data-editor-type="js">
+Minimize JavaScript Editor
+</button>
+</li>
+<li class="editor-dropdown-list-item">
+<button id="fold-all-js" class="invisible-button fold-all-button" data-editor-type="js">
+Fold All
+</button>
+</li>
+<li class="editor-dropdown-list-item">
+<button id="unfold-all-js" class="invisible-button unfold-all-button" data-editor-type="js">
+Unfold All
+</button>
+</li>
+</ul>
+</div>
+</div>
+<div class="code-wrap notranslate" translate="no">
+<div class="CodeMirror cm-s-default CodeMirror-wrap CodeMirror-simplescroll" translate="no"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 4px; left: 46px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" aria-label="JavaScript Code Editor" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; min-height: 1em; outline: none;"></textarea></div><div class="CodeMirror-simplescroll-horizontal" cm-not-content="true" style="display: none;"><div></div></div><div class="CodeMirror-simplescroll-vertical" cm-not-content="true" style="display: block; bottom: 0px;"><div style="height: 10px; top: 0px;"></div></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 42px; margin-bottom: -17px; border-right-width: 33px; min-height: 18464px; padding-right: 10px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation" style="padding-bottom: 106px;"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre class="CodeMirror-line-like"><span>xxxxxxxxxx</span></pre><div class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>758</div></div></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-cursors"><div class="CodeMirror-cursor" style="left: 4px; top: 0px; height: 21px;">&nbsp;</div></div><div class="CodeMirror-code" role="presentation" style=""><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -42px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// INITIAL STATE</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -42px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">2</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// --------------------</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -42px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">3</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// --&gt; initialState</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -42px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">4</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// </span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -42px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">5</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// FUNCTIONS</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -42px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">6</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// --------------------</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -42px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">7</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// --&gt; getOptionsArray</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -42px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">8</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// </span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -42px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">9</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// ACTIONS</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -42px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">10</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// --------------------</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -42px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">11</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// --&gt; addToCart</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -42px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">12</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// --&gt; removeFromCart</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -42px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">13</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// --&gt; updateCartItem</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -42px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">14</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// --&gt; removeStockItem</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -42px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">15</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// </span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" aria-hidden="true" style="left: -42px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 24px;">16</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// REDUCERS</span></span></pre></div></div></div></div></div></div><div style="position: absolute; height: 33px; width: 1px; border-bottom: 0px solid transparent; top: 18464px;"></div><div class="CodeMirror-gutters" style="height: 18497px; left: 0px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 32px;"></div><div class="CodeMirror-gutter CodeMirror-foldgutter"></div></div></div></div>
+<div class="error-bar" id="error-bar-js">
+<span class="error-icon" data-type="js">
+!
+</span>
+</div>
+<span class="code-editor-status"></span>
+</div>
+<div class="react-pen-editor-imports" data-props-type="js"></div>
+</div>
+</div>
+<div id="resizer" class="resizer">
+<span></span>
+<div id="width-readout" class="width-readout">1094px</div>
+<div id="pen-ad"></div>
+</div>
+<section id="drawer" class="comments">
+</section>
+<div class="output-container">
+<div class="output-sizer">
+<div id="result_div" class="result">
+<iframe id="result" name="CodePen" title="CodePen Preview" src="./React Shopping Cart Demo_files/oZLavq.html" sandbox="allow-downloads allow-forms allow-modals allow-pointer-lock allow-popups-to-escape-sandbox allow-popups allow-presentation allow-same-origin allow-scripts allow-top-navigation-by-user-activation" allow="accelerometer *; bluetooth *; camera *; encrypted-media *; display-capture *; geolocation *; gyroscope *; microphone *; midi *; clipboard-read *; clipboard-write *; web-share *; serial *; xr-spatial-tracking *" scrolling="auto" allowtransparency="true" allowpaymentrequest="true" allowfullscreen="true" class="result-iframe " loading="lazy">
+          </iframe>
+<div id="editor-drag-cover" class="drag-cover" style="display: none;"></div>
+</div>
+<div id="box-console" class="box box-console notranslate" translate="no">
+<div class="editor-resizer editor-resizer-console" title="Drag to resize. Double-click to expand."></div>
+<div class="powers">
+<div class="powers-drag-handle" title="Drag to resize. Double-click to expand."></div>
+<div class="editor-actions-left">
+<h2 class="box-title"><span class="box-title-name">Console</span></h2>
+</div>
+<div class="editor-actions-right">
+<button class="button button-medium mini-button console-clear-button" title="Clear">
+Clear
+</button>
+<button class="button button-medium mini-button close-editor-button" data-type="console" title="Close">
+<svg class="icon-x" viewBox="0 0 100 100">
+<path d="M96.8 83.7L63.1 50l33.7-33.7c3.6-3.6 3.6-9.4 0-13.1s-9.5-3.6-13.1 0L50 36.9 16.3 3.2C12.7-.4 6.9-.4 3.2 3.2s-3.6 9.5 0 13.1L36.9 50 3.2 83.7c-3.6 3.6-3.6 9.4 0 13.1s9.5 3.6 13.1 0L50 63.1l33.7 33.7c3.6 3.6 9.4 3.6 13.1 0s3.6-9.5 0-13.1z"></path>
+</svg>
+</button>
+</div>
+</div>
+<div class="console-wrap">
+<div class="console-entries short-no-scroll"></div>
+<div class="console-command-line">
+<span class="console-arrow forwards"></span>
+<textarea class="console-command-line-input auto-expand" rows="1" data-min-rows="1"></textarea>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="asset-bin-goes-here"></div>
+<footer id="react-pen-footer" class="site-footer editor-footer"><div class="footer-left"><div class="footer-actions-menu"><button id="footer-button" aria-expanded="false" class="Button-module_root-xw+9D toggle-footer-menu-button"><svg viewBox="-122.9 121.1 105.9 61.9"><path d="m-63.2 180.3 43.5-43.5c1.7-1.7 2.7-4 2.7-6.5s-1-4.8-2.7-6.5c-1.7-1.7-4-2.7-6.5-2.7s-4.8 1-6.5 2.7L-69.9 161l-37.2-37.2c-1.7-1.7-4-2.7-6.5-2.7s-4.8 1-6.5 2.6c-1.9 1.8-2.8 4.2-2.8 6.6 0 2.3.9 4.6 2.6 6.5 11.4 11.5 41 41.2 43 43.3l.2.2c3.6 3.6 10.3 3.6 13.9 0z"></path></svg></button><select name="zoom-choice" data-placeholder="Zoom Scale..." class="footer-button button mini-button zoom-select"><option value="1.0" class="option-green" selected="">1.0×</option><option value="0.5" class="option-green">0.5×</option><option value="0.25" class="option-green">0.25×</option></select></div></div><div class="footer-right"><span class="PenEditorFooterStatus_editorState-WVwoB" data-state="EMPTY"><span class="PenEditorFooterStatus_text-5fDLt"></span><svg></svg></span><button data-test-id="fork-button" title="Fork this Pen" class="Button-module_root-xw+9D" data-size="mini" data-has-icon="true"><svg viewBox="0 0 100 100"><path d="M84.339 62.504a15.805 15.805 0 0 0-11.313 4.721 40.187 40.187 0 0 1-1.578-1.572c-6.965-7.211-14.451-19.189-22.311-29.678-7.977-10.209-16.196-20.413-29.012-20.906H0v14.37h20.126c2.555-.111 6.556 1.993 11.208 6.914 6.961 7.197 14.454 19.171 22.315 29.662 4.822 6.164 9.759 12.293 15.741 16.289 1.99 6.191 7.93 10.688 14.949 10.688 8.648 0 15.661-6.824 15.661-15.244s-7.013-15.244-15.661-15.244zM51.541 29.438h18.986c2.637 4.795 7.831 8.059 13.811 8.059 8.648 0 15.661-6.824 15.661-15.243S92.986 7.01 84.338 7.01c-5.979 0-11.174 3.264-13.811 8.058H36.3c6.007 3.551 10.861 8.924 15.241 14.37z"></path></svg>Fork</button><button class="Button-module_root-xw+9D embed-modal-button" data-size="mini">Embed</button><span class="DropdownControlled-module_root-3ewM0" data-direction="top left" data-open="false"><button aria-haspopup="menu" aria-expanded="false" aria-controls="oc-1721043085825" class="Button-module_root-xw+9D" data-size="mini">Export</button><div class="DropdownControlled-module_content-mxnG0" id="oc-1721043085825" role="menu" data-open="false" hidden="" data-direction="top left"><div class="DropdownContent-module_root-rQ0al PenEditorFooterExportDropdown-module_dropdown-mInw+"><header class="PenEditorFooterExportDropdown-module_header-5Usha"><h3>Export</h3><a target="codepen_documentation" rel="noopener noreferrer" href="https://blog.codepen.io/documentation/exporting-pens/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill-rule="evenodd"><path d="M6 12A6 6 0 1 0 6 0a6 6 0 0 0 0 12zm.793-10.129a.721.721 0 0 0-.583-.264.82.82 0 0 0-.594.264.964.964 0 0 0-.286.649.92.92 0 0 0 .21.638.78.78 0 0 0 .604.253.803.803 0 0 0 .605-.253.954.954 0 0 0 .253-.638.87.87 0 0 0-.209-.649zm-.176 2.86c-.146-.235-.41-.352-.792-.352-.249 0-.473.059-.67.176-.191.117-.36.268-.507.451a2.578 2.578 0 0 0-.34.561 2.466 2.466 0 0 0-.177.528l.594.176c.096-.33.187-.557.275-.682.088-.125.173-.187.253-.187.044 0 .085.018.121.055.037.03.055.106.055.231 0 .176-.018.4-.055.671-.036.264-.08.55-.132.858a51.94 51.94 0 0 0-.12.902 6.242 6.242 0 0 0-.056.759c0 .389.074.693.22.913.154.22.433.33.836.33.25 0 .47-.059.66-.176.198-.117.367-.264.506-.44.14-.183.25-.374.33-.572.088-.198.147-.374.176-.528L7.2 8.229c-.095.33-.187.557-.275.682-.088.125-.176.187-.264.187-.036 0-.073-.018-.11-.055-.036-.037-.055-.114-.055-.231 0-.125.019-.323.055-.594l.121-.902c.044-.33.085-.645.121-.946.037-.3.055-.539.055-.715 0-.389-.077-.697-.23-.924z"></path></svg></a></header><a data-url="/ajax/upgrades/zip" data-test-id="export-zip" href="https://codepen.io/cpe/pen/export/oZLavq" target="_blank" class="Button-module_root-xw+9D upsell" data-has-icon="true" data-full-width="true" data-align="start"><svg viewBox="0 0 23 17"><path d="M18.18 5.76a1.221 1.221 0 0 0-.461-.273 2.044 2.044 0 0 0-.663-.096H16v2.772h1.056c.528 0 .908-.126 1.14-.378.232-.252.348-.604.348-1.056 0-.2-.03-.382-.09-.546a1.118 1.118 0 0 0-.273-.423zM21 0H2C.9 0 0 .9 0 2v13c0 1.1.9 2 2 2h19c1.1 0 2-.9 2-2V2c0-1.1-.9-2-2-2zM9.208 4.605a.936.936 0 0 1-.051.306c-.034.1-.081.194-.141.282l-4.104 5.862h4.164v1.56H2.332v-.78c0-.093.016-.184.048-.273a.951.951 0 0 1 .132-.25l4.116-5.88h-3.96v-1.56h6.54v.733zm3.145 8.01h-2.041V3.872h2.04v8.741zm8.01-4.686c-.141.364-.355.676-.643.936-.288.26-.654.462-1.095.609-.442.145-.965.218-1.57.218H16v2.922h-2.028V3.873h3.084c.616 0 1.145.073 1.587.219.442.146.806.347 1.092.603.286.256.496.558.633.906.136.348.204.724.204 1.128 0 .436-.07.836-.21 1.2z"></path></svg>Export .zip</a><div class="PenEditorFooterExportDropdown-module_proWrap-vPSu8"><a class="PenEditorFooterExportDropdown-module_proBadge-unLGM BadgePro-module_root-EhalN BadgePro-module_svg-OztkH Badge-module_root-+zThw" title="PRO" data-test-id="pro-badge" href="https://codepen.io/pro"><svg fill="none" viewBox="0 0 32 16" xmlns="http://www.w3.org/2000/svg" style="width: 32px; height: 16px;"><rect fill="#ffdd40" height="16" rx="1.5" width="32"></rect><g fill="#000"><path d="M9.174 5.598c.834 0 1.214.44 1.214 1.113 0 .76-.422 1.113-1.182 1.113h-.56c-.094 0-.105-.011-.105-.11V5.708c0-.1.01-.11.106-.11zm.106 3.67c.76 0 1.404-.188 1.847-.563.56-.452.855-1.135.855-2.016 0-.893-.317-1.61-.887-2.039-.443-.33-.97-.507-1.857-.507H7.106c-.095 0-.106.011-.106.11v7.494c0 .099.01.11.106.11h1.33c.094 0 .105-.011.105-.11v-2.37c0-.099.01-.11.106-.11zM14.375 9.047c0-.077 0-.11.063-.11.053 0 .074.022.116.088l1.953 2.722c.074.099.084.11.18.11h1.635c.064 0 .095 0 .095-.022a.31.31 0 0 0-.053-.088c-.707-.96-1.425-1.885-2.132-2.854a.085.085 0 0 1-.02-.045c0-.022.01-.044.041-.055.95-.286 1.573-1.124 1.573-2.28 0-.96-.454-1.62-1.055-1.973-.539-.32-1.056-.397-1.943-.397H12.94c-.095 0-.105.011-.105.11v7.494c0 .099.02.11.116.11h1.32c.094 0 .105-.011.105-.11zm.654-3.515c.834 0 1.214.418 1.214 1.09 0 .76-.422 1.07-1.182 1.07h-.58c-.096 0-.106-.012-.106-.11v-1.94c0-.1.01-.11.105-.11zM26 8c0-2.182-1.636-4-3.726-4s-3.726 1.818-3.726 4 1.636 4 3.726 4S26 10.182 26 8zm-5.837 0c0-1.311.855-2.402 2.111-2.402 1.256 0 2.111 1.09 2.111 2.402 0 1.311-.855 2.402-2.11 2.402-1.257 0-2.112-1.09-2.112-2.402z"></path></g></svg></a><button data-test-id="export-zip-with-build" class="Button-module_root-xw+9D" data-has-icon="true" data-color="grad-yellow" data-full-width="true" data-align="start"><svg viewBox="0 0 23 17"><path d="M18.18 5.76a1.221 1.221 0 0 0-.461-.273 2.044 2.044 0 0 0-.663-.096H16v2.772h1.056c.528 0 .908-.126 1.14-.378.232-.252.348-.604.348-1.056 0-.2-.03-.382-.09-.546a1.118 1.118 0 0 0-.273-.423zM21 0H2C.9 0 0 .9 0 2v13c0 1.1.9 2 2 2h19c1.1 0 2-.9 2-2V2c0-1.1-.9-2-2-2zM9.208 4.605a.936.936 0 0 1-.051.306c-.034.1-.081.194-.141.282l-4.104 5.862h4.164v1.56H2.332v-.78c0-.093.016-.184.048-.273a.951.951 0 0 1 .132-.25l4.116-5.88h-3.96v-1.56h6.54v.733zm3.145 8.01h-2.041V3.872h2.04v8.741zm8.01-4.686c-.141.364-.355.676-.643.936-.288.26-.654.462-1.095.609-.442.145-.965.218-1.57.218H16v2.922h-2.028V3.873h3.084c.616 0 1.145.073 1.587.219.442.146.806.347 1.092.603.286.256.496.558.633.906.136.348.204.724.204 1.128 0 .436-.07.836-.21 1.2z"></path></svg>Export .zip with Build Process </button></div></div></div></span><span class="DropdownControlled-module_root-3ewM0" data-direction="top left" data-open="false"><button aria-haspopup="menu" aria-expanded="false" aria-controls="oc-1721043085826" class="Button-module_root-xw+9D" data-size="mini">Share</button><div class="DropdownControlled-module_content-mxnG0" id="oc-1721043085826" role="menu" data-open="false" hidden="" data-direction="top left"></div></span></div><div class="footer-actions" data-expanded="false"><button class="Button-module_root-xw+9D console-toggle-button" data-size="mini">Console</button><button class="Button-module_root-xw+9D" data-size="mini">Assets</button><button data-id="editor-comments-button" class="Button-module_root-xw+9D" data-size="mini">Comments</button><button title="Keyboard Shortcuts" class="Button-module_root-xw+9D keyboard-commands-button" data-size="mini"><span>Ctrl</span></button></div></footer>
+<div id="keycommands" class="modal modal-neutral">
+<div class="keycommands-container">
+<section class="editor-commands inline-editor-commands">
+<h2>Editor Commands</h2>
+<div class="key-group">
+<kbd class="keycommand">
+<span class="key pc_only">Ctrl</span>
+<span class="key mac_only">Ctrl</span>
+<span class="key">Space</span>
+</kbd>
+Autocomplete
+</div>
+<div class="key-group">
+<kbd class="keycommand">
+<span class="key -command"></span>
+<span class="key">F</span>
+</kbd>
+Find
+</div>
+<div class="key-group">
+<kbd class="keycommand">
+<span class="key -command"></span>
+<span class="key">G</span>
+</kbd>
+Find Next
+</div>
+<div class="key-group">
+<kbd class="keycommand">
+<span class="key -command"></span>
+<span class="key" title="Shift">⇧</span>
+<span class="key">G</span>
+</kbd>
+Find Previous
+</div>
+<div class="key-group">
+<kbd class="keycommand">
+<span class="key -command"></span>
+<span class="key pc_only" title="Shift">⇧</span>
+<span class="key mac_only">Opt</span>
+<span class="key">F</span>
+</kbd>
+Find &amp; Replace
+</div>
+<div class="key-group mac_only">
+<kbd class="keycommand">
+<span class="key -command"></span>
+<span class="key" title="Shift">⇧</span>
+<span class="key">F</span>
+</kbd>
+Format Code
+</div>
+<div class="key-group">
+<kbd class="keycommand">
+<span class="key -command"></span>
+<span class="key">[</span>
+</kbd>
+Indent Code Right
+</div>
+<div class="key-group">
+<kbd class="keycommand">
+<span class="key -command"></span>
+<span class="key">]</span>
+</kbd>
+Indent Code Left
+</div>
+<div class="key-group">
+<kbd class="keycommand">
+<span class="key" title="Shift">⇧</span>
+<span class="key">Tab</span>
+</kbd>
+Auto Indent Code
+</div>
+<div class="key-group">
+<kbd class="keycommand">
+<span class="key -command"></span>
+<span class="key">/</span>
+</kbd>
+Line Comment
+</div>
+<div class="key-group">
+<kbd class="keycommand">
+<span class="key -command"></span>
+<span class="key pc_only" title="Shift">⇧</span>
+<span class="key mac_only">Opt</span>
+<span class="key">/</span>
+</kbd>
+Block Comment
+</div>
+<p class="inline-tab-triggers">Also see: <a href="https://blog.codepen.io/documentation/features/tab-triggers/" target="_blank" rel="noopener">Tab Triggers</a></p>
+</section>
+<section class="editor-commands">
+<h2>Editor Focus</h2>
+<div class="key-group">
+<kbd class="keycommand">
+<span class="key -command"></span>
+<span class="key pc_only">Alt</span>
+<span class="key mac_only">Opt</span>
+<span class="key">1</span>
+</kbd>
+HTML Editor
+</div>
+<div class="key-group">
+<kbd class="keycommand">
+<span class="key -command"></span>
+<span class="key pc_only">Alt</span>
+<span class="key mac_only">Opt</span>
+<span class="key">2</span>
+</kbd>
+CSS Editor
+</div>
+<div class="key-group">
+<kbd class="keycommand">
+<span class="key -command"></span>
+<span class="key pc_only">Alt</span>
+<span class="key mac_only">Opt</span>
+<span class="key">3</span>
+</kbd>
+JS Editor
+</div>
+<div class="key-group">
+<kbd class="keycommand">
+<span class="key -command"></span>
+<span class="key pc_only">Alt</span>
+<span class="key mac_only">Opt</span>
+<span class="key">4</span>
+</kbd>
+Toggle Console
+</div>
+<div class="key-group">
+<kbd class="keycommand">
+<span class="key -command"></span>
+<span class="key pc_only">Alt</span>
+<span class="key mac_only">Opt</span>
+<span class="key">0</span>
+</kbd>
+Preview
+</div>
+<div class="key-group">
+<kbd class="keycommand">
+<span class="key">Esc</span>
+</kbd>
+Exit currently focused editor
+</div>
+</section>
+<section class="editor-commands">
+<h2>Misc</h2>
+<div class="key-group">
+<kbd class="keycommand">
+<span class="key -command"></span>
+<span class="key" title="Shift">⇧</span>
+<span class="key">7</span>
+</kbd>
+Re-run Preview
+</div>
+<div class="key-group">
+<kbd class="keycommand">
+<span class="key -command"></span>
+<span class="key" title="Shift">⇧</span>
+<span class="key">8</span>
+</kbd>
+Clear All Analyze Errors
+</div>
+<div class="key-group">
+<kbd class="keycommand">
+<span class="key -command"></span>
+<span class="key" title="Shift">⇧</span>
+<span class="key">9</span>
+</kbd>
+Open This Dialog
+</div>
+<div class="key-group">
+<kbd class="keycommand">
+<span class="key -command"></span>
+<span class="key" title="Shift">⇧</span>
+<span class="key">0</span>
+</kbd>
+Open Debug View
+</div>
+<h2>HTML Specific</h2>
+<div class="key-group">
+<kbd class="keycommand">
+<span class="key -command"></span>
+<span class="key" title="Shift">⇧</span>
+<span class="key">A</span>
+</kbd>
+Wrap With...
+</div>
+<h2>Pen Actions</h2>
+<div class="key-group">
+<kbd class="keycommand">
+<span class="key -command"></span>
+<span class="key">P</span>
+</kbd>
+Create New Pen
+</div>
+<div class="key-group">
+<kbd class="keycommand">
+<span class="key -command"></span>
+<span class="key">S</span>
+</kbd>
+Save
+</div>
+<div class="key-group">
+<kbd class="keycommand">
+<span class="key -command"></span>
+<span class="key" title="Shift">⇧</span>
+<span class="key">S</span>
+</kbd>
+Save As Private <span style="border-radius: 2px; padding: 1px 6px 2px 5px; color: black !important; background: var(--cp-color-yellow); white-space: nowrap; text-shadow: none; letter-spacing: 0; font-size: 71%; position: relative; top: -1px;">PRO</span>
+</div>
+<div class="key-group">
+<kbd class="keycommand">
+<span class="key -command"></span>
+<span class="key">I</span>
+</kbd>
+Info Panel (if owned)
+</div>
+</section>
+</div>
+</div>
+<div id="popup-overlay" class="overlay popup-overlay"></div>
+<div id="modal-overlay" class="overlay modal-overlay"></div>
+<noscript>
+
+  <input type="checkbox" class="modal-closing-trick" id="modal-closing-trick">
+
+  <div class="overlay noscript-overlay" style="display: block;"></div>
+
+  <div class="modal modal-message group modal-warning">
+
+    <div class="modal-title">CodePen requires JavaScript to render the code and preview areas in this view.</div>
+
+    <p>Trying <a href="https://codepen.io/paulkim/debug/oZLavq">viewing this Pen in Debug Mode</a>, which is the preview area without any iframe and does not require JavaScript. Although what the preview is of might!</p>
+
+    <p>Need to know how to enable JavaScript? <a href="http://enable-javascript.com/" target="_blank" rel="noopener">Go here.</a></p>
+
+    <label class="button button-medium" for="modal-closing-trick">Close this, use anyway.</label>
+
+  </div>
+
+</noscript>
+<textarea id="init-data" style="display:none">{"__browser":{"country":"PK","device":"unknown_device","mobile":false,"name":"chrome","platform":"pc","version":"109"},"__constants":{},"__CPDATA":{"domain_iframe":"https://cdpn.io","environment":"production","host":"codepen.io","iframe_allow":"accelerometer *; bluetooth *; camera *; encrypted-media *; display-capture *; geolocation *; gyroscope *; microphone *; midi *; clipboard-read *; clipboard-write *; web-share *; serial *; xr-spatial-tracking *","iframe_sandbox":"allow-downloads allow-forms allow-modals allow-pointer-lock allow-popups-to-escape-sandbox allow-popups allow-presentation allow-same-origin allow-scripts allow-top-navigation-by-user-activation"},"__graphql":{"data":{"data":{"sessionUser":{"id":"VoDkNZ","name":"Captain Anonymous","title":"Captain Anonymous","avatar":"https://assets.codepen.io/t-1/user-default-avatar.jpg?format=auto&amp;version=0","currentContext":{"id":"VoDkNZ","title":"Captain Anonymous","name":"Captain Anonymous","avatar":"https://assets.codepen.io/t-1/user-default-avatar.jpg?format=auto&amp;version=0","username":"anon","__typename":"User"},"currentTeamId":null,"username":"anon","admin":false,"anon":true,"pro":false,"verified":false,"featureFlags":[],"teams":[],"__typename":"User"}}},"url":"https://codepen.io/graphql","api":"cprails"},"__user":{"anon":true,"base_url":"/anon/","cohorts":[],"current_team_hashid":null,"current_team_id":0,"hashid":"VoDkNZ","id":1,"itemType":"user","name":"Captain Anonymous","paid":false,"tier":0,"username":"anon","created_at":null,"email_verified":null,"collections_count":0,"collections_private_count":0,"followers_count":0,"followings_count":0,"pens_count":0,"pens_private_count":0,"projects_count":0,"projects_private_count":0},"__firebase":{"config":{"apiKey":"AIzaSyBgLAe7N_MdFpuVofMkcQLGwwhUu5tuxls","authDomain":"codepen-store-production.firebaseapp.com","databaseURL":"https://codepen-store-production.firebaseio.com","disabled":false,"projectId":"codepen-store-production"},"token":"eyJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJodHRwczovL2lkZW50aXR5dG9vbGtpdC5nb29nbGVhcGlzLmNvbS9nb29nbGUuaWRlbnRpdHkuaWRlbnRpdHl0b29sa2l0LnYxLklkZW50aXR5VG9vbGtpdCIsImNsYWltcyI6eyJvd25lcklkIjoiVm9Ea05aIiwiYWRtaW4iOmZhbHNlfSwiZXhwIjoxNzIxMDQ2NTU1LCJpYXQiOjE3MjEwNDI5NTUsImlzcyI6ImZpcmViYXNlLWFkbWluc2RrLThva3lsQGNvZGVwZW4tc3RvcmUtcHJvZHVjdGlvbi5pYW0uZ3NlcnZpY2VhY2NvdW50LmNvbSIsInN1YiI6ImZpcmViYXNlLWFkbWluc2RrLThva3lsQGNvZGVwZW4tc3RvcmUtcHJvZHVjdGlvbi5pYW0uZ3NlcnZpY2VhY2NvdW50LmNvbSIsInVpZCI6IlZvRGtOWiJ9.SrASVw_9rxTVX-yug8Ju2LAgSNniBuDMrkSlpB4kZWCucu4j7KUPC6yBkK9N-mW_5oNrS5RkOze9K2A001RA13ELfEz_d8hgK2TOZPilwnoJumiMIMD8PgnsTeQeE82-QTbiSw1W9-vMAxpXHoYrgzir3xEeyAhmcf7V9WtDVhmpr0q-6HOpZ6syYBtHRkN8k6QoUknCyCGMHZCMHXHvPoGSDFBLJ__J94KXP3q08z_6nlcT-6ux48cMpNzHckolzYZT9IPOMX_6EbAOLM-HvqTC6kXb8MjKdcH_ZccUOOtjr_SeI9tg3nsTI6s9lfEJ9FIVznI5UQoYrKHzD7xcgw"},"__pay_stripe_public_key":"pk_live_2GndomDfiklqpSNQn8FrGuwZSMIMzha7DkLJqlYe7IR0ihKAlKdiHg68JJc5eVPt68rzAjzAAVXcUwjySHRCsgjQQ00gtRBUFNH","__pay_braintree_env":"production","__boomboom":{"serve_url":"https://cdpn.io/cpe/boomboom","store_url":"https://codepen.io/cpe/boomboom/store"},"__editor_config":{"id":"classic","editors":[{"id":"html","type":"html","name":"HTML","showEditor":true,"showSettings":true,"showProcessors":true,"embeds":{"showViewCompiled":true},"settings":[{"id":"processor","name":"HTML Preprocessor","type":"select","visible":true,"values":[{"id":"none","name":"None","value":"none","default":true},{"id":"haml","name":"Haml","value":"haml"},{"id":"markdown","name":"Markdown","value":"markdown"},{"id":"slim","name":"Slim","value":"slim"},{"id":"pug","name":"Pug","value":"pug"}]},{"id":"html_classes","name":"Add Class(es) to &lt;html&gt;","type":"input","placeholder":"e.g. single post post-1234","visible":true},{"id":"head","name":"Stuff for &lt;head&gt;","type":"textarea","placeholder":"e.g. &lt;meta&gt;, &lt;link&gt;, &lt;script&gt;","visible":true}],"actions":[{"id":"tidy_html","type":"tidy_code","name":"Format HTML","disabled_processors":["haml","slim"]},{"id":"view_compiled_html","type":"view_compiled","name":"View Compiled HTML","disabled_processors":["none"],"showInEmbeds":true},{"id":"analyze_html","type":"analyze","name":"Analyze HTML"},{"id":"maximize_html_editor","type":"maximize","name":"Maximize HTML Editor"},{"id":"minimize_html_editor","type":"minimize","name":"Minimize HTML Editor"},{"id":"fold_all_html","type":"fold_all","name":"Fold All"},{"id":"unfold_all_html","type":"unfold_all","name":"Unfold All"}],"processors":[{"id":"none","name":"None"},{"id":"haml","name":"Haml"},{"id":"markdown","name":"Markdown"},{"id":"slim","name":"Slim"},{"id":"pug","name":"Pug"}]},{"id":"css","type":"css","name":"CSS","showEditor":true,"showSettings":true,"showProcessors":true,"showVendorPrefixing":true,"embeds":{"showViewCompiled":true},"actions":[{"id":"tidy_css","type":"tidy_code","name":"Format CSS","disabled_processors":["sass","stylus"]},{"id":"view_compiled_css","type":"view_compiled","name":"View Compiled CSS","disabled_processors":["none"],"disabled_prefixes":["neither","prefixfree"]},{"id":"analyze_css","type":"analyze","name":"Analyze CSS"},{"id":"maximize_css_editor","type":"maximize","name":"Maximize CSS Editor"},{"id":"minimize_css_editor","type":"minimize","name":"Minimize CSS Editor"},{"id":"fold_all_css","type":"fold_all","name":"Fold All","disabled_processors":["sass"]},{"id":"unfold_all_css","type":"unfold_all","name":"Unfold All","disabled_processors":["sass"]}],"processors":[{"id":"none","name":"None"},{"id":"less","name":"Less"},{"id":"scss","name":"SCSS"},{"id":"sass","name":"Sass"},{"id":"stylus","name":"Stylus"},{"id":"postcss","name":"PostCSS"}],"parSuffixes":["less","scss","sass","styl"]},{"id":"js","type":"js","name":"JS","showEditor":true,"showSettings":true,"showProcessors":true,"detectImports":true,"externalResourcesHidden":false,"embeds":{"showViewCompiled":true},"actions":[{"id":"tidy_js","type":"tidy_code","name":"Format JavaScript","disabled_processors":["coffeescript, livescript"]},{"id":"view_compiled_js","type":"view_compiled","name":"View Compiled JavaScript","disabled_processors":["none"]},{"id":"analyze_js","type":"analyze","name":"Analyze JavaScript"},{"id":"maximize_js_editor","type":"maximize","name":"Maximize JavaScript Editor"},{"id":"minimize_js_editor","type":"minimize","name":"Minimize JavaScript Editor"},{"id":"fold_all_js","type":"fold_all","name":"Fold All"},{"id":"unfold_all_js","type":"unfold_all","name":"Unfold All"}],"processors":[{"id":"none","name":"None"},{"id":"babel","name":"Babel"},{"id":"typescript","name":"TypeScript"},{"id":"coffeescript","name":"CoffeeScript"},{"id":"livescript","name":"LiveScript"}]}],"formatters":[{"id":"classic","name":"Classic","runOn":[{"eventType":"demand"}],"url":"https://fi593g2v2a.execute-api.us-west-2.amazonaws.com/production/format"}],"layout":{"default":"top"},"linters":[{"id":"classic","name":"Classic","runOn":[{"eventType":"demand"}],"url":"https://fi593g2v2a.execute-api.us-west-2.amazonaws.com/production/lint"}],"preview":{"intervalMaxWaitMS":3500,"intervalMS":1200},"settings":[{"id":"behavior","name":"Behavior","type":"setting"},{"id":"editor","name":"Editor","type":"setting"}]},"__item":"{\"editor_settings\":{\"auto_run\":true,\"autocomplete\":false,\"code_folding\":true,\"css_pre_processor\":\"none\",\"css_prefix\":\"neither\",\"css_starter\":\"neither\",\"emmet_active\":true,\"font_size\":14,\"font_type\":\"system\",\"format_on_save\":false,\"html_pre_processor\":\"none\",\"indent_with\":\"spaces\",\"js_pre_processor\":\"none\",\"key_bindings\":\"normal\",\"line_numbers\":true,\"line_wrapping\":true,\"match_brackets\":true,\"snippets\":{\"markupSnippets\":{},\"stylesheetSnippets\":{}},\"tab_size\":2,\"theme\":\"twilight\",\"id\":\"oZLavq\",\"auto_save\":true},\"hashid\":\"oZLavq\",\"itemType\":\"pen\",\"resources\":[{\"url\":\"https://cdnjs.cloudflare.com/ajax/libs/redux/3.6.0/redux.min.js\",\"order\":2,\"resource_type\":\"js\",\"par_content\":\"\"},{\"url\":\"https://cdnjs.cloudflare.com/ajax/libs/react-redux/5.0.2/react-redux.min.js\",\"order\":3,\"resource_type\":\"js\",\"par_content\":\"\"},{\"url\":\"https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js\",\"order\":0,\"resource_type\":\"js\",\"par_content\":\"\"},{\"url\":\"https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js\",\"order\":1,\"resource_type\":\"js\",\"par_content\":\"\"},{\"url\":\"https://cdnjs.cloudflare.com/ajax/libs/react-router/2.8.1/ReactRouter.min.js\",\"order\":4,\"resource_type\":\"js\",\"par_content\":\"\"}],\"tags\":[],\"id\":13322845,\"user_id\":467473,\"html\":\"&lt;div id='app'&gt;&lt;/div&gt;\",\"css\":\"// VARIABLES\\n// --&gt; colors\\n// --&gt; grids\\n// --&gt; typography\\n// \\n// BASE\\n// --&gt; lists\\n// --&gt; media\\n// --&gt; page\\n// --&gt; typography\\n// \\n// COMPONENTS\\n// --&gt; button\\n// --&gt; cart\\n// --&gt; header\\n// --&gt; item\\n// --&gt; nomatch\\n// --&gt; select\\n// --&gt; shop\\n// \\n// STYLES\\n// --&gt; main\\n\\n@import \\\"breakpoint\\\";\\n\\n\\n// VARIABLES\\n// colors\\n$fontColor: #333;\\n$linkColor: #555;\\n$linkActiveColor: #27a;\\n\\n$itemSoldOutColor: #f00;\\n\\n$headerBorderColor: #999;\\n$headerBgColor: rgba(255, 255, 255, 0.85);\\n$headerFallbackBgColor: #fff;\\n\\n$cartButtonBgColor: rgba(102, 136, 255, 0.85);\\n$cartButtonFallbackBgColor: #68f;\\n$cartButtonBorderColor: #46f;\\n$cartButtonHoverBgColor: rgba(85, 119, 255, 0.85);\\n$cartButtonHoverFallbackBgColor: #57f;\\n$cartButtonHoverBorderColor: #35f;\\n$cartButtonActiveBgColor: rgba(51, 85, 255, 0.85);\\n$cartButtonActiveFallbackBgColor: #35f;\\n$cartButtonActiveBorderColor: #24f;\\n\\n$selectBgColor: #fff;\\n$selectBorderColor: #666;\\n\\n$buttonFontColor: #fff;\\n$buttonBgColor: #2d2;\\n$buttonBorderColor: #2b2;\\n\\n// grids\\n$smallTabletBP: 40rem;\\n$largeTabletBP: 54rem;\\n$maxWidth: 75rem;\\n\\n$headerHeight: 4.375rem;\\n\\n$itemBP: 48rem;\\n$itemMobileMaxWidth: 25rem;\\n$itemDesktopMaxWidth: 60rem;\\n\\n$cartMaxWidth: 60rem;\\n\\n$shopItemMaxWidth: 21.625rem;\\n\\n$buttonMaxWidth: 20rem;\\n\\n// typography\\n$fontFamily: Helvetica, Arial, sans-serif;\\n\\n$rootFontSize: 16px;\\n\\n$mainHeaderFontSize: 1.75rem;\\n\\n$shopItemNameFontSize: 1.5rem;\\n$shopItemPriceFontSize: 1rem;\\n\\n$cartItemNameFontSize: 1.25rem;\\n$cartItemPriceFontSize: 1rem;\\n$cartItemDeleteFontSize: 1.5rem;\\n\\n$itemNameFontSize: 1.5rem;\\n$itemPriceFontSize: 1.25rem;\\n\\n$totalFontSize: 1.25rem;\\n\\n$qtySelectFontSize: 1rem;\\n\\n$buttonFontSize: 1.25rem;\\n\\n\\n// BASE\\n// lists\\nul {\\n  padding: 0;\\n  margin: 0;\\n  list-style: none;\\n}\\n\\n// media\\nimg, media {\\n  max-width: 100%;\\n}\\n\\n// page\\n* {\\n  box-sizing: border-box;\\n}\\n\\nbody {\\n  margin: 0;\\n}\\n\\n// typography\\nhtml {\\n  font-size: $rootFontSize;\\n}\\n\\nbody {\\n  font-family: $fontFamily;\\n  color: $fontColor;\\n}\\n\\na {\\n  text-decoration: none;\\n  transition: 0.2s;\\n  color: $linkColor;\\n  &amp;:hover, &amp;:active, &amp;:focus {\\n    color: $linkActiveColor;\\n  }\\n}\\n\\nh1, h2 {\\n  margin: 0;\\n}\\n\\n\\n// COMPONENTS\\n// button\\n.item-add-button, .cart-pay-button {\\n  font-size: $buttonFontSize;\\n  font-weight: bold;\\n  color: $buttonFontColor;\\n  background-color: $buttonBgColor;\\n  display: block;\\n  width: 100%;\\n  max-width: $buttonMaxWidth;\\n  padding: 0.25rem 0.5rem;\\n  margin: 1.5rem auto 0;\\n  border: none;\\n  border-radius: 0.375rem;\\n  box-shadow: 0 0.375rem $buttonBorderColor;\\n  transition: 0.2s;\\n  &amp;:active {\\n    transform: translateY(0.375rem);\\n    box-shadow: 0 0 $buttonBorderColor;\\n  }\\n}\\n\\n// cart\\n.empty-cart, .cart-items {\\n  margin: 2rem 0;\\n}\\n\\n.empty-cart {\\n  text-align: center;\\n}\\n\\n.cart-item {\\n  display: flex;\\n  align-items: center;\\n  margin: 1rem 0;\\n}\\n\\n.cart-item-image-link, .cart-item-delete {\\n  flex: 0 0 auto;\\n}\\n\\n.cart-item-info {\\n  flex: 1 1 auto;\\n  align-self: stretch;\\n  display: flex;\\n  flex-direction: column;\\n  justify-content: space-around;\\n}\\n\\n.cart-item-delete {\\n  font-size: $cartItemDeleteFontSize;\\n  margin: 0.5rem;\\n}\\n\\n.cart-item-image {\\n  vertical-align: bottom;\\n  height: 5rem;\\n  padding: 0 0.8333rem 0 0.8333rem;\\n}\\n\\n.cart-item-name-link, .cart-item-value {\\n  flex: 0 0 auto;\\n  margin: 0.25rem 0.5rem;\\n}\\n\\n.cart-item-name {\\n  font-size: $cartItemNameFontSize;\\n}\\n\\n.cart-item-value {\\n  font-size: $cartItemPriceFontSize;\\n}\\n\\n.cart-item-price {\\n  margin-right: 1rem;\\n}\\n\\n.cart-item-qty-select {\\n  margin-left: 0.5rem;\\n}\\n\\n.cart-total {\\n  font-size: $totalFontSize;\\n  display: flex;\\n  justify-content: space-between;\\n}\\n\\n.cart-total-label {\\n  font-weight: bold;\\n}\\n\\n// header\\n.header {\\n  width: 100%;\\n  height: $headerHeight;\\n  position: fixed;\\n  top: 0;\\n  left: 0;\\n  background-color: $headerFallbackBgColor;\\n  background-color: $headerBgColor;\\n  border-bottom: 0.0625rem solid $headerBorderColor;\\n}\\n\\n.header-contents {\\n  max-width: $maxWidth;\\n  margin: 0 auto;\\n  display: flex;\\n  &amp; &gt; a {\\n    flex: 0 0 auto;\\n  }\\n}\\n\\n.back-button {\\n  margin: 1rem auto 1rem 1rem;\\n  padding: 0.625rem 0;\\n}\\n\\n.cart-button {\\n  margin: 1rem 1rem 1rem auto;\\n  padding: 0.5rem;\\n  border: 0.125rem solid $cartButtonBorderColor;\\n  border-radius: 0.375rem;\\n  background-color: $cartButtonFallbackBgColor;\\n  background-color: $cartButtonBgColor;\\n  color: $buttonFontColor;\\n  font-weight: bold;\\n  &amp;:hover, &amp;:active, &amp;:focus {\\n    color: $buttonFontColor;\\n  }\\n  &amp;:hover, &amp;:focus {\\n    border: 0.125rem solid $cartButtonHoverBorderColor;\\n    background-color: $cartButtonHoverFallbackBgColor;\\n    background-color: $cartButtonHoverBgColor;\\n  }\\n  &amp;:active {\\n    border: 0.125rem solid $cartButtonActiveBorderColor;\\n    background-color: $cartButtonActiveFallbackBgColor;\\n    background-color: $cartButtonActiveBgColor;\\n  }\\n}\\n\\n// item\\n.item {\\n  max-width: $itemMobileMaxWidth;\\n  margin: 0 auto;\\n}\\n\\n.item-name, .item-price {\\n  padding: 0.25rem 0;\\n}\\n\\n.item-name {\\n  font-size: $itemNameFontSize;\\n}\\n\\n.item-price {\\n  font-size: $itemPriceFontSize;\\n  font-weight: normal;\\n}\\n\\n.item-add-form, .item-sold-out {\\n  margin: 2.5rem 0 0;\\n}\\n\\n.item-add-form {\\n  text-align: center;\\n}\\n\\n.item-qty-label {\\n  margin-right: 0.5rem;\\n}\\n\\n.item-sold-out {\\n  color: $itemSoldOutColor;\\n}\\n\\n@include breakpoint($itemBP) {\\n  .item {\\n    display: flex;\\n    max-width: $itemDesktopMaxWidth;\\n    padding: 2rem 0 0;\\n  }\\n\\n  .item-image {\\n    flex: 0 0 auto;\\n  }\\n\\n  .item-details {\\n    flex: 1 1 auto;\\n    padding: 2rem 0 1rem 2rem;\\n  }\\n}\\n\\n// nomatch\\n.no-match {\\n  text-align: center;\\n  margin: 2rem 0;\\n}\\n\\n// select\\n.item-qty, .cart-item-qty-select {\\n  font-size: $qtySelectFontSize;\\n  color: $fontColor;\\n  width: 2.75rem;\\n  background-color: $selectBgColor;\\n  border: 0.0625rem solid $selectBorderColor;\\n  border-radius: 0.25rem;\\n}\\n\\n// shop\\n.shop-item {\\n  margin: 2rem auto;\\n  max-width: $shopItemMaxWidth;\\n  border: 0.0625rem solid $linkColor;\\n  box-shadow: 0 0 0.625rem 0.25rem $linkColor;\\n}\\n\\n.shop-item-image, .shop-item-name, .shop-item-price {\\n  padding: 0.5rem 0.75rem;\\n}\\n\\n.shop-item-image {\\n  margin: 0;\\n}\\n\\n.shop-item-name {\\n  font-size: $shopItemNameFontSize;\\n}\\n\\n.shop-item-price {\\n  font-size: $shopItemPriceFontSize;\\n  font-weight: normal;\\n  padding-bottom: 1rem;\\n}\\n\\n@include breakpoint($smallTabletBP) {\\n  .shop-item-list {\\n    display: flex;\\n    flex-wrap: wrap;\\n    align-items: stretch;\\n    justify-content: flex-start;\\n  }\\n\\n  .shop-item {\\n    flex: 0 0 43%;\\n    margin: 2rem 3.5%;\\n  }\\n}\\n\\n@include breakpoint($largeTabletBP) {\\n  .shop-item {\\n    flex: 0 0 29%;\\n    margin: 2rem 2.166%;\\n  }\\n}\\n\\n\\n// STYLES\\n// main\\n.shopping-cart-app {\\n  max-width: $maxWidth;\\n  margin: 0 auto;\\n}\\n\\n.main-header {\\n  font-size: $mainHeaderFontSize;\\n  margin: 1rem 0;\\n}\\n\\n.main {\\n  padding: $headerHeight 1rem 2.5rem;\\n}\\n\",\"js\":\"// INITIAL STATE\\n// --------------------\\n// --&gt; initialState\\n// \\n// FUNCTIONS\\n// --------------------\\n// --&gt; getOptionsArray\\n// \\n// ACTIONS\\n// --------------------\\n// --&gt; addToCart\\n// --&gt; removeFromCart\\n// --&gt; updateCartItem\\n// --&gt; removeStockItem\\n// \\n// REDUCERS\\n// --------------------\\n// ------&gt; cartItem\\n// ----&gt; cart\\n// ------&gt; stockItem\\n// ----&gt; stock\\n// --&gt; reducers\\n// \\n// COMPONENTS\\n// --------------------\\n// ------&gt; Header\\n// ----&gt; HeaderContainer\\n// ----------&gt; ShopItem\\n// --------&gt; ShopItems\\n// ------&gt; ShopItemsContainer\\n// ----&gt; Shop\\n// ----------&gt; AddItem\\n// --------&gt; AddItemContainer\\n// ------&gt; Item\\n// ----&gt; ItemContainer\\n// ----------&gt; CartItem\\n// --------&gt; CartItems\\n// --------&gt; Total\\n// --------&gt; PayButton\\n// ------&gt; Cart\\n// ----&gt; CartContainer\\n// ----&gt; NoMatch\\n// --&gt; App\\n\\nconst { PropTypes } = React;\\nconst { connect, Provider } = ReactRedux;\\nconst {\\n  Router,\\n  Route,\\n  Link,\\n  IndexRoute,\\n  hashHistory\\n} = ReactRouter;\\n\\n// INITIAL STATE\\nconst initialState = {\\n  cart: [],\\n  stock: [\\n    {\\n      id: 0,\\n      name: 'TC 2017 LS',\\n      description: 'VC FlexLight Jersey with spot sublimated Team Canada 2017 logo, from our Team Canada Collection.',\\n      price: 34.95,\\n      count: 12,\\n      img: 'https://cdn.shopify.com/s/files/1/0340/2849/products/TC2017_LS_Mens_grande.jpg?v=1485541617',\\n    }, {\\n      id: 1,\\n      name: 'TC 2017 Shorts',\\n      description: 'VC FlexLight Shorts with spot sublimated Team Canada 2017 logo, from our Team Canada Collection.',\\n      price: 25.00,\\n      count: 7,\\n      img: 'https://cdn.shopify.com/s/files/1/0340/2849/products/TC2017_Shorts_White_grande.jpg?v=1485541580',\\n    }, {\\n      id: 2,\\n      name: 'TC 2016 Red SS',\\n      description: 'VC Ultimate\\\\'s fully sublimated performance jersey, a replica of one of the two official dark jerseys of 2016 Team Canada teams! Sublimated jerseys are made with VC\\\\'s FlexLight performance material – soft, lightweight and moisture wicking.',\\n      price: 74.00,\\n      count: 11,\\n      img: 'https://cdn.shopify.com/s/files/1/0340/2849/products/TC2016_red_SS_front_grande.jpg?v=1468602448',\\n    }, {\\n      id: 3,\\n      name: 'TC 2016 Dark SS',\\n      description: 'VC Ultimate\\\\'s fully sublimated performance jersey, a replica of one of the two official dark jerseys of 2016 Team Canada teams! Sublimated jerseys are made with VC\\\\'s FlexLight performance material – soft, lightweight and moisture wicking.',\\n      price: 35.99,\\n      count: 13,\\n      img: 'https://cdn.shopify.com/s/files/1/0340/2849/products/TC2016_SS_front_grande.jpg?v=1460557226',\\n    }, {\\n      id: 4,\\n      name: 'TC 2016 Light SS',\\n      description: 'Official replica of the 2016 Team Canada light playing jersey. VC spot sublimated jerseys are made with VC\\\\'s FlexLight performance material – soft, lightweight and moisture wicking.',\\n      price: 35.99,\\n      count: 16,\\n      img: 'https://cdn.shopify.com/s/files/1/0340/2849/products/TCsample2_white_front_grande.jpg?v=1480111096',\\n    }, {\\n      id: 5,\\n      name: 'Goat Shorts',\\n      description: 'This just in... VC\\\\'s NEW signature \\\\'GOAT\\\\' style athletic shorts now with pockets! Made with our FlexLight material.',\\n      price: 29.00,\\n      count: 4,\\n      img: 'https://cdn.shopify.com/s/files/1/0340/2849/products/MedGreyPockets_front_grande400x600_grande_888f95c1-0f4d-483f-938e-c686892a855a_grande.jpg?v=1454966549',\\n    }, {\\n      id: 6,\\n      name: 'Friction Gloves',\\n      description: 'This is the glove that started it all! Friction Gloves work great in every condition: dry, hot, rain, snow, you name it. They will help you maintain a firm grip on the disc whether you\\\\'re catching or throwing. They eliminate slippage when the disc is wet, keep your hands warm in cold weather, and ease the sting of zippy throws. Whether your goal is to throw with more accuracy, catch tough discs, or just look fly, Frictions will help.  Frictions are not bulky or stiff like other gloves. They are tight fitting and, after a while, you\\\\'ll forget they\\\\'re even on!',\\n      price: 33.95,\\n      count: 18,\\n      img: 'https://cdn.shopify.com/s/files/1/0340/2849/products/Gloves_grande.jpg?v=1446586810',\\n    }, {\\n      id: 7,\\n      name: 'TC 2017 Trucker',\\n      description: 'Premium meshback cotton front trucker hat. Made by FlexFit, with the official embroidered patch of Team Canada 2017! 47% Cotton / 25% Polyester / 28% Nylon, contrast trucker mesh back, matching plastic snap, hard buckram, matching undervisor. One size fits all',\\n      price: 15.00,\\n      count: 15,\\n      img: 'https://cdn.shopify.com/s/files/1/0340/2849/products/TC2017_Hat_Snapback_BlackWhite_grande.jpg?v=1485538793',\\n    }, {\\n      id: 8,\\n      name: 'VC Discraft Disc',\\n      description: 'Discraft 175 gram Ultrastar disc, hot stamped with the original VC logo.',\\n      price: 14.00,\\n      count: 19,\\n      img: 'https://cdn.shopify.com/s/files/1/0340/2849/products/Disc_VC_OG_grande_grande_cc0c1695-4247-426a-bd6c-5821da4e42da_grande.png?v=1485469652',\\n    },\\n  ],\\n};\\n\\n\\n// FUNCTIONS\\n// getOptionsArray\\nconst getOptionsArray = (count) =&gt; {\\n  const array = [];\\n  for (let i = 0; i &lt; count; i++) {\\n    array.push(i + 1);\\n  }\\n\\n  return array;\\n};\\n\\n// ACTIONS\\n// addToCart\\nconst addToCart = (id, count) =&gt; (\\n  {\\n    type: 'ADD_TO_CART',\\n    id,\\n    count,\\n  }\\n);\\n\\n// removeFromCart\\nconst removeFromCart = (id) =&gt; (\\n  {\\n    type: 'REMOVE_FROM_CART',\\n    id,\\n  }\\n);\\n\\n// updateCartItem\\nconst updateCartItem = (id, count) =&gt; (\\n  {\\n    type: 'UPDATE_CART_ITEM',\\n    id,\\n    count,\\n  }\\n);\\n\\n// removeStockItem\\nconst removeStockItem = (id, count) =&gt; (\\n  {\\n    type: 'REMOVE_STOCK_ITEM',\\n    id,\\n    count,\\n  }\\n);\\n\\n\\n// REDUCERS\\n// cartItem\\nconst cartItem = (state, action) =&gt; {\\n  switch (action.type) {\\n    case 'ADD_TO_CART':\\n      return {\\n        id: action.id,\\n        count: action.count,\\n      };\\n    case 'REMOVE_FROM_CART':\\n      return state.id !== action.id;\\n    case 'UPDATE_CART_ITEM':\\n      if (state.id !== action.id) {\\n        return state;\\n      }\\n\\n      return Object.assign(\\n        {},\\n        state,\\n        {\\n          count: action.count,\\n        }\\n      );\\n    default:\\n      return state;\\n  }\\n};\\n\\n// cart\\nconst cart = (state = [], action) =&gt; {\\n  switch (action.type) {\\n    case 'ADD_TO_CART':\\n      return [\\n        ...state,\\n        cartItem(undefined, action),\\n      ];\\n    case 'REMOVE_FROM_CART':\\n      return state.filter(item =&gt; cartItem(item, action));\\n    case 'UPDATE_CART_ITEM':\\n      return state.map(item =&gt; cartItem(item, action));\\n    default:\\n      return state;\\n  }\\n};\\n\\n// stockItem\\nconst stockItem = (state, action) =&gt; {\\n  switch (action.type) {\\n    case 'REMOVE_STOCK_ITEM':\\n      if (state.id !== action.id) {\\n        return state;\\n      }\\n\\n      return Object.assign(\\n        {},\\n        state,\\n        {\\n          count: state.count - action.count,\\n        }\\n      );\\n    default:\\n      return state;\\n  }\\n};\\n\\n// stock\\nconst stock = (state = [], action) =&gt; {\\n  switch (action.type) {\\n    case 'REMOVE_STOCK_ITEM':\\n      return state.map(item =&gt; stockItem(item, action));\\n    default:\\n      return state;\\n  }\\n};\\n\\n// reducers\\nconst reducers = Redux.combineReducers({\\n  cart,\\n  stock,\\n});\\n\\n\\n// COMPONENTS\\n// Header\\nconst Header = ({ children, cartItems, backButton, cartButton }) =&gt; {\\n  const getBackButton = () =&gt; (\\n    &lt;Link to='/' className='back-button'&gt;\\n      &amp;lt; Back to shop\\n    &lt;/Link&gt;\\n  );\\n\\n  const getCartButton = () =&gt; (\\n    &lt;Link to='/cart' className='cart-button'&gt;\\n      Cart ({cartItems})\\n    &lt;/Link&gt;\\n  );\\n\\n  return (\\n    &lt;div className='shopping-cart-app'&gt;\\n      &lt;header className='header'&gt;\\n        &lt;div className='header-contents'&gt;\\n          {backButton ? getBackButton() : ''}\\n          {cartButton ? getCartButton() : ''}\\n        &lt;/div&gt;\\n      &lt;/header&gt;\\n      &lt;main className='main'&gt;\\n        {children}\\n      &lt;/main&gt;\\n    &lt;/div&gt;\\n  );\\n};\\n\\nHeader.PropTypes = {\\n  cartItems: PropTypes.number.isRequired,\\n  backButton: PropTypes.bool.isRequired,\\n  cartButton: PropTypes.bool.isRequired,\\n};\\n\\n\\n// HeaderContainer\\nconst showBackButton = (pathname) =&gt; (\\n  pathname !== '/' ? true : false\\n);\\n\\nconst showCartButton = (pathname) =&gt; (\\n  !pathname.includes('cart') ? true : false\\n);\\n\\nconst HeaderContainer = connect(\\n  (state, ownProps) =&gt; (\\n    {\\n      children: ownProps.children,\\n      cartItems: state.cart.length,\\n      backButton: showBackButton(ownProps.location.pathname),\\n    cartButton: showCartButton(ownProps.location.pathname),\\n    }\\n  )\\n)(Header);\\n\\n\\n// ShopItem\\nconst ShopItem = ({ id, name, price, img }) =&gt; (\\n  &lt;li className={'shop-item shop-item-' + id}&gt;\\n    &lt;Link to={'/item/' + id}&gt;\\n      &lt;div className='shop-item-container'&gt;\\n        &lt;img\\n          className='shop-item-image'\\n          src={img}\\n        /&gt;\\n        &lt;h1 className='shop-item-name'&gt;\\n          {name}\\n        &lt;/h1&gt;\\n        &lt;h2 className='shop-item-price'&gt;\\n          ${price.toFixed(2)}\\n        &lt;/h2&gt;\\n      &lt;/div&gt;\\n    &lt;/Link&gt;\\n  &lt;/li&gt;\\n);\\n\\nShopItem.PropTypes = {\\n  id: PropTypes.number.isRequired,\\n  name: PropTypes.string.isRequired,\\n  price: PropTypes.number.isRequired,\\n  img: PropTypes.string.isRequired,\\n};\\n\\n\\n// ShopItems\\nconst ShopItems = ({ items }) =&gt; {\\n  if (!items.length) {\\n    return &lt;p className='no-shop-items'&gt;No items&lt;/p&gt;;\\n  }\\n\\n  return (\\n    &lt;ul className='shop-item-list'&gt;\\n      {items.map(item =&gt;\\n        &lt;ShopItem\\n          key={item.id}\\n          id={item.id}\\n          name={item.name}\\n          price={item.price}\\n          img={item.img}\\n        /&gt;\\n      )}\\n    &lt;/ul&gt;\\n  );\\n};\\n\\nShopItems.PropTypes = {\\n  items: PropTypes.arrayOf(PropTypes.shape({\\n    id: PropTypes.number.isRequired,\\n    name: PropTypes.string.isRequired,\\n    description: PropTypes.string.isRequired,\\n    price: PropTypes.number.isRequired,\\n    count: PropTypes.number.isRequired,\\n  }).isRequired).isRequired,\\n};\\n\\n\\n// ShopItemsContainer\\nconst ShopItemsContainer = connect(\\n  (state) =&gt; (\\n    {\\n      items: state.stock,\\n    }\\n  )\\n)(ShopItems);\\n\\n\\n// Shop\\nconst Shop = () =&gt; (\\n  &lt;div className='shop'&gt;\\n    &lt;h1 className='main-header shop-header'&gt;Shop&lt;/h1&gt;\\n    &lt;ShopItemsContainer /&gt;\\n  &lt;/div&gt;\\n);\\n\\n\\n// AddItem\\nconst AddItem = ({ id, count, onSubmit }) =&gt; {\\n  if (!count) {\\n    return (\\n      &lt;p className='item-sold-out'&gt;\\n        Sold out!\\n      &lt;/p&gt;\\n    );\\n  }\\n\\n  return (\\n    &lt;form\\n      className='item-add-form'\\n      onSubmit={e =&gt; {\\n        e.preventDefault();\\n        onSubmit(e, id);\\n      }}\\n    &gt;\\n      &lt;span className='item-qty-label'&gt;\\n        Qty:\\n      &lt;/span&gt;\\n      &lt;select className='item-qty'&gt;\\n        {getOptionsArray(count).map(num =&gt;\\n          &lt;option\\n            key={num}\\n            value={num}\\n          &gt;\\n            {num}\\n          &lt;/option&gt;\\n        )}\\n      &lt;/select&gt;\\n      &lt;button\\n        className='item-add-button'\\n        type='submit'\\n      &gt;\\n        Add to cart\\n      &lt;/button&gt;\\n    &lt;/form&gt;\\n  );\\n};\\n\\nAddItem.PropTypes = {\\n  count: PropTypes.number.isRequired,\\n  onClick: PropTypes.func.isRequired,\\n};\\n\\n\\n// AddItemContainer\\nconst addItemGetSelectedValue = (e) =&gt; (\\n  e.target.getElementsByClassName('item-qty')[0].value\\n);\\n\\nconst AddItemContainer = connect(\\n  (state, ownProps) =&gt; (\\n    {\\n      id: ownProps.id,\\n      count: state.stock.find(item =&gt; item.id === ownProps.id).count,\\n      inCart: state.cart.some(item =&gt; item.id === ownProps.id),\\n    }\\n  ),\\n  null,\\n  (stateProps, dispatchProps, ownProps) =&gt; {\\n    const onSubmit = stateProps.inCart ? updateCartItem : addToCart;\\n\\n    return Object.assign({}, ownProps, stateProps, dispatchProps, {\\n      onSubmit: (e, id) =&gt; {\\n        dispatchProps.dispatch(onSubmit(id, addItemGetSelectedValue(e)));\\n      },\\n    });\\n  }\\n)(AddItem);\\n\\n\\n// Item\\nconst Item = ({ id, name, description, price, img }) =&gt; (\\n  &lt;div className={'item item-' + id}&gt;\\n    &lt;img\\n      className='item-image'\\n      src={img}\\n    /&gt;\\n    &lt;div className='item-details'&gt;\\n      &lt;h1 className='item-name'&gt;\\n        {name}\\n      &lt;/h1&gt;\\n      &lt;h2 className='item-price'&gt;\\n        ${price.toFixed(2)}\\n      &lt;/h2&gt;\\n      &lt;p className='item-desc'&gt;\\n        {description}\\n      &lt;/p&gt;\\n      &lt;AddItemContainer id={id} /&gt;\\n    &lt;/div&gt;\\n  &lt;/div&gt;\\n);\\n\\nItem.PropTypes = {\\n  id: PropTypes.number.isRequired,\\n  name: PropTypes.string.isRequired,\\n  description: PropTypes.string.isRequired,\\n  price: PropTypes.number.isRequired,\\n  img: PropTypes.string.isRequired,\\n};\\n\\n\\n// ItemContainer\\nconst ItemContainer = connect(\\n  (state, ownProps) =&gt; (\\n    state.stock.find(item =&gt; String(item.id) === ownProps.params.id)\\n  )\\n)(Item);\\n\\n\\n// CartItem\\nconst CartItem = (\\n  { id, name, price, img, count, stockCount, onQtyChange, onRemoveClick }\\n) =&gt; (\\n  &lt;li className={'cart-item cart-item-' + id}&gt;\\n    &lt;Link\\n      to={'/item/' + id}\\n      className='cart-item-image-link'\\n    &gt;\\n      &lt;img\\n        className='cart-item-image'\\n        src={img}\\n      /&gt;\\n    &lt;/Link&gt;\\n    &lt;div className='cart-item-info'&gt;\\n      &lt;Link\\n        to={'/item/' + id}\\n        className='cart-item-name-link'\\n      &gt;\\n        &lt;h1 className='cart-item-name'&gt;\\n          {name}\\n        &lt;/h1&gt;\\n      &lt;/Link&gt;\\n      &lt;div className='cart-item-value'&gt;\\n        &lt;span className='cart-item-price'&gt;\\n          ${price.toFixed(2)}\\n        &lt;/span&gt;\\n        &lt;span className='cart-item-qty'&gt;\\n          Qty:\\n          &lt;select\\n            className='cart-item-qty-select'\\n            value={count}\\n            onChange={(e) =&gt; onQtyChange(e, id)}\\n          &gt;\\n            {getOptionsArray(stockCount).map(num =&gt;\\n              &lt;option\\n                key={num}\\n                value={num}\\n              &gt;\\n                {num}\\n              &lt;/option&gt;\\n            )}\\n          &lt;/select&gt;\\n        &lt;/span&gt;\\n      &lt;/div&gt;\\n    &lt;/div&gt;\\n    &lt;a\\n      href=\\\"#\\\"\\n      className='cart-item-delete'\\n      onClick={(e) =&gt; {\\n        onRemoveClick(e, id);\\n      }}\\n    &gt;\\n      ×\\n    &lt;/a&gt;\\n  &lt;/li&gt;\\n);\\n\\nCartItem.PropTypes = {\\n  id: PropTypes.number.isRequired,\\n  name: PropTypes.string.isRequired,\\n  price: PropTypes.number.isRequired,\\n  img: PropTypes.string.isRequired,\\n  count: PropTypes.number.isRequired,\\n  stockCount: PropTypes.number.isRequired,\\n  onQtyChange: PropTypes.func.isRequired,\\n  onRemoveClick: PropTypes.func.isRequired,\\n};\\n\\n\\n// CartItems\\nconst CartItems = ({ cart, onQtyChange, onRemoveClick }) =&gt; {\\n  if (!cart.length) {\\n    return &lt;p className='empty-cart'&gt;Cart is empty&lt;/p&gt;;\\n  }\\n\\n  return (\\n    &lt;ul className='cart-items'&gt;\\n      {cart.map(item =&gt;\\n        &lt;CartItem\\n          key={item.id}\\n          id={item.id}\\n          name={item.name}\\n          price={item.price}\\n          img={item.img}\\n          count={item.count}\\n          stockCount={item.stockCount}\\n          onQtyChange={(e, id) =&gt; onQtyChange(e, id)}\\n          onRemoveClick={(e, id) =&gt; onRemoveClick(e, id)}\\n        /&gt;\\n      )}\\n    &lt;/ul&gt;\\n  );\\n};\\n\\nCartItems.PropTypes = {\\n  cart: PropTypes.arrayOf(PropTypes.shape({\\n    id: PropTypes.number.isRequired,\\n    name: PropTypes.string.isRequired,\\n    price: PropTypes.number.isRequired,\\n    img: PropTypes.string.isRequired,\\n    count: PropTypes.number.isRequired,\\n    stockCount: PropTypes.number.isRequired,\\n  }).isRequired).isRequired,\\n  onQtyChange: PropTypes.func.isRequired,\\n  onRemoveClick: PropTypes.func.isRequired,\\n};\\n\\n\\n// Total\\nconst Total = ({ cart }) =&gt; (\\n  &lt;div className='cart-total'&gt;\\n    &lt;span className='cart-total-label'&gt;\\n      Total:\\n    &lt;/span&gt;\\n    &lt;span className='cart-total-value'&gt;\\n      ${cart.length ? cart.reduce((acc, item) =&gt; (\\n        acc + item.price * item.count\\n      ), 0).toFixed(2) : Number(0).toFixed(2)}\\n    &lt;/span&gt;\\n  &lt;/div&gt;\\n);\\n\\nTotal.PropTypes = {\\n  cart: PropTypes.arrayOf(PropTypes.shape({\\n    price: PropTypes.number.isRequired,\\n    count: PropTypes.number.isRequired,\\n  }).isRequired).isRequired,\\n};\\n\\n\\n// PayButton\\nconst PayButton = ({ onPayClick }) =&gt; (\\n  &lt;button\\n    type='button'\\n    className='cart-pay-button'\\n    onClick={() =&gt; onPayClick()}\\n  &gt;\\n    Pay now\\n  &lt;/button&gt;\\n);\\n\\nPayButton.PropTypes = {\\n  onPayClick: PropTypes.func.isRequired,\\n};\\n\\n\\n// Cart\\nconst Cart = ({ cart, onQtyChange, onRemoveClick, onPayClick }) =&gt; (\\n  &lt;div className='cart'&gt;\\n    &lt;h1 className='main-header cart-header'&gt;My Cart&lt;/h1&gt;\\n    &lt;CartItems\\n      cart={cart}\\n      onQtyChange={onQtyChange}\\n      onRemoveClick={onRemoveClick}\\n    /&gt;\\n    &lt;Total cart={cart} /&gt;\\n    &lt;PayButton onPayClick={onPayClick} /&gt;\\n  &lt;/div&gt;\\n);\\n\\nCart.PropTypes = {\\n  cart: PropTypes.arrayOf(PropTypes.shape({\\n    id: PropTypes.number.isRequired,\\n    name: PropTypes.string.isRequired,\\n    price: PropTypes.number.isRequired,\\n    img: PropTypes.string.isRequired,\\n    count: PropTypes.number.isRequired,\\n    stockCount: PropTypes.number.isRequired,\\n  }).isRequired).isRequired,\\n  onQtyChange: PropTypes.func.isRequired,\\n  onRemoveClick: PropTypes.func.isRequired,\\n  onPayClick: PropTypes.func.isRequired,\\n};\\n\\n\\n// CartContainer\\nconst cartGetSelectedValue = (e) =&gt; (\\n  e.target.value\\n);\\n\\nconst CartContainer = connect(\\n  (state) =&gt; (\\n    {\\n      cart: state.cart.map(cartItem =&gt; {\\n        const item = state.stock.find(stockItem =&gt; cartItem.id === stockItem.id);\\n        return {\\n          id: cartItem.id,\\n          name: item.name,\\n          price: item.price,\\n          img: item.img,\\n          count: cartItem.count,\\n          stockCount: item.count,\\n        };\\n      }),\\n    }\\n  ),\\n  (dispatch) =&gt; (\\n    {\\n      onQtyChange: (e, id) =&gt; {\\n        dispatch(updateCartItem(id, cartGetSelectedValue(e)));\\n      },\\n\\n      onRemoveClick: (e, id) =&gt; {\\n        e.preventDefault();\\n        dispatch(removeFromCart(id));\\n      },\\n\\n      dispatch: (reducer) =&gt; dispatch(reducer),\\n    }\\n  ),\\n  (stateProps, dispatchProps, ownProps) =&gt; (\\n    Object.assign({}, ownProps, stateProps, dispatchProps, {\\n      onPayClick: () =&gt;\\n        stateProps.cart.map(item =&gt; {\\n          dispatchProps.dispatch(removeStockItem(item.id, item.count));\\n          dispatchProps.dispatch(removeFromCart(item.id));\\n        }),\\n    })\\n  )\\n)(Cart);\\n\\n\\n// NoMatch\\nconst NoMatch = () =&gt; (\\n  &lt;p className='no-match'&gt;\\n    Sorry, the page you are looking for does not exist.\\n    Click above to go back to the shop.\\n  &lt;/p&gt;\\n);\\n\\n\\n// App\\nconst App = () =&gt; (\\n  &lt;Router history={hashHistory}&gt;\\n    &lt;Route path='/' component={HeaderContainer}&gt;\\n      &lt;IndexRoute component={Shop} /&gt;\\n      &lt;Route path='item/:id' component={ItemContainer} /&gt;\\n      &lt;Route path='cart' component={CartContainer} /&gt;\\n      &lt;Route path='*' component={NoMatch} /&gt;\\n    &lt;/Route&gt;\\n  &lt;/Router&gt;\\n);\\n\\nconst store = Redux.createStore(reducers, initialState);\\n\\nReactDOM.render(\\n  &lt;Provider store={store}&gt;\\n    &lt;App /&gt;\\n  &lt;/Provider&gt;,\\n  document.getElementById('app')\\n);\\n\",\"html_pre_processor\":\"none\",\"css_pre_processor\":\"scss\",\"js_pre_processor\":\"babel\",\"html_classes\":\"\",\"css_starter\":\"neither\",\"js_library\":null,\"created_at\":\"2017-03-05T12:24:26.000Z\",\"updated_at\":\"2017-03-05T15:26:16.000Z\",\"title\":\"React Shopping Cart Demo\",\"description\":\"\",\"slug_hash\":\"oZLavq\",\"head\":\"\",\"private\":false,\"has_animation\":false,\"team_id\":0,\"css_prefix\":\"autoprefixer\",\"template\":false,\"parent_id\":0,\"comments_count\":0,\"custom_screenshot_filename\":null,\"loves_count\":0,\"pick\":false,\"popularity_score\":0,\"views_count\":0,\"pick_visible_at\":null,\"cpid\":\"015a9e6d-9490-7ba5-a3f5-327945159bdd\",\"is_new_editor_pen\":false,\"protected\":false,\"access\":\"Public\",\"pen_hash\":null}","__layoutType":"top","__pageType":"pen","__profiled":{"base_url":"/paulkim","hashid":"Mawomz","id":467473,"name":"Paul","type":"user","username":"paulkim"},"__processorsMap":{"autoprefixer":"autoprefixer-10","babel":"babel-7","coffeescript":"coffeescript-2","format-1":"format-1","flutter":"flutter-1","haml":"haml-4","less":"less-3","lint-1":"lint-1","livescript":"livescript-1","markdown":"markdown-11","postcss":"postcss-7","pug":"pug-2","sass":"sass-1","scss":"sass-1","sass-ruby-3":"sass-ruby-3","sass-ruby-compass-3":"sass-ruby-compass-3","slim":"slim-3","stylus":"stylus-0","typescript":"typescript-4","vue":"vue-2","vue3":"vue-3"},"__rtData":"{\"maxMembers\":0,\"roomID\":\"oZLavq/live\",\"roomType\":\"live\",\"updatedAt\":1488727576,\"user\":{\"id\":\"VoDkNZ\",\"hashid\":\"VoDkNZ\",\"name\":\"Captain Anonymous\",\"username\":\"anon\",\"role\":\"editor\"}}","__eijs":"https://cpwebassets.codepen.io/assets/embed/ei.js","__favicon_mask_icon":"https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg","__favicon_shortcut_icon":"https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico","__path_to_iframe_console_runner":"https://cpwebassets.codepen.io/assets/editor/iframe/iframeConsoleRunner-6d8bf8b4b479137260842506acbb12717dace0823c023e08b96360e60b0840d9.js","__path_to_iframe_refresh_css":"https://cpwebassets.codepen.io/assets/editor/iframe/iframeRefreshCSS-44fe83e49b63affec96918c9af88c0d80b209a862cf87ac46bc933074b8c557d.js","__path_to_iframe_runtime_errors":"https://cpwebassets.codepen.io/assets/editor/iframe/iframeRuntimeErrors-4f205f2c14e769b448bcf477de2938c681660d5038bc464e3700256713ebe261.js","__path_to_processor_worker":"https://cpwebassets.codepen.io/assets/packs/router.js","__path_to_stop_execution_on_timeout":"https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js","__pen_normalize_css_url":"https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css","__pen_prefix_free_url":"https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js","__pen_reset_css_url":"https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css","__path_to_infinite_loop_detection":"https://cpwebassets.codepen.io/assets/packs/js/infiniteLoopDetection-e34a3c02df2903190b88.js","__theme_url_twilight":"https://cpwebassets.codepen.io/assets/editor/themes/twilight-8ea74c444cf457f9a50f818792c3de6bb5f118202377c4fb1b7b1cc973b4070c.css","__theme_url_solarized_dark":"https://cpwebassets.codepen.io/assets/editor/themes/solarized-dark-fb5f1d9830f978169ccce3168b12ab1db5a2150702c168a4ae99630a7eab9fd9.css","__theme_url_tomorrow_night":"https://cpwebassets.codepen.io/assets/editor/themes/tomorrow-night-47f38e0b6072782710073c0d119a885f8d8fa9515f51e4f505fd3bdd13002947.css","__theme_url_oceanic_dark":"https://cpwebassets.codepen.io/assets/editor/themes/oceanic-dark-f52b71e393c57905043f6b691ab7e1f491644da39690fb7b0bc6f244284d956e.css","__theme_url_panda":"https://cpwebassets.codepen.io/assets/editor/themes/panda-f1cb92c10b4aa39b6dcfa03738a84d2b4f8f0f90e72a42e88e601e73ce68c465.css","__theme_url_duotone_dark":"https://cpwebassets.codepen.io/assets/editor/themes/duotone-dark-ebb2df4d1eb94f28c8a900aaa234137ffa559c23c012e779b8d16544ec3ed490.css","__theme_url_highcontrast_dark":"https://cpwebassets.codepen.io/assets/editor/themes/highcontrast-dark-43cc852ab2f3e457c307da9f3e1f495548ff74097f5264fcdb5b3632fa584daf.css","__theme_url_classic":"https://cpwebassets.codepen.io/assets/editor/themes/classic-cf941c887755858707eecedab34c5b92259ce7643a207af1e34c7a3ab1b51b04.css","__theme_url_solarized_light":"https://cpwebassets.codepen.io/assets/editor/themes/solarized-light-0237c9cb0ac7627ebf6b919a5c422d1f77399cd0fc2d77645c96986f126321c2.css","__theme_url_xq_light":"https://cpwebassets.codepen.io/assets/editor/themes/xq-light-91d2b5cfcd15b5fc28225a53039c975bffe15cb3aa255da375bfa2e5c0a449ab.css","__theme_url_oceanic_light":"https://cpwebassets.codepen.io/assets/editor/themes/oceanic-light-4aeee62e71c77e1d2af5cd2e0f27e9b0960727ee794271079291a6d5ac4b6546.css","__theme_url_mdn_like":"https://cpwebassets.codepen.io/assets/editor/themes/mdn-like-0b8f0b9894ba3d7e831d27cb9c1d5c5e26496fd36e961a4d420ac1ec6afc285f.css","__theme_url_duotone_light":"https://cpwebassets.codepen.io/assets/editor/themes/duotone-light-2de5a6be2aa7222f2cc5fd311baceb3441a69f2934b19fedabf32067b1075bd6.css","__theme_url_highcontrast_light":"https://cpwebassets.codepen.io/assets/editor/themes/highcontrast-light-c81e72647a5e8f0d159fe1b224e7f878df8b4966925fdbc91a49ed5c4e193e96.css","__theme_url_scoped_twilight":"https://cpwebassets.codepen.io/assets/editor/themes/scoped/twilight-9b183fa39a2199e3f075a5b25535f79e92968183addaf780b60e2381c242681f.css","__theme_url_scoped_solarized_dark":"https://cpwebassets.codepen.io/assets/editor/themes/scoped/solarized-dark-2e3da440b4e41b34d96f70368459e6c4ea4f83f134495b1de1279bec56510437.css","__theme_url_scoped_tomorrow_night":"https://cpwebassets.codepen.io/assets/editor/themes/scoped/tomorrow-night-bd9c982da80e4cbb970cef65e70c09dd1f3d543125c7480b5a7068ecc249f813.css","__theme_url_scoped_oceanic_dark":"https://cpwebassets.codepen.io/assets/editor/themes/scoped/oceanic-dark-dfb87a42c99a8c092fcd97bbd4e7afb8e15b0cd7fccbe4aedd3765774a053443.css","__theme_url_scoped_panda":"https://cpwebassets.codepen.io/assets/editor/themes/scoped/panda-263a3c336073cce95c9b6158a68a4eb165704bd967e6c58cb779e4e8c84b96c1.css","__theme_url_scoped_duotone_dark":"https://cpwebassets.codepen.io/assets/editor/themes/scoped/duotone-dark-815c104921cc5fcce373bf8b58c825049571b90404152b2ab4991f13c9d62b8a.css","__theme_url_scoped_highcontrast_dark":"https://cpwebassets.codepen.io/assets/editor/themes/scoped/highcontrast-dark-7ab54e0cb944b71eaf6b5149ffcfe07aca0b4ee5381edfe868111a8a525fa8de.css","__theme_url_scoped_classic":"https://cpwebassets.codepen.io/assets/editor/themes/scoped/classic-568ab0632ab5844400518c5913e477e23838f86432163df5012d6bea3fe2130a.css","__theme_url_scoped_solarized_light":"https://cpwebassets.codepen.io/assets/editor/themes/scoped/solarized-light-30ef93ee62b1c9b3527d41c3707b1929643512bd4596b041887bcc304d2212d2.css","__theme_url_scoped_xq_light":"https://cpwebassets.codepen.io/assets/editor/themes/scoped/xq-light-0521eaf8a2adfabe7ec78b9594c4518292006c580f6c04ec7977c962703034f3.css","__theme_url_scoped_oceanic_light":"https://cpwebassets.codepen.io/assets/editor/themes/scoped/oceanic-light-f0eb51b8ae5b77d9f6779890ba0aaabf1edee033f7df9d79e3a5d784ee89e48d.css","__theme_url_scoped_mdn_like":"https://cpwebassets.codepen.io/assets/editor/themes/scoped/mdn-like-67b5211d4db8af109ae8ad81c719e571e6660ad1f33ceb59d2a19c86ff0bda63.css","__theme_url_scoped_duotone_light":"https://cpwebassets.codepen.io/assets/editor/themes/scoped/duotone-light-19ed9e1a7595c45ccf674358149c2fc045f3c83beeb8ee2b4dd611c39e7a13d6.css","__theme_url_scoped_highcontrast_light":"https://cpwebassets.codepen.io/assets/editor/themes/scoped/highcontrast-light-dfa4438ddebf53a4f982fb1ea022c1e75ec30c5298976b1c8ac53ff300b314e2.css"}</textarea>
+<script src="./React Shopping Cart Demo_files/browser_support-2c1a3d31dbc6b5746fb7dacdbc81dd613906db219f13147c66864a6c3448246c.js.download"></script>
+<script src="./React Shopping Cart Demo_files/everypage-b1fe1ca71dab80c49b8e5ebed21506a80cb6fe64ecaa8c6dddae5aca7b1e34d7.js.download"></script>
+<script src="./React Shopping Cart Demo_files/vendor-2dbc4b5ea4ee404c5ed6.chunk.js.download"></script>
+<script src="./React Shopping Cart Demo_files/1-16b750e17e466c9fdaf6.chunk.js.download"></script>
+<script src="./React Shopping Cart Demo_files/referrer-tracking-ae0cc2abe792c03e5047.js.download"></script>
+<script src="./React Shopping Cart Demo_files/vendor-2dbc4b5ea4ee404c5ed6.chunk.js.download"></script>
+<script src="./React Shopping Cart Demo_files/1-16b750e17e466c9fdaf6.chunk.js.download"></script>
+<script src="./React Shopping Cart Demo_files/everypage-024acc26077f4ea37ffc.js.download"></script><div id="react-messages"><div class="Messages-module_container-YzpcS" style="position: fixed; z-index: 9999; inset: 16px; pointer-events: none;"></div></div><div></div>
+<script src="./React Shopping Cart Demo_files/vendor-2dbc4b5ea4ee404c5ed6.chunk.js.download"></script>
+<script src="./React Shopping Cart Demo_files/1-16b750e17e466c9fdaf6.chunk.js.download"></script>
+<script src="./React Shopping Cart Demo_files/processorRouter-03d66eeb8edfc4fbdbb3.js.download"></script>
+<script src="./React Shopping Cart Demo_files/filestack.min.js.download"></script>
+<script src="./React Shopping Cart Demo_files/commonLibs-18d595d95e5894ceae5661c7e40deeca7df254309b42f89edce76949b15a0f31.js.download"></script>
+<script src="./React Shopping Cart Demo_files/codemirror-e628acccbc140ed80f9daa48b5e64c775855e64a41d7fad48e7583a7819aa9d6.js.download"></script>
+<script src="./React Shopping Cart Demo_files/emmet-codemirror-plugin-f3955bea0403e8137caacd73a1e42bb551794f7ce15ae59103c64a2736b2757c.js.download"></script>
+<script src="./React Shopping Cart Demo_files/index-e75ed99a0baee14b680c240829d4a2cc5af1f3dbc9bd7b55468398226f46c520.js.download"></script>
+<script nonce="">(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.nonce='hT8JdMKChtw=';d.innerHTML="window.__CF$cv$params={r:'8a3969e8291f21f0',t:'MTcyMTA0Mjk1NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='hT8JdMKChtw=';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><iframe height="1" width="1" style="position: absolute; top: 0px; left: 0px; border: none; visibility: hidden;" src="./React Shopping Cart Demo_files/saved_resource.html"></iframe>
+
+</body></html>

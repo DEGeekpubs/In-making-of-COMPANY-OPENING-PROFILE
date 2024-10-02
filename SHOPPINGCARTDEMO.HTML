@@ -1,0 +1,1109 @@
+﻿
+<!DOCTYPE html>
+<!-- saved from url=(0102)file:///C:/Users/ABC/Desktop/WEB%20FOLDER/React%20Shopping%20Cart%20Demo_files/oZLavq.html#/?_k=cobiz7 -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  
+
+    <link rel="apple-touch-icon" type="image/png" href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png">
+
+    <meta name="apple-mobile-web-app-title" content="CodePen">
+
+    <link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico">
+
+    <link rel="mask-icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg" color="#111">
+
+
+
+  
+    <script src="./stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js.download"></script>
+
+
+  <title>CodePen - React Shopping Cart Demo</title>
+
+    <link rel="canonical" href="https://codepen.io/paulkim/pen/oZLavq">
+  
+  
+  
+  
+<style>
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+img, media {
+  max-width: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  color: #333;
+}
+
+a {
+  text-decoration: none;
+  transition: 0.2s;
+  color: #555;
+}
+a:hover, a:active, a:focus {
+  color: #27a;
+}
+
+h1, h2 {
+  margin: 0;
+}
+
+.item-add-button, .cart-pay-button {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: #2d2;
+  display: block;
+  width: 100%;
+  max-width: 20rem;
+  padding: 0.25rem 0.5rem;
+  margin: 1.5rem auto 0;
+  border: none;
+  border-radius: 0.375rem;
+  box-shadow: 0 0.375rem #2b2;
+  transition: 0.2s;
+}
+.item-add-button:active, .cart-pay-button:active {
+  transform: translateY(0.375rem);
+  box-shadow: 0 0 #2b2;
+}
+
+.empty-cart, .cart-items {
+  margin: 2rem 0;
+}
+
+.empty-cart {
+  text-align: center;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.cart-item-image-link, .cart-item-delete {
+  flex: 0 0 auto;
+}
+
+.cart-item-info {
+  flex: 1 1 auto;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.cart-item-delete {
+  font-size: 1.5rem;
+  margin: 0.5rem;
+}
+
+.cart-item-image {
+  vertical-align: bottom;
+  height: 5rem;
+  padding: 0 0.8333rem 0 0.8333rem;
+}
+
+.cart-item-name-link, .cart-item-value {
+  flex: 0 0 auto;
+  margin: 0.25rem 0.5rem;
+}
+
+.cart-item-name {
+  font-size: 1.25rem;
+}
+
+.cart-item-value {
+  font-size: 1rem;
+}
+
+.cart-item-price {
+  margin-right: 1rem;
+}
+
+.cart-item-qty-select {
+  margin-left: 0.5rem;
+}
+
+.cart-total {
+  font-size: 1.25rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cart-total-label {
+  font-weight: bold;
+}
+
+.header {
+  width: 100%;
+  height: 4.375rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.85);
+  border-bottom: 0.0625rem solid #999;
+}
+
+.header-contents {
+  max-width: 75rem;
+  margin: 0 auto;
+  display: flex;
+}
+.header-contents > a {
+  flex: 0 0 auto;
+}
+
+.back-button {
+  margin: 1rem auto 1rem 1rem;
+  padding: 0.625rem 0;
+}
+
+.cart-button {
+  margin: 1rem 1rem 1rem auto;
+  padding: 0.5rem;
+  border: 0.125rem solid #46f;
+  border-radius: 0.375rem;
+  background-color: #68f;
+  background-color: rgba(102, 136, 255, 0.85);
+  color: #fff;
+  font-weight: bold;
+}
+.cart-button:hover, .cart-button:active, .cart-button:focus {
+  color: #fff;
+}
+.cart-button:hover, .cart-button:focus {
+  border: 0.125rem solid #35f;
+  background-color: #57f;
+  background-color: rgba(85, 119, 255, 0.85);
+}
+.cart-button:active {
+  border: 0.125rem solid #24f;
+  background-color: #35f;
+  background-color: rgba(51, 85, 255, 0.85);
+}
+
+.item {
+  max-width: 25rem;
+  margin: 0 auto;
+}
+
+.item-name, .item-price {
+  padding: 0.25rem 0;
+}
+
+.item-name {
+  font-size: 1.5rem;
+}
+
+.item-price {
+  font-size: 1.25rem;
+  font-weight: normal;
+}
+
+.item-add-form, .item-sold-out {
+  margin: 2.5rem 0 0;
+}
+
+.item-add-form {
+  text-align: center;
+}
+
+.item-qty-label {
+  margin-right: 0.5rem;
+}
+
+.item-sold-out {
+  color: #f00;
+}
+
+@media (min-width: 48rem) {
+  .item {
+    display: flex;
+    max-width: 60rem;
+    padding: 2rem 0 0;
+  }
+
+  .item-image {
+    flex: 0 0 auto;
+  }
+
+  .item-details {
+    flex: 1 1 auto;
+    padding: 2rem 0 1rem 2rem;
+  }
+}
+.no-match {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.item-qty, .cart-item-qty-select {
+  font-size: 1rem;
+  color: #333;
+  width: 2.75rem;
+  background-color: #fff;
+  border: 0.0625rem solid #666;
+  border-radius: 0.25rem;
+}
+
+.shop-item {
+  margin: 2rem auto;
+  max-width: 21.625rem;
+  border: 0.0625rem solid #555;
+  box-shadow: 0 0 0.625rem 0.25rem #555;
+}
+
+.shop-item-image, .shop-item-name, .shop-item-price {
+  padding: 0.5rem 0.75rem;
+}
+
+.shop-item-image {
+  margin: 0;
+}
+
+.shop-item-name {
+  font-size: 1.5rem;
+}
+
+.shop-item-price {
+  font-size: 1rem;
+  font-weight: normal;
+  padding-bottom: 1rem;
+}
+
+@media (min-width: 40rem) {
+  .shop-item-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: flex-start;
+  }
+
+  .shop-item {
+    flex: 0 0 43%;
+    margin: 2rem 3.5%;
+  }
+}
+@media (min-width: 54rem) {
+  .shop-item {
+    flex: 0 0 29%;
+    margin: 2rem 2.166%;
+  }
+}
+.shopping-cart-app {
+  max-width: 75rem;
+  margin: 0 auto;
+}
+
+.main-header {
+  font-size: 1.75rem;
+  margin: 1rem 0;
+}
+
+.main {
+  padding: 4.375rem 1rem 2.5rem;
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+</head>
+
+<body translate="no">
+  <div id="app"><div data-reactroot="" class="shopping-cart-app"><header class="header"><div class="header-contents"><!-- react-text: 4 --><!-- /react-text --><a class="cart-button" href="file:///C:/Users/ABC/Desktop/WEB%20FOLDER/React%20Shopping%20Cart%20Demo_files/oZLavq.html#/cart"><!-- react-text: 6 -->Cart (<!-- /react-text --><!-- react-text: 7 -->0<!-- /react-text --><!-- react-text: 8 -->)<!-- /react-text --></a></div></header><main class="main"><div class="shop"><h1 class="main-header shop-header">Shop</h1><ul class="shop-item-list"><li class="shop-item shop-item-0"><a href="file:///C:/Users/ABC/Desktop/WEB%20FOLDER/React%20Shopping%20Cart%20Demo_files/oZLavq.html#/item/0"><div class="shop-item-container"><img class="shop-item-image" src="./TC2017_LS_Mens_grande.jpg"><h1 class="shop-item-name">TC 2017 LS</h1><h2 class="shop-item-price"><!-- react-text: 19 -->$<!-- /react-text --><!-- react-text: 20 -->34.95<!-- /react-text --></h2></div></a></li><li class="shop-item shop-item-1"><a href="file:///C:/Users/ABC/Desktop/WEB%20FOLDER/React%20Shopping%20Cart%20Demo_files/oZLavq.html#/item/1"><div class="shop-item-container"><img class="shop-item-image" src="./TC2017_Shorts_White_grande.jpg"><h1 class="shop-item-name">TC 2017 Shorts</h1><h2 class="shop-item-price"><!-- react-text: 27 -->$<!-- /react-text --><!-- react-text: 28 -->25.00<!-- /react-text --></h2></div></a></li><li class="shop-item shop-item-2"><a href="file:///C:/Users/ABC/Desktop/WEB%20FOLDER/React%20Shopping%20Cart%20Demo_files/oZLavq.html#/item/2"><div class="shop-item-container"><img class="shop-item-image" src="./TC2016_red_SS_front_grande.jpg"><h1 class="shop-item-name">TC 2016 Red SS</h1><h2 class="shop-item-price"><!-- react-text: 35 -->$<!-- /react-text --><!-- react-text: 36 -->74.00<!-- /react-text --></h2></div></a></li><li class="shop-item shop-item-3"><a href="file:///C:/Users/ABC/Desktop/WEB%20FOLDER/React%20Shopping%20Cart%20Demo_files/oZLavq.html#/item/3"><div class="shop-item-container"><img class="shop-item-image" src="./TC2016_SS_front_grande.jpg"><h1 class="shop-item-name">TC 2016 Dark SS</h1><h2 class="shop-item-price"><!-- react-text: 43 -->$<!-- /react-text --><!-- react-text: 44 -->35.99<!-- /react-text --></h2></div></a></li><li class="shop-item shop-item-4"><a href="file:///C:/Users/ABC/Desktop/WEB%20FOLDER/React%20Shopping%20Cart%20Demo_files/oZLavq.html#/item/4"><div class="shop-item-container"><img class="shop-item-image" src="./TCsample2_white_front_grande.jpg"><h1 class="shop-item-name">TC 2016 Light SS</h1><h2 class="shop-item-price"><!-- react-text: 51 -->$<!-- /react-text --><!-- react-text: 52 -->35.99<!-- /react-text --></h2></div></a></li><li class="shop-item shop-item-5"><a href="file:///C:/Users/ABC/Desktop/WEB%20FOLDER/React%20Shopping%20Cart%20Demo_files/oZLavq.html#/item/5"><div class="shop-item-container"><img class="shop-item-image" src="./MedGreyPockets_front_grande400x600_grande_888f95c1-0f4d-483f-938e-c686892a855a_grande.jpg"><h1 class="shop-item-name">Goat Shorts</h1><h2 class="shop-item-price"><!-- react-text: 59 -->$<!-- /react-text --><!-- react-text: 60 -->29.00<!-- /react-text --></h2></div></a></li><li class="shop-item shop-item-6"><a href="file:///C:/Users/ABC/Desktop/WEB%20FOLDER/React%20Shopping%20Cart%20Demo_files/oZLavq.html#/item/6"><div class="shop-item-container"><img class="shop-item-image" src="./Gloves_grande.jpg"><h1 class="shop-item-name">Friction Gloves</h1><h2 class="shop-item-price"><!-- react-text: 67 -->$<!-- /react-text --><!-- react-text: 68 -->33.95<!-- /react-text --></h2></div></a></li><li class="shop-item shop-item-7"><a href="file:///C:/Users/ABC/Desktop/WEB%20FOLDER/React%20Shopping%20Cart%20Demo_files/oZLavq.html#/item/7"><div class="shop-item-container"><img class="shop-item-image" src="./TC2017_Hat_Snapback_BlackWhite_grande.jpg"><h1 class="shop-item-name">TC 2017 Trucker</h1><h2 class="shop-item-price"><!-- react-text: 75 -->$<!-- /react-text --><!-- react-text: 76 -->15.00<!-- /react-text --></h2></div></a></li><li class="shop-item shop-item-8"><a href="file:///C:/Users/ABC/Desktop/WEB%20FOLDER/React%20Shopping%20Cart%20Demo_files/oZLavq.html#/item/8"><div class="shop-item-container"><img class="shop-item-image" src="./Disc_VC_OG_grande_grande_cc0c1695-4247-426a-bd6c-5821da4e42da_grande.png"><h1 class="shop-item-name">VC Discraft Disc</h1><h2 class="shop-item-price"><!-- react-text: 83 -->$<!-- /react-text --><!-- react-text: 84 -->14.00<!-- /react-text --></h2></div></a></li></ul></div></main></div></div>
+  <script src="./react.js.download"></script>
+<script src="./react-dom.js.download"></script>
+<script src="./redux.min.js.download"></script>
+<script src="./react-redux.min.js.download"></script>
+<script src="./ReactRouter.min.js.download"></script>
+      <script id="rendered-js">
+// INITIAL STATE
+// --------------------
+// --> initialState
+// 
+// FUNCTIONS
+// --------------------
+// --> getOptionsArray
+// 
+// ACTIONS
+// --------------------
+// --> addToCart
+// --> removeFromCart
+// --> updateCartItem
+// --> removeStockItem
+// 
+// REDUCERS
+// --------------------
+// ------> cartItem
+// ----> cart
+// ------> stockItem
+// ----> stock
+// --> reducers
+// 
+// COMPONENTS
+// --------------------
+// ------> Header
+// ----> HeaderContainer
+// ----------> ShopItem
+// --------> ShopItems
+// ------> ShopItemsContainer
+// ----> Shop
+// ----------> AddItem
+// --------> AddItemContainer
+// ------> Item
+// ----> ItemContainer
+// ----------> CartItem
+// --------> CartItems
+// --------> Total
+// --------> PayButton
+// ------> Cart
+// ----> CartContainer
+// ----> NoMatch
+// --> App
+
+const { PropTypes } = React;
+const { connect, Provider } = ReactRedux;
+const {
+  Router,
+  Route,
+  Link,
+  IndexRoute,
+  hashHistory } =
+ReactRouter;
+
+// INITIAL STATE
+const initialState = {
+  cart: [],
+  stock: [
+  {
+    id: 0,
+    name: 'TC 2017 LS',
+    description: 'VC FlexLight Jersey with spot sublimated Team Canada 2017 logo, from our Team Canada Collection.',
+    price: 34.95,
+    count: 12,
+    img: 'https://cdn.shopify.com/s/files/1/0340/2849/products/TC2017_LS_Mens_grande.jpg?v=1485541617' },
+  {
+    id: 1,
+    name: 'TC 2017 Shorts',
+    description: 'VC FlexLight Shorts with spot sublimated Team Canada 2017 logo, from our Team Canada Collection.',
+    price: 25.00,
+    count: 7,
+    img: 'https://cdn.shopify.com/s/files/1/0340/2849/products/TC2017_Shorts_White_grande.jpg?v=1485541580' },
+  {
+    id: 2,
+    name: 'TC 2016 Red SS',
+    description: 'VC Ultimate\'s fully sublimated performance jersey, a replica of one of the two official dark jerseys of 2016 Team Canada teams! Sublimated jerseys are made with VC\'s FlexLight performance material – soft, lightweight and moisture wicking.',
+    price: 74.00,
+    count: 11,
+    img: 'https://cdn.shopify.com/s/files/1/0340/2849/products/TC2016_red_SS_front_grande.jpg?v=1468602448' },
+  {
+    id: 3,
+    name: 'TC 2016 Dark SS',
+    description: 'VC Ultimate\'s fully sublimated performance jersey, a replica of one of the two official dark jerseys of 2016 Team Canada teams! Sublimated jerseys are made with VC\'s FlexLight performance material – soft, lightweight and moisture wicking.',
+    price: 35.99,
+    count: 13,
+    img: 'https://cdn.shopify.com/s/files/1/0340/2849/products/TC2016_SS_front_grande.jpg?v=1460557226' },
+  {
+    id: 4,
+    name: 'TC 2016 Light SS',
+    description: 'Official replica of the 2016 Team Canada light playing jersey. VC spot sublimated jerseys are made with VC\'s FlexLight performance material – soft, lightweight and moisture wicking.',
+    price: 35.99,
+    count: 16,
+    img: 'https://cdn.shopify.com/s/files/1/0340/2849/products/TCsample2_white_front_grande.jpg?v=1480111096' },
+  {
+    id: 5,
+    name: 'Goat Shorts',
+    description: 'This just in... VC\'s NEW signature \'GOAT\' style athletic shorts now with pockets! Made with our FlexLight material.',
+    price: 29.00,
+    count: 4,
+    img: 'https://cdn.shopify.com/s/files/1/0340/2849/products/MedGreyPockets_front_grande400x600_grande_888f95c1-0f4d-483f-938e-c686892a855a_grande.jpg?v=1454966549' },
+  {
+    id: 6,
+    name: 'Friction Gloves',
+    description: 'This is the glove that started it all! Friction Gloves work great in every condition: dry, hot, rain, snow, you name it. They will help you maintain a firm grip on the disc whether you\'re catching or throwing. They eliminate slippage when the disc is wet, keep your hands warm in cold weather, and ease the sting of zippy throws. Whether your goal is to throw with more accuracy, catch tough discs, or just look fly, Frictions will help.  Frictions are not bulky or stiff like other gloves. They are tight fitting and, after a while, you\'ll forget they\'re even on!',
+    price: 33.95,
+    count: 18,
+    img: 'https://cdn.shopify.com/s/files/1/0340/2849/products/Gloves_grande.jpg?v=1446586810' },
+  {
+    id: 7,
+    name: 'TC 2017 Trucker',
+    description: 'Premium meshback cotton front trucker hat. Made by FlexFit, with the official embroidered patch of Team Canada 2017! 47% Cotton / 25% Polyester / 28% Nylon, contrast trucker mesh back, matching plastic snap, hard buckram, matching undervisor. One size fits all',
+    price: 15.00,
+    count: 15,
+    img: 'https://cdn.shopify.com/s/files/1/0340/2849/products/TC2017_Hat_Snapback_BlackWhite_grande.jpg?v=1485538793' },
+  {
+    id: 8,
+    name: 'VC Discraft Disc',
+    description: 'Discraft 175 gram Ultrastar disc, hot stamped with the original VC logo.',
+    price: 14.00,
+    count: 19,
+    img: 'https://cdn.shopify.com/s/files/1/0340/2849/products/Disc_VC_OG_grande_grande_cc0c1695-4247-426a-bd6c-5821da4e42da_grande.png?v=1485469652' }] };
+
+
+
+
+
+// FUNCTIONS
+// getOptionsArray
+const getOptionsArray = count => {
+  const array = [];
+  for (let i = 0; i < count; i++) {if (window.CP.shouldStopExecution(0)) break;
+    array.push(i + 1);
+  }window.CP.exitedLoop(0);
+
+  return array;
+};
+
+// ACTIONS
+// addToCart
+const addToCart = (id, count) => (
+{
+  type: 'ADD_TO_CART',
+  id,
+  count });
+
+
+
+// removeFromCart
+const removeFromCart = (id) => (
+{
+  type: 'REMOVE_FROM_CART',
+  id });
+
+
+
+// updateCartItem
+const updateCartItem = (id, count) => (
+{
+  type: 'UPDATE_CART_ITEM',
+  id,
+  count });
+
+
+
+// removeStockItem
+const removeStockItem = (id, count) => (
+{
+  type: 'REMOVE_STOCK_ITEM',
+  id,
+  count });
+
+
+
+
+// REDUCERS
+// cartItem
+const cartItem = (state, action) => {
+  switch (action.type) {
+    case 'ADD_TO_CART':
+      return {
+        id: action.id,
+        count: action.count };
+
+    case 'REMOVE_FROM_CART':
+      return state.id !== action.id;
+    case 'UPDATE_CART_ITEM':
+      if (state.id !== action.id) {
+        return state;
+      }
+
+      return Object.assign(
+      {},
+      state,
+      {
+        count: action.count });
+
+
+    default:
+      return state;}
+
+};
+
+// cart
+const cart = (state = [], action) => {
+  switch (action.type) {
+    case 'ADD_TO_CART':
+      return [
+      ...state,
+      cartItem(undefined, action)];
+
+    case 'REMOVE_FROM_CART':
+      return state.filter(item => cartItem(item, action));
+    case 'UPDATE_CART_ITEM':
+      return state.map(item => cartItem(item, action));
+    default:
+      return state;}
+
+};
+
+// stockItem
+const stockItem = (state, action) => {
+  switch (action.type) {
+    case 'REMOVE_STOCK_ITEM':
+      if (state.id !== action.id) {
+        return state;
+      }
+
+      return Object.assign(
+      {},
+      state,
+      {
+        count: state.count - action.count });
+
+
+    default:
+      return state;}
+
+};
+
+// stock
+const stock = (state = [], action) => {
+  switch (action.type) {
+    case 'REMOVE_STOCK_ITEM':
+      return state.map(item => stockItem(item, action));
+    default:
+      return state;}
+
+};
+
+// reducers
+const reducers = Redux.combineReducers({
+  cart,
+  stock });
+
+
+
+// COMPONENTS
+// Header
+const Header = ({ children, cartItems, backButton, cartButton }) => {
+  const getBackButton = () => /*#__PURE__*/
+  React.createElement(Link, { to: "/", className: "back-button" }, "< Back to shop");
+
+
+
+
+  const getCartButton = () => /*#__PURE__*/
+  React.createElement(Link, { to: "/cart", className: "cart-button" }, "Cart (",
+  cartItems, ")");
+
+
+
+  return /*#__PURE__*/(
+    React.createElement("div", { className: "shopping-cart-app" }, /*#__PURE__*/
+    React.createElement("header", { className: "header" }, /*#__PURE__*/
+    React.createElement("div", { className: "header-contents" },
+    backButton ? getBackButton() : '',
+    cartButton ? getCartButton() : '')), /*#__PURE__*/
+
+
+    React.createElement("main", { className: "main" },
+    children)));
+
+
+
+};
+
+Header.PropTypes = {
+  cartItems: PropTypes.number.isRequired,
+  backButton: PropTypes.bool.isRequired,
+  cartButton: PropTypes.bool.isRequired };
+
+
+
+// HeaderContainer
+const showBackButton = (pathname) =>
+pathname !== '/' ? true : false;
+
+
+const showCartButton = (pathname) =>
+!pathname.includes('cart') ? true : false;
+
+
+const HeaderContainer = connect(
+(state, ownProps) => (
+{
+  children: ownProps.children,
+  cartItems: state.cart.length,
+  backButton: showBackButton(ownProps.location.pathname),
+  cartButton: showCartButton(ownProps.location.pathname) }))(
+
+
+Header);
+
+
+// ShopItem
+const ShopItem = ({ id, name, price, img }) => /*#__PURE__*/
+React.createElement("li", { className: 'shop-item shop-item-' + id }, /*#__PURE__*/
+React.createElement(Link, { to: '/item/' + id }, /*#__PURE__*/
+React.createElement("div", { className: "shop-item-container" }, /*#__PURE__*/
+React.createElement("img", {
+  className: "shop-item-image",
+  src: img }), /*#__PURE__*/
+
+React.createElement("h1", { className: "shop-item-name" },
+name), /*#__PURE__*/
+
+React.createElement("h2", { className: "shop-item-price" }, "$",
+price.toFixed(2)))));
+
+
+
+
+
+
+ShopItem.PropTypes = {
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  img: PropTypes.string.isRequired };
+
+
+
+// ShopItems
+const ShopItems = ({ items }) => {
+  if (!items.length) {
+    return /*#__PURE__*/React.createElement("p", { className: "no-shop-items" }, "No items");
+  }
+
+  return /*#__PURE__*/(
+    React.createElement("ul", { className: "shop-item-list" },
+    items.map((item) => /*#__PURE__*/
+    React.createElement(ShopItem, {
+      key: item.id,
+      id: item.id,
+      name: item.name,
+      price: item.price,
+      img: item.img }))));
+
+
+
+
+};
+
+ShopItems.PropTypes = {
+  items: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    count: PropTypes.number.isRequired }).
+  isRequired).isRequired };
+
+
+
+// ShopItemsContainer
+const ShopItemsContainer = connect(
+(state) => (
+{
+  items: state.stock }))(
+
+
+ShopItems);
+
+
+// Shop
+const Shop = () => /*#__PURE__*/
+React.createElement("div", { className: "shop" }, /*#__PURE__*/
+React.createElement("h1", { className: "main-header shop-header" }, "Shop"), /*#__PURE__*/
+React.createElement(ShopItemsContainer, null));
+
+
+
+
+// AddItem
+const AddItem = ({ id, count, onSubmit }) => {
+  if (!count) {
+    return /*#__PURE__*/(
+      React.createElement("p", { className: "item-sold-out" }, "Sold out!"));
+
+
+
+  }
+
+  return /*#__PURE__*/(
+    React.createElement("form", {
+      className: "item-add-form",
+      onSubmit: e => {
+        e.preventDefault();
+        onSubmit(e, id);
+      } }, /*#__PURE__*/
+
+    React.createElement("span", { className: "item-qty-label" }, "Qty:"), /*#__PURE__*/
+
+
+    React.createElement("select", { className: "item-qty" },
+    getOptionsArray(count).map((num) => /*#__PURE__*/
+    React.createElement("option", {
+      key: num,
+      value: num },
+
+    num))), /*#__PURE__*/
+
+
+
+    React.createElement("button", {
+      className: "item-add-button",
+      type: "submit" }, "Add to cart")));
+
+
+
+
+
+};
+
+AddItem.PropTypes = {
+  count: PropTypes.number.isRequired,
+  onClick: PropTypes.func.isRequired };
+
+
+
+// AddItemContainer
+const addItemGetSelectedValue = (e) =>
+e.target.getElementsByClassName('item-qty')[0].value;
+
+
+const AddItemContainer = connect(
+(state, ownProps) => (
+{
+  id: ownProps.id,
+  count: state.stock.find(item => item.id === ownProps.id).count,
+  inCart: state.cart.some(item => item.id === ownProps.id) }),
+
+
+null,
+(stateProps, dispatchProps, ownProps) => {
+  const onSubmit = stateProps.inCart ? updateCartItem : addToCart;
+
+  return Object.assign({}, ownProps, stateProps, dispatchProps, {
+    onSubmit: (e, id) => {
+      dispatchProps.dispatch(onSubmit(id, addItemGetSelectedValue(e)));
+    } });
+
+})(
+AddItem);
+
+
+// Item
+const Item = ({ id, name, description, price, img }) => /*#__PURE__*/
+React.createElement("div", { className: 'item item-' + id }, /*#__PURE__*/
+React.createElement("img", {
+  className: "item-image",
+  src: img }), /*#__PURE__*/
+
+React.createElement("div", { className: "item-details" }, /*#__PURE__*/
+React.createElement("h1", { className: "item-name" },
+name), /*#__PURE__*/
+
+React.createElement("h2", { className: "item-price" }, "$",
+price.toFixed(2)), /*#__PURE__*/
+
+React.createElement("p", { className: "item-desc" },
+description), /*#__PURE__*/
+
+React.createElement(AddItemContainer, { id: id })));
+
+
+
+
+Item.PropTypes = {
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  img: PropTypes.string.isRequired };
+
+
+
+// ItemContainer
+const ItemContainer = connect(
+(state, ownProps) =>
+state.stock.find(item => String(item.id) === ownProps.params.id))(
+
+Item);
+
+
+// CartItem
+const CartItem = (
+{ id, name, price, img, count, stockCount, onQtyChange, onRemoveClick }) => /*#__PURE__*/
+
+React.createElement("li", { className: 'cart-item cart-item-' + id }, /*#__PURE__*/
+React.createElement(Link, {
+  to: '/item/' + id,
+  className: "cart-item-image-link" }, /*#__PURE__*/
+
+React.createElement("img", {
+  className: "cart-item-image",
+  src: img })), /*#__PURE__*/
+
+
+React.createElement("div", { className: "cart-item-info" }, /*#__PURE__*/
+React.createElement(Link, {
+  to: '/item/' + id,
+  className: "cart-item-name-link" }, /*#__PURE__*/
+
+React.createElement("h1", { className: "cart-item-name" },
+name)), /*#__PURE__*/
+
+
+React.createElement("div", { className: "cart-item-value" }, /*#__PURE__*/
+React.createElement("span", { className: "cart-item-price" }, "$",
+price.toFixed(2)), /*#__PURE__*/
+
+React.createElement("span", { className: "cart-item-qty" }, "Qty:", /*#__PURE__*/
+
+React.createElement("select", {
+  className: "cart-item-qty-select",
+  value: count,
+  onChange: e => onQtyChange(e, id) },
+
+getOptionsArray(stockCount).map((num) => /*#__PURE__*/
+React.createElement("option", {
+  key: num,
+  value: num },
+
+num)))))), /*#__PURE__*/
+
+
+
+
+
+
+React.createElement("a", {
+  href: "#",
+  className: "cart-item-delete",
+  onClick: e => {
+    onRemoveClick(e, id);
+  } }, "\xD7"));
+
+
+
+
+
+
+CartItem.PropTypes = {
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  img: PropTypes.string.isRequired,
+  count: PropTypes.number.isRequired,
+  stockCount: PropTypes.number.isRequired,
+  onQtyChange: PropTypes.func.isRequired,
+  onRemoveClick: PropTypes.func.isRequired };
+
+
+
+// CartItems
+const CartItems = ({ cart, onQtyChange, onRemoveClick }) => {
+  if (!cart.length) {
+    return /*#__PURE__*/React.createElement("p", { className: "empty-cart" }, "Cart is empty");
+  }
+
+  return /*#__PURE__*/(
+    React.createElement("ul", { className: "cart-items" },
+    cart.map((item) => /*#__PURE__*/
+    React.createElement(CartItem, {
+      key: item.id,
+      id: item.id,
+      name: item.name,
+      price: item.price,
+      img: item.img,
+      count: item.count,
+      stockCount: item.stockCount,
+      onQtyChange: (e, id) => onQtyChange(e, id),
+      onRemoveClick: (e, id) => onRemoveClick(e, id) }))));
+
+
+
+
+};
+
+CartItems.PropTypes = {
+  cart: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    img: PropTypes.string.isRequired,
+    count: PropTypes.number.isRequired,
+    stockCount: PropTypes.number.isRequired }).
+  isRequired).isRequired,
+  onQtyChange: PropTypes.func.isRequired,
+  onRemoveClick: PropTypes.func.isRequired };
+
+
+
+// Total
+const Total = ({ cart }) => /*#__PURE__*/
+React.createElement("div", { className: "cart-total" }, /*#__PURE__*/
+React.createElement("span", { className: "cart-total-label" }, "Total:"), /*#__PURE__*/
+
+
+React.createElement("span", { className: "cart-total-value" }, "$",
+cart.length ? cart.reduce((acc, item) =>
+acc + item.price * item.count,
+0).toFixed(2) : Number(0).toFixed(2)));
+
+
+
+
+Total.PropTypes = {
+  cart: PropTypes.arrayOf(PropTypes.shape({
+    price: PropTypes.number.isRequired,
+    count: PropTypes.number.isRequired }).
+  isRequired).isRequired };
+
+
+
+// PayButton
+const PayButton = ({ onPayClick }) => /*#__PURE__*/
+React.createElement("button", {
+  type: "button",
+  className: "cart-pay-button",
+  onClick: () => onPayClick() }, "Pay now");
+
+
+
+
+
+PayButton.PropTypes = {
+  onPayClick: PropTypes.func.isRequired };
+
+
+
+// Cart
+const Cart = ({ cart, onQtyChange, onRemoveClick, onPayClick }) => /*#__PURE__*/
+React.createElement("div", { className: "cart" }, /*#__PURE__*/
+React.createElement("h1", { className: "main-header cart-header" }, "My Cart"), /*#__PURE__*/
+React.createElement(CartItems, {
+  cart: cart,
+  onQtyChange: onQtyChange,
+  onRemoveClick: onRemoveClick }), /*#__PURE__*/
+
+React.createElement(Total, { cart: cart }), /*#__PURE__*/
+React.createElement(PayButton, { onPayClick: onPayClick }));
+
+
+
+Cart.PropTypes = {
+  cart: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    img: PropTypes.string.isRequired,
+    count: PropTypes.number.isRequired,
+    stockCount: PropTypes.number.isRequired }).
+  isRequired).isRequired,
+  onQtyChange: PropTypes.func.isRequired,
+  onRemoveClick: PropTypes.func.isRequired,
+  onPayClick: PropTypes.func.isRequired };
+
+
+
+// CartContainer
+const cartGetSelectedValue = (e) =>
+e.target.value;
+
+
+const CartContainer = connect(
+(state) => (
+{
+  cart: state.cart.map(cartItem => {
+    const item = state.stock.find(stockItem => cartItem.id === stockItem.id);
+    return {
+      id: cartItem.id,
+      name: item.name,
+      price: item.price,
+      img: item.img,
+      count: cartItem.count,
+      stockCount: item.count };
+
+  }) }),
+
+
+(dispatch) => (
+{
+  onQtyChange: (e, id) => {
+    dispatch(updateCartItem(id, cartGetSelectedValue(e)));
+  },
+
+  onRemoveClick: (e, id) => {
+    e.preventDefault();
+    dispatch(removeFromCart(id));
+  },
+
+  dispatch: reducer => dispatch(reducer) }),
+
+
+(stateProps, dispatchProps, ownProps) =>
+Object.assign({}, ownProps, stateProps, dispatchProps, {
+  onPayClick: () =>
+  stateProps.cart.map(item => {
+    dispatchProps.dispatch(removeStockItem(item.id, item.count));
+    dispatchProps.dispatch(removeFromCart(item.id));
+  }) }))(
+
+
+Cart);
+
+
+// NoMatch
+const NoMatch = () => /*#__PURE__*/
+React.createElement("p", { className: "no-match" }, "Sorry, the page you are looking for does not exist. Click above to go back to the shop.");
+
+
+
+
+
+
+// App
+const App = () => /*#__PURE__*/
+React.createElement(Router, { history: hashHistory }, /*#__PURE__*/
+React.createElement(Route, { path: "/", component: HeaderContainer }, /*#__PURE__*/
+React.createElement(IndexRoute, { component: Shop }), /*#__PURE__*/
+React.createElement(Route, { path: "item/:id", component: ItemContainer }), /*#__PURE__*/
+React.createElement(Route, { path: "cart", component: CartContainer }), /*#__PURE__*/
+React.createElement(Route, { path: "*", component: NoMatch })));
+
+
+
+
+const store = Redux.createStore(reducers, initialState);
+
+ReactDOM.render( /*#__PURE__*/
+React.createElement(Provider, { store: store }, /*#__PURE__*/
+React.createElement(App, null)),
+
+document.getElementById('app'));
+//# sourceURL=pen.js
+    </script>
+
+  
+
+
+
+</body></html>
